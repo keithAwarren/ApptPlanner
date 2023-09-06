@@ -43,8 +43,21 @@
             <input
                 type="submit"
                 value="submit"
+                onClick="openAppointmentCard()"
             />
         </form>
     </div>
+
+    <div class="appointmentCard" id="appointmentCard">
+        <p></p>
+    </div>
+
+<script>
+let appointmentCard = getElementById("appointmentCard");
+
+function openAppointmentCard(){
+    appointmentCard.classList.add("openAppointmentCard");
+}
+</script>
 </body>
 </html>
