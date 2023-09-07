@@ -17,7 +17,9 @@ nav {
     text-align: center;
 }
 
-nav .navi {
+nav .navi a {
+    text-decoration: none;
+    color: #fff;
     display: flex;
     align-items: center;
     margin: 0 2rem;
@@ -29,7 +31,7 @@ nav .navi h1 {
 
 nav .links a {
     text-decoration: none;
-    color: #fff;
+    color: #D9B4FF;
     font-size: 1rem;
     margin: 0 1rem;
     padding: 0.4rem 0.2rem;
@@ -40,6 +42,6 @@ nav .links a {
 
 nav .links a:hover,
 nav .links a:active {
-  color: #D9B4FF;
-  border-bottom: 2px solid #D9B4FF;
+  color: #eddbff;
+  border-bottom: 2px solid #eddbff;
 }
