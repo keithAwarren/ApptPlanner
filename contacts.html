@@ -16,6 +16,8 @@
         </div>
     </nav>
 <body>
+    <div class="container">
+        <h1>Contacts</h1>
     <div class="form-section">
         <h2>Contact Form</h2>
         <form>
@@ -24,6 +26,7 @@
                 <input
                     required
                     type="text"
+                    id="name"
                 />
             </div>
             <div>
@@ -31,6 +34,7 @@
                 <input
                     required
                     type="tel"
+                    id="phone"
                 />
             </div>
             <div>
@@ -38,14 +42,17 @@
                 <input
                     required
                     type="email"
+                    id="email"
                 />
             </div>
             <input
+                class="btn"
                 type="submit"
                 value="submit"
                 onclick="openContactCard()"
             />
         </form>
+    </div>
     </div>
 
     <div class="contactCard" id="contactCard">

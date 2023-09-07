@@ -4,7 +4,7 @@
     font-family: filson-pro, sans-serif;
     font-size: 16px;
     user-select: none; 
-  }
+}
 
 nav {
     width: 100%;
@@ -42,6 +42,89 @@ nav .links a {
 
 nav .links a:hover,
 nav .links a:active {
-  color: #eddbff;
-  border-bottom: 2px solid #eddbff;
+    color: #eddbff;
+    border-bottom: 2px solid #eddbff;
+}
+
+.container h1 {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+}
+
+.form-section {
+    width: 60rem;
+    max-width: 60%;
+    min-width: 271px;
+    margin: 0 auto 1rem;
+    padding: 2rem;
+    border: 1px solid;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-section form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-section h2 {
+    font-size: 1rem;
+    margin: 0 0 2rem;
+}
+
+.form-section label {
+    font-size: 0.8rem;
+    margin: 0 0.2rem;
+}
+
+.container {
+    width: 60rem;
+    max-width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+  
+.btn {
+    background-color: #D9B4FF;
+    color: #fff;
+    border: none;
+    width: fit-content;
+    padding: 0.5rem 1.4rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 424px) {
+    .form-section {
+        min-width: 180px;
+    }
+
+    .form-section form #title,
+    .form-section form #date,
+    .form-section form #time,
+    .form-section form #name,
+    .form-section form #email,
+    .form-section form #phone {
+        width: 20rem;
+        max-width: 95%;
+        margin: 10px auto 20px;
+        font-size: 0.8rem;
+    }
+}
+
+@media only screen and (min-width: 425px) {
+    .form-section form #title,
+    .form-section form #date,
+    .form-section form #time,
+    .form-section form #name,
+    .form-section form #email,
+    .form-section form #phone {
+        width: 20rem;
+        max-width: 80%;
+        margin: 10px auto 20px;
+        font-size: 0.8rem;
+    }
 }
