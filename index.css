@@ -3,7 +3,7 @@
     padding: 0;
     font-family: filson-pro, sans-serif;
     font-size: 16px;
-    user-select: none; 
+    user-select: none;
 }
 
 nav {
@@ -85,7 +85,7 @@ nav .links a:active {
     display: flex;
     flex-direction: column;
 }
-  
+
 .btn {
     background-color: #D9B4FF;
     color: #fff;
@@ -107,7 +107,8 @@ nav .links a:active {
     .form-section form #time,
     .form-section form #name,
     .form-section form #email,
-    .form-section form #phone {
+    .form-section form #phone,
+    .form-section form select {
         width: 20rem;
         max-width: 95%;
         margin: 10px auto 20px;
@@ -116,12 +117,14 @@ nav .links a:active {
 }
 
 @media only screen and (min-width: 425px) {
+
     .form-section form #title,
     .form-section form #date,
     .form-section form #time,
     .form-section form #name,
     .form-section form #email,
-    .form-section form #phone {
+    .form-section form #phone,
+    .form-section form select {
         width: 20rem;
         max-width: 80%;
         margin: 10px auto 20px;

@@ -1,70 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Contacts</title>
-        <link rel="stylesheet" href="index.css">
-    </head>
-    <nav>
-        <div class="navi">
-            <a href="index.html">
-                <h1>Appointment Planner</h1>
-            </a>
-        </div>
-        <div class="links">
-            <a href="contacts.html">Contacts</a>
-            <a href="appointments.html">Appointments</a>
-        </div>
-    </nav>
+
+<head>
+    <title>Contacts</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<nav>
+    <div class="navi">
+        <a href="index.html">
+            <h1>Appointment Planner</h1>
+        </a>
+    </div>
+    <div class="links">
+        <a href="contacts.html">Contacts</a>
+        <a href="appointments.html">Appointments</a>
+    </div>
+</nav>
+
 <body>
     <div class="container">
         <h1>Contacts</h1>
-    <div class="form-section">
-        <h2>Contact Form</h2>
-        <form>
-            <div>
-                <label>Name:</label>
-                <input
-                    required
-                    type="text"
-                    id="name"
-                />
-            </div>
-            <div>
-                <label>Phone:</label>
-                <input
-                    required
-                    type="tel"
-                    id="phone"
-                />
-            </div>
-            <div>
-                <label>E-mail:</label>
-                <input
-                    required
-                    type="email"
-                    id="email"
-                />
-            </div>
-            <input
-                class="btn"
-                type="submit"
-                value="submit"
-                onclick="openContactCard()"
-            />
-        </form>
-    </div>
+        <div class="form-section">
+            <h2>Contact Form</h2>
+            <form>
+                <div>
+                    <label>Name:</label>
+                    <input required type="text" id="name" />
+                </div>
+                <div>
+                    <label>Phone:</label>
+                    <input required type="tel" id="phone" />
+                </div>
+                <div>
+                    <label>E-mail:</label>
+                    <input required type="email" id="email" />
+                </div>
+                <input class="btn" type="submit" value="submit" onclick="openContactCard()" />
+            </form>
+        </div>
     </div>
 
     <div class="contactCard" id="contactCard">
         <p></p>
     </div>
 
-<script>
-let contactCard = document.getElementById("contactCard");
+    <script>
+        let contactCard = document.getElementById("contactCard");
 
-function openContactCard(){
-    contactCard.classList.add("openContactCard");
-};
-</script>
+        function openContactCard() {
+            contactCard.classList.add("openContactCard");
+        };
+    </script>
 </body>
+
 </html>

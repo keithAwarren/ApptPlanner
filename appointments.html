@@ -1,75 +1,61 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Appointments</title>
-        <link rel="stylesheet" href="index.css">
-    </head>
-    <nav>
-        <div class="navi">
-            <a href="index.html">
-                <h1>Appointment Planner</h1>
-            </a>
-        </div>
-        <div class="links">
-            <a href="contacts.html">Contacts</a>
-            <a href="appointments.html">Appointments</a>
-        </div>
-    </nav>
+
+<head>
+    <title>Appointments</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<nav>
+    <div class="navi">
+        <a href="index.html">
+            <h1>Appointment Planner</h1>
+        </a>
+    </div>
+    <div class="links">
+        <a href="contacts.html">Contacts</a>
+        <a href="appointments.html">Appointments</a>
+    </div>
+</nav>
 
 
 <body>
     <div class="container">
         <h1>Appointments</h1>
-    <div class="form-section">
-        <h2>Appointment Form</h2>
-        <form>
-            <div class="form-input">
-                <label>Contact:</label>
-            </div>
-            <div class="form-input">
-                <label>Title:</label>
-                <input
-                    required
-                    type="text"
-                    id="title"
-                />
-            </div>
-            <div class="form-input">
-                <label>Date:</label>
-                <input
-                    required
-                    type="date"
-                    id="date"
-                />
-            </div>
-            <div class="form-input">
-                <label>Time:</label>
-                <input
-                    required
-                    type="time"
-                    id="time"
-                />
-            </div>
-            <input
-                class="btn"
-                type="submit"
-                value="submit"
-                onClick="openAppointmentCard()"
-            />
-        </form>
-    </div>
+        <div class="form-section">
+            <h2>Appointment Form</h2>
+            <form>
+                <div class="form-input">
+                    <label>Contact:</label>
+                    <select></select>
+                </div>
+                <div class="form-input">
+                    <label>Title:</label>
+                    <input required type="text" id="title" />
+                </div>
+                <div class="form-input">
+                    <label>Date:</label>
+                    <input required type="date" id="date" />
+                </div>
+                <div class="form-input">
+                    <label>Time:</label>
+                    <input required type="time" id="time" />
+                </div>
+                <input class="btn" type="submit" value="submit" onClick="openAppointmentCard()" />
+            </form>
+        </div>
     </div>
 
     <div class="appointmentCard" id="appointmentCard">
         <p></p>
     </div>
 
-<script>
-let appointmentCard = getElementById("appointmentCard");
+    <script>
+        let appointmentCard = getElementById("appointmentCard");
 
-function openAppointmentCard(){
-    appointmentCard.classList.add("openAppointmentCard");
-}
-</script>
+        function openAppointmentCard() {
+            appointmentCard.classList.add("openAppointmentCard");
+        }
+    </script>
 </body>
+
 </html>
