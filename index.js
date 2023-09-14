@@ -11,11 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
             formSections[index].classList.toggle("visible");
         });
     });
-});
 
-document.addEventListener("DOMContentLoaded", function () {
-
-    // Select the contact form element and the select element for conracts in appointment form
+    // Select the contact form element and the select element for contacts in appointment form
     const contactForm = document.querySelector("#contactsCard form");
     const contactSelect = document.querySelector("#contactSelect");
 
@@ -23,43 +20,43 @@ document.addEventListener("DOMContentLoaded", function () {
     contactForm.addEventListener("submit", function (e) {
         e.preventDefault(); // Prevent form submitting
 
-            // Get values from the contact form
-            const name = document.querySelector("#name").value;
-            const phone = document.querySelector("#phone").value;
-            const email = document.querySelector("#email").value;
+        // Get values from the contact form
+        const name = document.querySelector("#name").value;
+        const phone = document.querySelector("#phone").value;
+        const email = document.querySelector("#email").value;
 
-            // Create a new optiont element for the select element
-            const option = document.createElement("option");
-            
-            // Set text of option to name
-            option.text = name;
+        // Create a new option element for the select element
+        const option = document.createElement("option");
 
-            // Store phone and email as data attributes
-            option.setAttribute("data-phone", phone);
-            option.setAttribute("data-email", email);
+        // Set text of option to name
+        option.text = name;
 
-            // Append new option to select element
-            contactSelect.appendChild(option);
+        // Store phone and email as data attributes
+        option.setAttribute("data-phone", phone);
+        option.setAttribute("data-email", email);
 
-            contactForm.reset();
-    }); 
+        // Append new option to select element
+        contactSelect.appendChild(option);
+
+        contactForm.reset();
+    });
 
     // Select appointments form element
     const appointmentsForm = document.querySelector("#appointmentsCard form");
 
-    // Add submit evnet listener to appointment form
+    // Add submit event listener to appointment form
     appointmentsForm.addEventListener("submit", function (e) {
         e.preventDefault(); // Prevent the form from submitting
 
-            // Get contact option from select element
-            const selectedOption = contactSelect.options[contactSelect.selectedIndex];
+        // Get contact option from select element
+        const selectedOption = contactSelect.options[contactSelect.selectedIndex];
 
-            // Get phone and email data attributes
-            const selectedPhone = selectedOption.getAttribute("data-phone");
-            const selectedEmail = selectedOption.getAttribute("data-email");
+        // Get phone and email data attributes
+        const selectedPhone = selectedOption.getAttribute("data-phone");
+        const selectedEmail = selectedOption.getAttribute("data-email");
 
-            // Log phone and email to the console
-            console.log("Selected Phone:", selectedPhone);
-            console.log("Selected Email:", selectedEmail);
+        // Log phone and email to the console
+        console.log("Selected Phone:", selectedPhone);
+        console.log("Selected Email:", selectedEmail);
     });
 });
