@@ -4,6 +4,7 @@
 <head>
     <title>Appointment Planner</title>
     <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
 </head>
 <nav>
     <div class="navi">
@@ -12,9 +13,58 @@
         </a>
     </div>
     <div class="links">
-        <a href="contacts.html">Contacts</a>
-        <a href="appointments.html">Appointments</a>
+        <button class="showFormButton">Contacts</button>
+        <button class="showFormButton">Appointments</button>
     </div>
 </nav>
+
+<body>
+    <div id="contactsCard" class="container">
+        <div class="form-section" id="fish">
+            <h2>Contact Form</h2>
+            <form>
+                <div>
+                    <label>Name:</label>
+                    <input required type="text" id="name" />
+                </div>
+                <div>
+                    <label>Phone:</label>
+                    <input required type="tel" id="phone" />
+                </div>
+                <div>
+                    <label>E-mail:</label>
+                    <input required type="email" id="email" />
+                </div>
+                <input class="btn" type="submit" value="submit" />
+            </form>
+        </div>
+    </div>
+
+    <div id="appointmentsCard" class="container">
+        <div class="form-section" id="fish2">
+            <h2>Appointment Form</h2>
+            <form>
+                <div class="form-input">
+                    <label>Contact:</label>
+                    <select></select>
+                </div>
+                <div class="form-input">
+                    <label>Title:</label>
+                    <input required type="text" id="title" />
+                </div>
+                <div class="form-input">
+                    <label>Date:</label>
+                    <input required type="date" id="date" />
+                </div>
+                <div class="form-input">
+                    <label>Time:</label>
+                    <input required type="time" id="time" />
+                </div>
+                <input class="btn" type="submit" value="submit"/>
+            </form>
+        </div>
+    </div>
+
+</body>
 
 </html>
