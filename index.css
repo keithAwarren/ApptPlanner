@@ -61,7 +61,6 @@ nav .links a:active {
     background: #fff;
     border-radius: 6px;
     position: absolute;
-    top: 20%;
     text-align: left;
     padding: 30px;
     color: #333;
@@ -136,7 +135,7 @@ button {
 .modal .form-section {
     background: #fff;
     border-radius: 6px;
-    text-align: center;
+    text-align: left;
     padding: 30px;
     color: #333;
     display: block;
@@ -145,24 +144,21 @@ button {
     z-index: 101; 
 }
 
-.closeButton {
+.close {
+    color: #aaa;
     position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: #1d1d1d;
-    color: #D9B4FF;
-    border: none;
-    padding: 0.3rem 0.5rem;
-    border-radius: 5px;
-    font-size: 0.8rem;
+    top: 10%;
+    right: 10%;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
     cursor: pointer;
-    z-index: 102;
 }
-
-.closeButton:hover {
-    background-color: #eddbff;
-}
-
 /*
 
 .container h1 {
