@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-
     // Select all elements with the classes "form-section" and "showFormButton"
     const formSections = document.querySelectorAll(".form-section");
     const showFormButtons = document.querySelectorAll(".showFormButton");
@@ -43,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Select appointments form element
     const appointmentsForm = document.querySelector("#appointmentsCard form");
+    const appointmentInfoDisplay = document.querySelector("#appointmentInfoDisplay"); // Add this line
 
     // Add submit event listener to appointment form
     appointmentsForm.addEventListener("submit", function (e) {
@@ -55,8 +55,31 @@ document.addEventListener("DOMContentLoaded", function () {
         const selectedPhone = selectedOption.getAttribute("data-phone");
         const selectedEmail = selectedOption.getAttribute("data-email");
 
-        // Log phone and email to the console
-        console.log("Selected Phone:", selectedPhone);
-        console.log("Selected Email:", selectedEmail);
+        // Get values from the Appointments form
+        const title = document.querySelector("#title").value;
+        const date = document.querySelector("#date").value;
+        const time = document.querySelector("#time").value;
+
+        // Create a new element to display the submitted information
+        const appointmentInfo = document.createElement("div");
+        appointmentInfo.classList.add("appointment-info");
+
+        // Update the new element with the submitted information
+        appointmentInfo.innerHTML = `
+            <h3>Appointment Information</h3>
+            <p><strong>Contact:</strong> ${selectedOption.textContent}</p>
+            <p><strong>Title:</strong> ${title}</p>
+            <p><strong>Date:</strong> ${date}</p>
+            <p><strong>Time:</strong> ${time}</p>
+        `;
+
+        // Append the new element to the display area
+        appointmentInfoDisplay.appendChild(appointmentInfo);
+
+        // Clear and hide the appointments and contacts forms
+        appointmentsForm.reset();
+        appointmentsForm.style.display = "none";
+        contactsCard.style.display = "none";
+        appointmentsCard.style.display = "none";
     });
 });
