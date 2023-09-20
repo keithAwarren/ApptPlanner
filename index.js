@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Update the new element with the submitted information
         appointmentInfo.innerHTML = `
-            <h3>Appointment Information</h3>
+            <h3>Appointments</h3>
             <p><strong>Contact:</strong> ${selectedOption.textContent}</p>
             <p><strong>Title:</strong> ${title}</p>
             <p><strong>Date:</strong> ${date}</p>
