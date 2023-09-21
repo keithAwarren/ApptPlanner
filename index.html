@@ -13,14 +13,19 @@
             <h1>Appointment Planner</h1>
         </a>
     </div>
-    <div class="links">
+
+    <div class="links button-container">
         <button 
             class="showFormButton" 
-            data-target="contactsModal">Contacts
+            data-target="contactsModal">
+            <span class="button-text">Contacts</span>
+            <i class="fas fa-address-book"></i>
         </button>
         <button 
             class="showFormButton" 
-            data-target="appointmentsModal">Appointments
+            data-target="appointmentsModal">
+            <span class="button-text">Appointments</span>
+            <i class="fas fa-calendar-alt"></i>
         </button>
     </div>
 </nav>
@@ -36,6 +41,7 @@
             </span>
             <div id="contactsCard" class="container">
                 <div class="form-section">
+
                     <h2>Contact Form</h2>
                     <form id="contactForm">
                         <div>

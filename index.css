@@ -31,7 +31,7 @@ nav .navi h1 {
     font-size: 1.4rem;
 }
 
-nav .links a {
+nav .links {
     text-decoration: none;
     color: #D9B4FF;
     font-size: 1rem;
@@ -40,6 +40,19 @@ nav .links a {
     border-bottom: 2px solid transparent;
     text-align: center;
     transition: 500ms;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.showFormButton i {
+    display: none;
+}
+
+.showFormButton .button-text {
+    display: inline;
 }
 
 nav .links a:hover,
@@ -176,6 +189,15 @@ button {
 @media (max-width: 768px) {
     body {
         background-color: #fff;
+    }
+
+    .showFormButton .button-text {
+        display: none;
+    }
+
+    .showFormButton i {
+        display: inline;
+        font-size: 200%;
     }
 }
 /*
