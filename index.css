@@ -119,13 +119,7 @@ button {
     margin: 0 0.2rem;
 }
 
-.form-section form #title,
-.form-section form #date,
-.form-section form #time,
-.form-section form #name,
-.form-section form #email,
-.form-section form #phone,
-.form-section form select {
+.form-input {
     width: 20rem;
     max-width: 95%;
     margin: 10px auto 20px;
