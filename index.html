@@ -7,45 +7,47 @@
     <script src="index.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 </head>
-<nav>
-    <div class="navi">
-        <a href="index.html">
-            <h1>Appointment Planner</h1>
-        </a>
-    </div>
-
-    <div class="links button-container">
-        <button 
-            class="showFormButton" 
-            data-target="contactsModal">
-            <span class="button-text">Contacts</span>
-            <i class="fas fa-address-book"></i>
-        </button>
-        <button 
-            class="showFormButton" 
-            data-target="appointmentsModal">
-            <span class="button-text">Appointments</span>
-            <i class="fas fa-calendar-alt"></i>
-        </button>
-    </div>
-</nav>
-
-<div class="container appointment-info" id="appointmentInfoDisplay">
-    
-</div>
 
 <body>
+
+    <nav>
+        <div class="navi">
+            <a href="index.html">
+                <h1>Appointment Planner</h1>
+            </a>
+        </div>
+    
+        <div class="links button-container">
+            <button 
+                class="showFormButton" 
+                data-target="contactsModal">
+                <span class="button-text">Contacts</span>
+                <i class="fas fa-address-book"></i>
+            </button>
+            <button 
+                class="showFormButton" 
+                data-target="appointmentsModal">
+                <span class="button-text">Appointments</span>
+                <i class="fas fa-calendar-alt"></i>
+            </button>
+        </div>
+    </nav>
+    
+    <div class="container appointment-info" id="appointmentInfoDisplay">
+        
+    </div>
+
     <div id="contactsModal" class="modal">
         <div class="modal-content">
-            <span 
-                class="close close-button" 
-                data-modal="contactsModal">&times;
-            </span>
             <div id="contactsCard" class="container">
                 <div class="form-section">
 
                     <h2>Contact Form</h2>
                     <form id="contactForm">
+                        <span 
+                            class="close close-button" 
+                            data-modal="contactsModal">&times;
+                        </span>
                         <div>
                             <label>Name:</label>
                             <input
@@ -86,15 +88,15 @@
 
     <div id="appointmentsModal" class="modal">
         <div class="modal-content">
-            <span 
-                class="close close-button" 
-                data-modal="appointmentsModal">&times;
-            </span>
             <div id="appointmentsCard" class="container">
                 <div class="form-section">
 
                     <h2>Appointment Form</h2>
                     <form id="appointmentsForm">
+                        <span 
+                            class="close close-button" 
+                            data-modal="appointmentsModal">&times;
+                        </span>
                         <div>
                             <label>Contact:</label>
                             <select 
@@ -139,7 +141,6 @@
             </div>
         </div>
     </div>
-
 
 </body>
 

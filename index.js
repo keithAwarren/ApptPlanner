@@ -77,6 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const selectedOption = contactSelect.options[contactSelect.selectedIndex];
 
         // Get phone and email data from selected contact
+        const selectedName = selectedOption.textContent;
         const selectedPhone = selectedOption.getAttribute("data-phone");
         const selectedEmail = selectedOption.getAttribute("data-email");
 
@@ -91,7 +92,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Populate appointment info div with appointment details
         appointmentInfo.innerHTML = `
-            <p><strong>Contact:</strong> ${selectedOption.textContent}</p>
+            <p><strong>Contact:</strong> ${selectedName}</p>
+            <p><strong>Phone:</strong> ${selectedPhone}</p>
+            <p><strong>Email:</strong> ${selectedEmail}</p>
             <p><strong>Title:</strong> ${title}</p>
             <p><strong>Date:</strong> ${date}</p>
             <p><strong>Time:</strong> ${time}</p>
