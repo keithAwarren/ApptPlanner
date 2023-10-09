@@ -148,7 +148,7 @@ button {
     display: block;
     justify-content: center;
     position: relative;
-    z-index: 101; 
+    z-index: 101;
 }
 
 .close {
@@ -209,6 +209,7 @@ button {
         font-size: 200%;
     }
 }
+
 /*
 
 .container h1 {

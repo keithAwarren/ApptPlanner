@@ -16,25 +16,21 @@
                 <h1>Appointment Planner</h1>
             </a>
         </div>
-    
+
         <div class="links button-container">
-            <button 
-                class="showFormButton" 
-                data-target="contactsModal">
+            <button class="showFormButton" data-target="contactsModal">
                 <span class="button-text">Contacts</span>
                 <i class="fas fa-address-book"></i>
             </button>
-            <button 
-                class="showFormButton" 
-                data-target="appointmentsModal">
+            <button class="showFormButton" data-target="appointmentsModal">
                 <span class="button-text">Appointments</span>
                 <i class="fas fa-calendar-alt"></i>
             </button>
         </div>
     </nav>
-    
+
     <div class="container appointment-info" id="appointmentInfoDisplay">
-        
+
     </div>
 
     <div id="contactsModal" class="modal">
@@ -44,42 +40,25 @@
 
                     <h2>Contact Form</h2>
                     <form id="contactForm">
-                        <span 
-                            class="close close-button" 
-                            data-modal="contactsModal">&times;
+                        <span class="close close-button" data-modal="contactsModal">&times;
                         </span>
                         <div>
-                            <label>Name:</label>
-                            <input
-                                class="form-input" 
-                                required 
-                                type="text" 
-                                id="name" 
-                            />
+                            <label>First Name:</label>
+                            <input class="form-input" required type="text" id="firstName" />
+                        </div>
+                        <div>
+                            <label>Last Name:</label>
+                            <input class="form-input" required type="text" id="lastName" />
                         </div>
                         <div class="form-">
                             <label>Phone:</label>
-                            <input 
-                                class="form-input"
-                                required 
-                                type="tel" 
-                                id="phone" 
-                            />
+                            <input class="form-input" required type="tel" id="phone" />
                         </div>
                         <div>
                             <label>E-mail:</label>
-                            <input
-                                class="form-input" 
-                                required 
-                                type="email" 
-                                id="email" 
-                            />
+                            <input class="form-input" required type="email" id="email" />
                         </div>
-                        <input 
-                            class="btn" 
-                            type="submit" 
-                            value="submit" 
-                        />
+                        <input class="btn" type="submit" value="submit" />
                     </form>
                 </div>
             </div>
@@ -93,49 +72,26 @@
 
                     <h2>Appointment Form</h2>
                     <form id="appointmentsForm">
-                        <span 
-                            class="close close-button" 
-                            data-modal="appointmentsModal">&times;
+                        <span class="close close-button" data-modal="appointmentsModal">&times;
                         </span>
                         <div>
                             <label>Contact:</label>
-                            <select 
-                                id="contactSelect"
-                                class="form-input">
+                            <select id="contactSelect" class="form-input">
                             </select>
                         </div>
                         <div>
                             <label>Title:</label>
-                            <input 
-                                class="form-input"
-                                required 
-                                type="text" 
-                                id="title" 
-                            />
+                            <input class="form-input" required type="text" id="title" />
                         </div>
                         <div>
                             <label>Date:</label>
-                            <input
-                                class="form-input" 
-                                required 
-                                type="date" 
-                                id="date" 
-                            />
+                            <input class="form-input" required type="date" id="date" />
                         </div>
                         <div>
                             <label>Time:</label>
-                            <input
-                                class="form-input"
-                                required 
-                                type="time" 
-                                id="time" 
-                            />
+                            <input class="form-input" required type="time" id="time" />
                         </div>
-                        <input 
-                            class="btn" 
-                            type="submit" 
-                            value="submit" 
-                        />
+                        <input class="btn" type="submit" value="submit" />
                     </form>
                 </div>
             </div>

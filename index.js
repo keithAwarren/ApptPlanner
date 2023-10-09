@@ -5,7 +5,6 @@ const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 const phonePattern = /^\d{10}$/;
 
 document.addEventListener("DOMContentLoaded", function () {
-
     // Select all elements with class "shoFormButton and close-button"
     const showFormButtons = document.querySelectorAll(".showFormButton");
     const closeButtons = document.querySelectorAll(".close-button");
@@ -30,21 +29,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const contactForm = document.getElementById("contactForm");
     const appointmentsForm = document.getElementById("appointmentsForm");
-    const contactSelect = document.querySelector("#contactSelect"); 
+    const contactSelect = document.querySelector("#contactSelect");
 
     // Add submit event listener to contact form
     contactForm.addEventListener("submit", function (e) {
         e.preventDefault(); // Prevent form from submitting
 
         // Get values from contact form
-        const name = document.querySelector("#name").value;
+        const firstName = document.querySelector("#firstName").value;
+        const lastName = document.querySelector("#lastName").value;
         const phone = document.querySelector("#phone").value;
         const email = document.querySelector("#email").value;
 
         // Check if email matches regex
         if (!emailPattern.test(email)) {
             alert("Please enter a valid email address.");
-            return; 
+            return;
         }
 
         // Check if phone matches regex
@@ -56,8 +56,12 @@ document.addEventListener("DOMContentLoaded", function () {
         // Create option element to add to contact select 
         const option = document.createElement("option");
 
-        option.text = name;
+        const fullName = `${firstName} ${lastName}`;
 
+        option.text = fullName;
+
+        option.setAttribute("data-firstName", firstName);
+        option.setAttribute("data-lastName", lastName);
         option.setAttribute("data-phone", phone);
         option.setAttribute("data-email", email);
 
@@ -71,13 +75,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Add submit event listener to appointment form
     appointmentsForm.addEventListener("submit", function (e) {
-        e.preventDefault(); 
+        e.preventDefault();
 
         // Get selected contact option from contact select
         const selectedOption = contactSelect.options[contactSelect.selectedIndex];
 
         // Get phone and email data from selected contact
-        const selectedName = selectedOption.textContent;
+        const selectedFirstName = selectedOption.getAttribute("data-firstName");
+        const selectedLastName = selectedOption.getAttribute('data-lastName')
         const selectedPhone = selectedOption.getAttribute("data-phone");
         const selectedEmail = selectedOption.getAttribute("data-email");
 
@@ -90,9 +95,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const appointmentInfo = document.createElement("div");
         appointmentInfo.classList.add("appointment-info");
 
+        const fullName = `${selectedFirstName} ${selectedLastName}`;
+
         // Populate appointment info div with appointment details
         appointmentInfo.innerHTML = `
-            <p><strong>Contact:</strong> ${selectedName}</p>
+            <p><strong>Contact:</strong> ${fullName}</p>
             <p><strong>Phone:</strong> ${selectedPhone}</p>
             <p><strong>Email:</strong> ${selectedEmail}</p>
             <p><strong>Title:</strong> ${title}</p>
