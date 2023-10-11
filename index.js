@@ -1,4 +1,13 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+    const timeInput = document.getElementById("time");
+
+    flatpickr(timeInput, {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+    });
+
     // Select all elements with class "shoFormButton and close-button"
     const showFormButtons = document.querySelectorAll(".showFormButton");
     const closeButtons = document.querySelectorAll(".close-button");
