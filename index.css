@@ -126,6 +126,14 @@ button {
     font-size: 0.8rem;
 }
 
+input:invalid + label::after {
+    content: attr(title);
+    color: #f00;
+    display: block;
+    font-size: 0.8em;
+    padding-top: 5px;
+}
+
 .modal {
     display: none;
     position: fixed;

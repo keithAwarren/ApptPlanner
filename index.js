@@ -1,9 +1,3 @@
-// Regex pattern for email
-const emailPattern = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-
-// Regex pattern for phone
-const phonePattern = /^\d{10}$/;
-
 document.addEventListener("DOMContentLoaded", function () {
     // Select all elements with class "shoFormButton and close-button"
     const showFormButtons = document.querySelectorAll(".showFormButton");
@@ -40,18 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const lastName = document.querySelector("#lastName").value;
         const phone = document.querySelector("#phone").value;
         const email = document.querySelector("#email").value;
-
-        // Check if email matches regex
-        if (!emailPattern.test(email)) {
-            alert("Please enter a valid email address.");
-            return;
-        }
-
-        // Check if phone matches regex
-        if (!phonePattern.test(phone)) {
-            alert("Please enter a valid 10 digit phone number.");
-            return;
-        }
 
         // Create option element to add to contact select 
         const option = document.createElement("option");

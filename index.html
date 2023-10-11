@@ -43,19 +43,19 @@
                         <span class="close close-button" data-modal="contactsModal">&times;
                         </span>
                         <div>
-                            <label>First Name:</label>
-                            <input class="form-input" required type="text" id="firstName" />
+                            <label for="firstName">First Name:</label>
+                            <input class="form-input" required type="text" id="firstName" pattern="^[A-Za-z]+$" title="Please enter letters only (no numbers or special characters)."/>
                         </div>
                         <div>
-                            <label>Last Name:</label>
-                            <input class="form-input" required type="text" id="lastName" />
-                        </div>
-                        <div class="form-">
-                            <label>Phone:</label>
-                            <input class="form-input" required type="tel" id="phone" />
+                            <label for="lastName">Last Name:</label>
+                            <input class="form-input" required type="text" id="lastName" pattern="^[A-Za-z]+$" title="Please enter letters only (no numbers or special characters)."/>
                         </div>
                         <div>
-                            <label>E-mail:</label>
+                            <label for="phone">Phone:</label>
+                            <input class="form-input" required type="tel" id="phone" pattern="^\d{10}$" title="Please enter a 10-digit phone number."/>
+                        </div>
+                        <div>
+                            <label for="email">E-mail:</label>
                             <input class="form-input" required type="email" id="email" />
                         </div>
                         <input class="btn" type="submit" value="submit" />
