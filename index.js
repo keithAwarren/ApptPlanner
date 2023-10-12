@@ -1,5 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
 
+    function toggleMobileMenu() {
+        const mobileMenu = document.querySelector(".mobile-menu");
+        mobileMenu.classList.toggle("show-mobile-menu");
+    }
+
+    const mobileMenuButton = document.querySelector(".mobile-menu-button");
+
+    mobileMenuButton.addEventListener("click", toggleMobileMenu)
+
     const timeInput = document.getElementById("time");
 
     flatpickr(timeInput, {
@@ -29,6 +38,16 @@ document.addEventListener("DOMContentLoaded", function () {
             modal.style.display = "none";
         });
     });
+
+    function closeContactForm() {
+        document.getElementById("firstName").value = "";
+        document.getElementById("lastName").value = "";
+        document.getElementById("phone").value = "";
+        document.getElementById("email").value = "";
+    }
+
+    const clearContactButton = document.getElementById("clearContactForm");
+    clearContactButton.addEventListener("click", closeContactForm)
 
     const contactForm = document.getElementById("contactForm");
     const appointmentsForm = document.getElementById("appointmentsForm");

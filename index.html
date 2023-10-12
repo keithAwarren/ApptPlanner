@@ -14,24 +14,36 @@
 
     <nav>
         <div class="navi">
-            <a href="index.html">
-                <h1>Appointment Planner</h1>
+            <a>
+                <h1>PLANR</h1>
             </a>
         </div>
-
+        <button class="mobile-menu-button" onclick="toggleMobileMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-menu">
+            <h2>CONTACTS</h2>
+            <button class="showFormButton" data-target="contactsModal">new contact</button>
+            <button class="showFormButton">search</button>
+            <h2>APPOINTMENTS</h2>
+            <button class="showFormButton" data-target="appointmentsModal">new appt.</button>
+            <button class="showFormButton">search</button>
+        </div>
         <div class="links button-container">
             <button class="showFormButton" data-target="contactsModal">
-                <span class="button-text">Contacts</span>
-                <i class="fas fa-address-book"></i>
+                <span class="button-text">CONTACTS</span>
             </button>
             <button class="showFormButton" data-target="appointmentsModal">
-                <span class="button-text">Appointments</span>
-                <i class="fas fa-calendar-alt"></i>
+                <span class="button-text">APPOINTMENTS</span>
             </button>
         </div>
     </nav>
 
     <div class="container appointment-info" id="appointmentInfoDisplay">
+
+    </div>
+
+    <div class="container contact-list" id="contactListDisplay">
 
     </div>
 
@@ -46,20 +58,24 @@
                         </span>
                         <div>
                             <label for="firstName">First Name:</label>
-                            <input class="form-input" required type="text" id="firstName" pattern="^[A-Za-z]+$" title="Please enter letters only (no numbers or special characters)."/>
+                            <input class="form-input" required type="text" id="firstName" pattern="^[A-Za-z]+$"
+                                title="Please enter letters only (no numbers or special characters)." />
                         </div>
                         <div>
                             <label for="lastName">Last Name:</label>
-                            <input class="form-input" required type="text" id="lastName" pattern="^[A-Za-z]+$" title="Please enter letters only (no numbers or special characters)."/>
+                            <input class="form-input" required type="text" id="lastName" pattern="^[A-Za-z]+$"
+                                title="Please enter letters only (no numbers or special characters)." />
                         </div>
                         <div>
                             <label for="phone">Phone:</label>
-                            <input class="form-input" required type="tel" id="phone" pattern="^\d{10}$" title="Please enter a 10-digit phone number."/>
+                            <input class="form-input" required type="tel" id="phone" pattern="^\d{10}$"
+                                title="Please enter a 10-digit phone number." />
                         </div>
                         <div>
                             <label for="email">E-mail:</label>
                             <input class="form-input" required type="email" id="email" />
                         </div>
+                        <button class="clear-btn" type="button" id="clearContactForm">clear</button>
                         <input class="btn" type="submit" value="submit" />
                     </form>
                 </div>
@@ -91,8 +107,9 @@
                         </div>
                         <div>
                             <label>Time:</label>
-                            <input class="form-input" required type="time" id="time" data-input/>
+                            <input class="form-input" required type="time" id="time" data-input />
                         </div>
+                        <button class="clear-btn" type="button" id="clearContactForm">clear</button>
                         <input class="btn" type="submit" value="submit" />
                     </form>
                 </div>
