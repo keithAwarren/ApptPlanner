@@ -70,6 +70,13 @@ nav .links a:active {
     border-bottom: 2px solid #eddbff;
 }
 
+#calendar {
+    margin-top: 100%;
+    position: fixed;
+    z-index: 0;
+    font-size: 1px;
+}
+
 .container {
     width: 100%;
     height: 100vh;
@@ -150,10 +157,8 @@ input:invalid+label::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7);
     z-index: 100;
-    justify-content: center;
-    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
 }
 
 .modal .form-section {
@@ -226,7 +231,6 @@ input:invalid+label::after {
     overflow-y: auto;
 }
 
-
 .appointment-info p {
     font-size: 1rem;
     margin: 0.5rem 0;
@@ -268,26 +272,28 @@ input:invalid+label::after {
     }
 
     .mobile-menu {
+        z-index: 1;
         position: fixed;
         top: 10%;
         right: 10%;
         background-color: #1d1d1d;
         color: #eddbff;
-        opacity: 0.9;
         border-radius: 10%;
-        width: 60%;
+        width: 40%;
         display: none;
         padding: 10px;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     }
 
     .mobile-menu h2 {
+        z-index: 1;
         margin: 10px 0;
         padding: 5px;
         letter-spacing: 1px;
     }
 
     .mobile-menu button {
+        z-index: 1;
         width: 100%;
         padding: 10px 15px;
         border-radius: 5px;
@@ -300,7 +306,12 @@ input:invalid+label::after {
     .mobile-menu button:hover {
         letter-spacing: 1.5px;
     }
+
+    .form-section {
+        width: 77%;
+    }
 }
+
 
 /*
 

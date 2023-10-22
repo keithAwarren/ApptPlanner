@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const mobileMenuButton = document.querySelector(".mobile-menu-button");
 
-    mobileMenuButton.addEventListener("click", toggleMobileMenu)
+    mobileMenuButton.addEventListener("click", toggleMobileMenu);
 
     const timeInput = document.getElementById("time");
 
@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
         dateFormat: "H:i",
     });
 
-    // Select all elements with class "shoFormButton and close-button"
+    // Select all elements with class "showFormButton and close-button"
     const showFormButtons = document.querySelectorAll(".showFormButton");
     const closeButtons = document.querySelectorAll(".close-button");
 
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const clearContactButton = document.getElementById("clearContactForm");
-    clearContactButton.addEventListener("click", closeContactForm)
+    clearContactButton.addEventListener("click", closeContactForm);
 
     const contactForm = document.getElementById("contactForm");
     const appointmentsForm = document.getElementById("appointmentsForm");
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Get phone and email data from selected contact
         const selectedFirstName = selectedOption.getAttribute("data-firstName");
-        const selectedLastName = selectedOption.getAttribute('data-lastName')
+        const selectedLastName = selectedOption.getAttribute('data-lastName');
         const selectedPhone = selectedOption.getAttribute("data-phone");
         const selectedEmail = selectedOption.getAttribute("data-email");
 
@@ -116,6 +116,17 @@ document.addEventListener("DOMContentLoaded", function () {
             <p><strong>Date:</strong> ${date}</p>
             <p><strong>Time:</strong> ${time}</p>
         `;
+
+        const deleteButton = document.createElement("button");
+        deleteButton.innerText = "Delete";
+        deleteButton.classList.add("delete-button");
+
+        deleteButton.addEventListener("click", function () {
+            appointmentInfo.remove();
+        });
+
+        // Append the delete button to the appointment info
+        appointmentInfo.appendChild(deleteButton);
 
         // Add appointment info to display area
         const appointmentInfoDisplay = document.querySelector("#appointmentInfoDisplay");
