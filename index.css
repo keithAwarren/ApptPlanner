@@ -17,6 +17,7 @@ nav {
     color: #fff;
     text-align: center;
     position: fixed;
+    top: 0;
 }
 
 nav .navi a {
@@ -245,8 +246,46 @@ input:invalid+label::after {
 }
 
 .mobile-menu {
+    position: absolute;
     display: none;
 }
+
+/* contacts page */
+
+.contacts-container {
+    margin-top: 100px;
+    width: 300px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.contacts-container h2 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.contactPage-button {
+    margin-top: 10px;
+}
+
+/* appts. page */
+
+.appts-container {
+    top: 15px;
+    margin-top: 100px;
+    width: 300px;                        
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.appts-container h2 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* mobile screen styles */
 
 @media (max-width: 768px) {
     body {
@@ -272,28 +311,25 @@ input:invalid+label::after {
     }
 
     .mobile-menu {
-        z-index: 1;
         position: fixed;
         top: 10%;
         right: 10%;
         background-color: #1d1d1d;
         color: #eddbff;
         border-radius: 10%;
-        width: 40%;
+        width: 50%;
         display: none;
         padding: 10px;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     }
 
     .mobile-menu h2 {
-        z-index: 1;
         margin: 10px 0;
         padding: 5px;
         letter-spacing: 1px;
     }
 
     .mobile-menu button {
-        z-index: 1;
         width: 100%;
         padding: 10px 15px;
         border-radius: 5px;
