@@ -1,124 +1,132 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="index.css">
-        <script src="index.js"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.css">
-        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.js"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    </head>
-    <body>
-        <nav>
-            <div class="navi">
-                <a href="index.html">
-                    <h1>PLANR</h1>
-                </a>
-            </div>
-            <button id="mobileMenuButton" class="mobile-menu-button">
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="mobile-menu">
-                <a href="contacts.html">
-                    <button class="showFormButton">contacts</button>
-                </a>
-                <a href="appts.html">
-                    <button class="showFormButton">appointments</button>
-                </a>
-                <a>
-                    <button class="showFormButton">log-in/sign up</button>
-                </a>
-                <a>
-                    <button class="showFormButton">settings</button>
-                </a>
-            </div>
-            <div class="links button-container">
-                <button class="showFormButton" data-target="contactsModal">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <script src="index.js"></script>
+    <script src="appts.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.0/main.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+</head>
+
+<body>
+    <nav>
+        <div class="navi">
+            <a href="index.html">
+                <h1>PLANR</h1>
+            </a>
+        </div>
+        <button id="mobileMenuButton" class="mobile-menu-button">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-menu">
+            <a href="contacts.html">
+                <button class="showFormButton">contacts</button>
+            </a>
+            <a href="appts.html">
+                <button class="showFormButton">appointments</button>
+            </a>
+            <a>
+                <button class="showFormButton">log-in/sign up</button>
+            </a>
+            <a>
+                <button class="showFormButton">settings</button>
+            </a>
+        </div>
+        <div class="links button-container">
+            <a href="contacts.html">
+                <button>
                     <span class="button-text">CONTACTS</span>
                 </button>
-                <button class="showFormButton" data-target="appointmentsModal">
+            </a>
+            <a href="appts.html">
+                <button>
                     <span class="button-text">APPOINTMENTS</span>
                 </button>
-            </div>
-        </nav>
-
-        <div class="appts-container">
-            <h2>Appointments</h2>
-            <button class="btn showFormButton" data-target="appointmentsModal">New Appointment</button>
+            </a>
         </div>
+    </nav>
 
-        <div id="contactsModal" class="modal">
-            <div class="modal-content">
-                <div id="contactsCard" class="container">
-                    <div class="form-section">
-    
-                        <h2>Contact Form</h2>
-                        <form id="contactForm">
-                            <span class="close close-button" data-modal="contactsModal">&times;
-                            </span>
-                            <div>
-                                <label for="firstName">First Name:</label>
-                                <input class="form-input" required type="text" id="firstName" pattern="^[A-Za-z]+$"
-                                    title="Please enter letters only (no numbers or special characters)." />
-                            </div>
-                            <div>
-                                <label for="lastName">Last Name:</label>
-                                <input class="form-input" required type="text" id="lastName" pattern="^[A-Za-z]+$"
-                                    title="Please enter letters only (no numbers or special characters)." />
-                            </div>
-                            <div>
-                                <label for="phone">Phone:</label>
-                                <input class="form-input" required type="tel" id="phone" pattern="^\d{10}$"
-                                    title="Please enter a 10-digit phone number." />
-                            </div>
-                            <div>
-                                <label for="email">E-mail:</label>
-                                <input class="form-input" required type="email" id="email" />
-                            </div>
-                            <button class="clear-btn" type="button" id="clearContactForm">clear</button>
-                            <input class="btn" type="submit" value="submit" />
-                        </form>
-                    </div>
+    <div class="appts-container">
+        <h2>Appointments</h2>
+        <button class="btn showFormButton" data-target="appointmentsModal">New Appointment</button>
+    </div>
+
+    <div id="contactsModal" class="modal">
+        <div class="modal-content">
+            <div id="contactsCard" class="container">
+                <div class="form-section">
+
+                    <h2>Contact Form</h2>
+                    <form id="contactForm">
+                        <span class="close close-button" data-modal="contactsModal">&times;
+                        </span>
+                        <div>
+                            <label for="firstName">First Name:</label>
+                            <input class="form-input" required type="text" id="firstName" pattern="^[A-Za-z]+$"
+                                title="Please enter letters only (no numbers or special characters)." />
+                        </div>
+                        <div>
+                            <label for="lastName">Last Name:</label>
+                            <input class="form-input" required type="text" id="lastName" pattern="^[A-Za-z]+$"
+                                title="Please enter letters only (no numbers or special characters)." />
+                        </div>
+                        <div>
+                            <label for="phone">Phone:</label>
+                            <input class="form-input" required type="tel" id="phone" pattern="^\d{10}$"
+                                title="Please enter a 10-digit phone number." />
+                        </div>
+                        <div>
+                            <label for="email">E-mail:</label>
+                            <input class="form-input" required type="email" id="email" />
+                        </div>
+                        <button class="clear-btn" type="button" id="clearContactForm">clear</button>
+                        <input class="btn" type="submit" value="submit" />
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
 
 
-        <div id="appointmentsModal" class="modal">
-            <div class="modal-content">
-                <div id="appointmentsCard" class="container">
-                    <div class="form-section">
-    
-                        <h2>Appointment Form</h2>
-                        <form id="appointmentsForm">
-                            <span class="close close-button" data-modal="appointmentsModal">&times;
-                            </span>
-                            <div>
-                                <label>Contact:</label>
-                                <select id="contactSelect" class="form-input">
-                                </select>
-                            </div>
-                            <div>
-                                <label>Title:</label>
-                                <input class="form-input" required type="text" id="title" />
-                            </div>
-                            <div>
-                                <label>Date:</label>
-                                <input class="form-input" required type="date" id="date" />
-                            </div>
-                            <div>
-                                <label>Time:</label>
-                                <input class="form-input" required type="time" id="time" data-input />
-                            </div>
-                            <button class="clear-btn" type="button" id="clearContactForm">clear</button>
-                            <input class="btn" type="submit" value="submit" />
-                        </form>
-                    </div>
+    <div id="appointmentsModal" class="modal">
+        <div class="modal-content">
+            <div id="appointmentsCard" class="container">
+                <div class="form-section">
+
+                    <h2>Appointment Form</h2>
+                    <form id="appointmentsForm">
+                        <span class="close close-button" data-modal="appointmentsModal">&times;
+                        </span>
+                        <div>
+                            <label>Contact:</label>
+                            <select id="contactSelect" class="form-input">
+                            </select>
+                        </div>
+                        <div>
+                            <label>Title:</label>
+                            <input class="form-input" required type="text" id="title" />
+                        </div>
+                        <div>
+                            <label>Date:</label>
+                            <input class="form-input" required type="date" id="date" />
+                        </div>
+                        <div>
+                            <label>Time:</label>
+                            <input class="form-input" required type="time" id="time" data-input />
+                        </div>
+                        <button class="clear-btn" type="button" id="clearContactForm">clear</button>
+                        <input class="btn" type="submit" value="submit" />
+                    </form>
                 </div>
             </div>
         </div>
+    </div>
 
-        
-    </body>
+
+</body>
+
 </html>
