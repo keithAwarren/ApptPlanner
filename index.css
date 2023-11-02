@@ -235,9 +235,6 @@ button {
     display: none; 
 }
 
-/* Calendar */
-
-
 /* contacts page */
 
 .contacts-container {
@@ -255,6 +252,15 @@ button {
 
 .contactPage-button {
     margin-top: 10px;
+}
+
+.contacts-list {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    text-align: left;
 }
 
 /* appts. page */

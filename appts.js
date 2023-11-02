@@ -1,4 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+    function populateContactSelect() {
+        const contactSelect = document.querySelector("#contactSelect");
+
+        const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+
+        for (const contact of contacts) {
+            const option = document.createElement("option");
+            option.textContent = `${contact.firstName} ${contact.lastName}`;
+            contactSelect.appendChild(option);
+        }
+    }
+
+    populateContactSelect();
+
     // Function to handle the "New Appointment" button
     function handleNewAppointment() {
         const appointmentModal = document.getElementById("appointmentsModal");

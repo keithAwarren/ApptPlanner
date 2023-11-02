@@ -35,6 +35,15 @@ document.addEventListener("DOMContentLoaded", function () {
         const phone = document.querySelector("#phone").value;
         const email = document.querySelector("#email").value;
 
+        const contactInfo = {
+            firstName,
+            lastName,
+            phone,
+            email
+        };
+
+        storeContactInfo(contactInfo);
+
         // Create option element to add to contact select 
         const option = document.createElement("option");
 
@@ -53,5 +62,76 @@ document.addEventListener("DOMContentLoaded", function () {
         // Reset contact form and close modal
         contactForm.reset();
         closeModal("contactsModal");
+
+        displayContacts();
     });
+
+    // Load and display stored contacts
+    const storedContacts = JSON.parse(localStorage.getItem("contacts")) || [];
+    storedContacts.forEach(function (contact) {
+        displayStoredContact(contact);
+    });
+    
+    function displayStoredContact(contact) {
+        const contactList = document.getElementById("contactsList");
+        const li = document.createElement("li");
+        li.innerHTML = `<span>${contact.firstName} ${contact.lastName}</span>
+                        <button class="deleteContact">Delete</button>`;
+        contactList.appendChild(li);
+    }
+
+    function storeContactInfo(contactInfo) {
+        const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+
+        contacts.push(contactInfo);
+
+        localStorage.setItem("contacts", JSON.stringify(contacts));
+    }
+
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.style.display = "none";
+    }
+
+    function displayContacts() {
+        const contactList = document.getElementById("contactsList");
+        const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+
+        contactList.innerHTML = "";
+
+        contacts.forEach(function (contact, index) {
+            const li = document.createElement("li");
+            li.innerHTML = `<span>${contact.firstName} ${contact.lastName}</span>
+                            <button class="deleteContact" data-index=${index}>Remove</button>`;
+            
+            contactList.appendChild(li);
+        });
+
+        const deleteButtons = document.querySelectorAll(".deleteContact");
+        deleteButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                const index = this.getAttribute("data-index");
+                deleteContact(index);
+            })
+        })
+    }
+
+    function deleteContact(index) {
+        const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+        contacts.splice(index, 1);
+        localStorage.setItem("contacts", JSON.stringify(contacts));
+        displayContacts();
+    }
+
+    function deletContactEvent() {
+        const deleteButtons = document.querySelectorAll(".deleteContact");
+        deleteButtons.forEach(function (button) {
+            button.addEventListener("click", function () {
+                const index = this.getAttribute("data-index");
+                deleteContact(index);
+            })
+        })
+    }
+
+    deletContactEvent();
 });
