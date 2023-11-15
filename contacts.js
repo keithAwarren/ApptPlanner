@@ -68,15 +68,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Load and display stored contacts
     const storedContacts = JSON.parse(localStorage.getItem("contacts")) || [];
-    storedContacts.forEach(function (contact) {
-        displayStoredContact(contact);
-    });
-    
+    storedContacts.forEach(displayStoredContact);
+
     function displayStoredContact(contact) {
         const contactList = document.getElementById("contactsList");
         const li = document.createElement("li");
-        li.innerHTML = `<span>${contact.firstName} ${contact.lastName}</span>
-                        <button class="deleteContact">Delete</button>`;
+
+        // Create spans for name, phone, and email
+        const nameSpan = document.createElement("span");
+        const phoneSpan = document.createElement("span");
+        const emailSpan = document.createElement("span");
+
+        // Assign values
+        nameSpan.innerHTML = `<strong>${contact.firstName} ${contact.lastName}</strong>`;
+        phoneSpan.textContent = `Phone: ${contact.phone}`;
+        emailSpan.textContent = `Email: ${contact.email}`;
+
+        // Append spans to the list item
+        li.appendChild(nameSpan);
+        li.appendChild(document.createElement("br")); // Add a line break for better spacing
+        li.appendChild(phoneSpan);
+        li.appendChild(document.createElement("br")); // Add a line break for better spacing
+        li.appendChild(emailSpan);
+
+        // Add "Delete" button
+        const deleteButton = document.createElement("button");
+        deleteButton.className = "deleteContact";
+        deleteButton.textContent = "Delete";
+        li.appendChild(deleteButton);
+
+        // Append the list item to the contact list
         contactList.appendChild(li);
     }
 
@@ -102,6 +123,8 @@ document.addEventListener("DOMContentLoaded", function () {
         contacts.forEach(function (contact, index) {
             const li = document.createElement("li");
             li.innerHTML = `<span>${contact.firstName} ${contact.lastName}</span>
+                            <br>Phone: ${contact.phone}
+                            <br>Email: ${contact.email}
                             <button class="deleteContact" data-index=${index}>Remove</button>`;
             
             contactList.appendChild(li);

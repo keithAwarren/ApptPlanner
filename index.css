@@ -263,6 +263,37 @@ button {
     text-align: left;
 }
 
+#contactsList {
+    list-style: none;
+    padding: 0;
+}
+
+#contactsList li {
+    margin-bottom: 10px;
+}
+
+.deleteContact {
+    font-size: 12px; 
+    padding: 5px 10px; 
+    margin-right: 10px; 
+}
+
+.deleteContact {
+    font-size: 12px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    float: right;
+}
+
+span strong {
+    font-weight: bold;
+}
+
+span:not(strong) {
+    font-weight: normal;
+    font-size: 14px;
+}
+
 /* appts. page */
 
 .appts-container {
