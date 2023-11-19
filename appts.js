@@ -1,58 +1,54 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // Variables
+    const newAppointmentButton = document.querySelector(".showFormButton");
+    const appointmentsForm = document.getElementById("appointmentsForm");
+    const contactSelect = document.querySelector("#contactSelect");
+    const appointmentInfoDisplay = document.querySelector("#appointmentInfoDisplay");
 
+    // Functions
     function populateContactSelect() {
-        const contactSelect = document.querySelector("#contactSelect");
-
         const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
 
         for (const contact of contacts) {
             const option = document.createElement("option");
             option.textContent = `${contact.firstName} ${contact.lastName}`;
+            option.setAttribute("data-firstName", contact.firstName);
+            option.setAttribute("data-lastName", contact.lastName);
+            option.setAttribute("data-phone", contact.phone);
+            option.setAttribute("data-email", contact.email);
             contactSelect.appendChild(option);
         }
     }
 
-    populateContactSelect();
-
-    // Function to handle the "New Appointment" button
     function handleNewAppointment() {
         const appointmentModal = document.getElementById("appointmentsModal");
         appointmentModal.style.display = "block";
     }
 
-    const newAppointmentButton = document.querySelector(".showFormButton");
-    if (newAppointmentButton) {
-        newAppointmentButton.addEventListener("click", handleNewAppointment);
-    }
-
-    const appointmentsForm = document.getElementById("appointmentsForm");
-    const contactSelect = document.querySelector("#contactSelect");
-
-    // Add submit event listener to appointment form
-    appointmentsForm.addEventListener("submit", function (e) {
+    function handleFormSubmission(e) {
         e.preventDefault();
 
-        // Get selected contact option from contact select
         const selectedOption = contactSelect.options[contactSelect.selectedIndex];
 
-        // Get phone and email data from the selected contact
+        if (!selectedOption) {
+            // Handle the case where no contact is selected
+            return;
+        }
+
         const selectedFirstName = selectedOption.getAttribute("data-firstName");
-        const selectedLastName = selectedOption.getAttribute('data-lastName');
+        const selectedLastName = selectedOption.getAttribute("data-lastName");
         const selectedPhone = selectedOption.getAttribute("data-phone");
         const selectedEmail = selectedOption.getAttribute("data-email");
 
-        // Get values from the appointment form
         const title = document.querySelector("#title").value;
         const date = document.querySelector("#date").value;
         const time = document.querySelector("#time").value;
 
-        // Create div to display appointment details
         const appointmentInfo = document.createElement("div");
         appointmentInfo.classList.add("appointment-info");
 
         const fullName = `${selectedFirstName} ${selectedLastName}`;
 
-        // Populate appointment info div with appointment details
         appointmentInfo.innerHTML = `
             <p><strong>Contact:</strong> ${fullName}</p>
             <p><strong>Phone:</strong> ${selectedPhone}</p>
@@ -70,16 +66,27 @@ document.addEventListener("DOMContentLoaded", function () {
             appointmentInfo.remove();
         });
 
-        // Append the delete button to the appointment info
         appointmentInfo.appendChild(deleteButton);
-
-        // Add appointment info to the display area
-        const appointmentInfoDisplay = document.querySelector("#appointmentInfoDisplay");
         appointmentInfoDisplay.appendChild(appointmentInfo);
 
-        // Reset appointment forms and close modal
         appointmentsForm.reset();
         closeModal("appointmentsModal");
-    });
-});
+    }
 
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.style.display = "none";
+    }
+
+    // Event Listeners
+    if (newAppointmentButton) {
+        newAppointmentButton.addEventListener("click", handleNewAppointment);
+    }
+
+    if (appointmentsForm) {
+        appointmentsForm.addEventListener("submit", handleFormSubmission);
+    }
+
+    // Populate contact select after DOM is fully loaded
+    populateContactSelect();
+});

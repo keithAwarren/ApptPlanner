@@ -74,21 +74,18 @@ document.addEventListener("DOMContentLoaded", function () {
         const contactList = document.getElementById("contactsList");
         const li = document.createElement("li");
 
-        // Create spans for name, phone, and email
         const nameSpan = document.createElement("span");
         const phoneSpan = document.createElement("span");
         const emailSpan = document.createElement("span");
 
-        // Assign values
         nameSpan.innerHTML = `<strong>${contact.firstName} ${contact.lastName}</strong>`;
         phoneSpan.textContent = `Phone: ${contact.phone}`;
         emailSpan.textContent = `Email: ${contact.email}`;
-
-        // Append spans to the list item
+     
         li.appendChild(nameSpan);
-        li.appendChild(document.createElement("br")); // Add a line break for better spacing
+        li.appendChild(document.createElement("br")); 
         li.appendChild(phoneSpan);
-        li.appendChild(document.createElement("br")); // Add a line break for better spacing
+        li.appendChild(document.createElement("br")); 
         li.appendChild(emailSpan);
 
         // Add "Delete" button
@@ -125,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
             li.innerHTML = `<span>${contact.firstName} ${contact.lastName}</span>
                             <br>Phone: ${contact.phone}
                             <br>Email: ${contact.email}
-                            <button class="deleteContact" data-index=${index}>Remove</button>`;
+                            <button class="deleteContact" data-index=${index}>Delete</button>`;
             
             contactList.appendChild(li);
         });
