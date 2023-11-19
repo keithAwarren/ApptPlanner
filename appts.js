@@ -44,18 +44,40 @@ document.addEventListener("DOMContentLoaded", function () {
         const date = document.querySelector("#date").value;
         const time = document.querySelector("#time").value;
 
-        const appointmentInfo = document.createElement("div");
-        appointmentInfo.classList.add("appointment-info");
+        const appointmentInfo = {
+            fullName: `${selectedFirstName} ${selectedLastName}`,
+            phone: selectedPhone,
+            email: selectedEmail,
+            title,
+            date,
+            time,
+        };
 
-        const fullName = `${selectedFirstName} ${selectedLastName}`;
+        storeAppointmentInfo(appointmentInfo);
 
-        appointmentInfo.innerHTML = `
-            <p><strong>Contact:</strong> ${fullName}</p>
-            <p><strong>Phone:</strong> ${selectedPhone}</p>
-            <p><strong>Email:</strong> ${selectedEmail}</p>
-            <p><strong>Title:</strong> ${title}</p>
-            <p><strong>Date:</strong> ${date}</p>
-            <p><strong>Time:</strong> ${time}</p>
+        displayAppointmentInfo(appointmentInfo);
+
+        appointmentsForm.reset();
+        closeModal("appointmentsModal");
+    }
+
+    function storeAppointmentInfo(appointmentInfo) {
+        const appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+        appointments.push(appointmentInfo);
+        localStorage.setItem("appointments", JSON.stringify(appointments));
+    }
+
+    function displayAppointmentInfo(appointmentInfo) {
+        const appointmentInfoElement = document.createElement("div");
+        appointmentInfoElement.classList.add("appointment-info");
+
+        appointmentInfoElement.innerHTML = `
+            <p><strong>Contact:</strong> ${appointmentInfo.fullName}</p>
+            <p><strong>Phone:</strong> ${appointmentInfo.phone}</p>
+            <p><strong>Email:</strong> ${appointmentInfo.email}</p>
+            <p><strong>Title:</strong> ${appointmentInfo.title}</p>
+            <p><strong>Date:</strong> ${appointmentInfo.date}</p>
+            <p><strong>Time:</strong> ${appointmentInfo.time}</p>
         `;
 
         const deleteButton = document.createElement("button");
@@ -63,14 +85,29 @@ document.addEventListener("DOMContentLoaded", function () {
         deleteButton.classList.add("delete-button");
 
         deleteButton.addEventListener("click", function () {
-            appointmentInfo.remove();
+            appointmentInfoElement.remove();
+            removeAppointmentInfo(appointmentInfo);
         });
 
-        appointmentInfo.appendChild(deleteButton);
-        appointmentInfoDisplay.appendChild(appointmentInfo);
+        appointmentInfoElement.appendChild(deleteButton);
+        appointmentInfoDisplay.appendChild(appointmentInfoElement);
+    }
 
-        appointmentsForm.reset();
-        closeModal("appointmentsModal");
+    function removeAppointmentInfo(appointmentInfo) {
+        const appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+        const index = appointments.findIndex(appointment => (
+            appointment.fullName === appointmentInfo.fullName &&
+            appointment.phone === appointmentInfo.phone &&
+            appointment.email === appointmentInfo.email &&
+            appointment.title === appointmentInfo.title &&
+            appointment.date === appointmentInfo.date &&
+            appointment.time === appointmentInfo.time
+        ));
+
+        if (index !== -1) {
+            appointments.splice(index, 1);
+            localStorage.setItem("appointments", JSON.stringify(appointments));
+        }
     }
 
     function closeModal(modalId) {
@@ -86,6 +123,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (appointmentsForm) {
         appointmentsForm.addEventListener("submit", handleFormSubmission);
     }
+
+    // Load and display stored appointments
+    const storedAppointments = JSON.parse(localStorage.getItem("appointments")) || [];
+    storedAppointments.forEach(displayAppointmentInfo);
 
     // Populate contact select after DOM is fully loaded
     populateContactSelect();

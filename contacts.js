@@ -119,11 +119,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
         contacts.forEach(function (contact, index) {
             const li = document.createElement("li");
-            li.innerHTML = `<span>${contact.firstName} ${contact.lastName}</span>
-                            <br>Phone: ${contact.phone}
-                            <br>Email: ${contact.email}
-                            <button class="deleteContact" data-index=${index}>Delete</button>`;
-            
+            const span = document.createElement("span");
+            const phoneSpan = document.createElement("span");
+            const emailSpan = document.createElement("span");
+            const deleteButton = document.createElement("button");
+    
+            // Set the content and attributes
+            span.textContent = `${contact.firstName} ${contact.lastName}`;
+            phoneSpan.textContent = `Phone: ${contact.phone}`;
+            emailSpan.textContent = `Email: ${contact.email}`;
+            deleteButton.className = "deleteContact";
+            deleteButton.textContent = "Delete";
+            deleteButton.setAttribute("data-index", index);
+    
+            // Append elements to the li
+            li.appendChild(span);
+            li.appendChild(document.createElement("br"));
+            li.appendChild(phoneSpan);
+            li.appendChild(document.createElement("br"));
+            li.appendChild(emailSpan);
+            li.appendChild(deleteButton);
+    
+            // Add a class to the li element for styling
+            li.classList.add("contactListItem");
+    
+            // Append the li to the contactList
             contactList.appendChild(li);
         });
 
