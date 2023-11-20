@@ -1,77 +1,76 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Variables
-    const newAppointmentButton = document.querySelector(".showFormButton");
-    const appointmentsForm = document.getElementById("appointmentsForm");
-    const contactSelect = document.querySelector("#contactSelect");
-    const appointmentInfoDisplay = document.querySelector("#appointmentInfoDisplay");
+// Variables
+const newAppointmentButton = document.querySelector(".showFormButton");
+const appointmentsForm = document.getElementById("appointmentsForm");
+const contactSelect = document.querySelector("#contactSelect");
+const appointmentInfoDisplay = document.querySelector("#appointmentInfoDisplay");
 
-    // Functions
-    function populateContactSelect() {
-        const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+// Functions
+function populateContactSelect() {
+    const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
 
-        for (const contact of contacts) {
-            const option = document.createElement("option");
-            option.textContent = `${contact.firstName} ${contact.lastName}`;
-            option.setAttribute("data-firstName", contact.firstName);
-            option.setAttribute("data-lastName", contact.lastName);
-            option.setAttribute("data-phone", contact.phone);
-            option.setAttribute("data-email", contact.email);
-            contactSelect.appendChild(option);
-        }
+    for (const contact of contacts) {
+        const option = document.createElement("option");
+        option.textContent = `${contact.firstName} ${contact.lastName}`;
+        option.setAttribute("data-firstName", contact.firstName);
+        option.setAttribute("data-lastName", contact.lastName);
+        option.setAttribute("data-phone", contact.phone);
+        option.setAttribute("data-email", contact.email);
+        contactSelect.appendChild(option);
+    }
+}
+
+function handleNewAppointment() {
+    const appointmentModal = document.getElementById("appointmentsModal");
+    appointmentModal.style.display = "block";
+}
+
+function handleFormSubmission(e) {
+    e.preventDefault();
+
+    const selectedOption = contactSelect.options[contactSelect.selectedIndex];
+
+    if (!selectedOption) {
+        // Handle the case where no contact is selected
+        return;
     }
 
-    function handleNewAppointment() {
-        const appointmentModal = document.getElementById("appointmentsModal");
-        appointmentModal.style.display = "block";
-    }
+    const selectedFirstName = selectedOption.getAttribute("data-firstName");
+    const selectedLastName = selectedOption.getAttribute("data-lastName");
+    const selectedPhone = selectedOption.getAttribute("data-phone");
+    const selectedEmail = selectedOption.getAttribute("data-email");
 
-    function handleFormSubmission(e) {
-        e.preventDefault();
+    const title = document.querySelector("#title").value;
+    const date = document.querySelector("#date").value;
+    const time = document.querySelector("#time").value;
 
-        const selectedOption = contactSelect.options[contactSelect.selectedIndex];
+    const appointmentInfo = {
+        fullName: `${selectedFirstName} ${selectedLastName}`,
+        phone: selectedPhone,
+        email: selectedEmail,
+        title,
+        date,
+        time,
+    };
 
-        if (!selectedOption) {
-            // Handle the case where no contact is selected
-            return;
-        }
+    storeAppointmentInfo(appointmentInfo);
 
-        const selectedFirstName = selectedOption.getAttribute("data-firstName");
-        const selectedLastName = selectedOption.getAttribute("data-lastName");
-        const selectedPhone = selectedOption.getAttribute("data-phone");
-        const selectedEmail = selectedOption.getAttribute("data-email");
+    displayAppointmentInfo(appointmentInfo);
 
-        const title = document.querySelector("#title").value;
-        const date = document.querySelector("#date").value;
-        const time = document.querySelector("#time").value;
+    appointmentsForm.reset();
+    closeModal("appointmentsModal");
+}
 
-        const appointmentInfo = {
-            fullName: `${selectedFirstName} ${selectedLastName}`,
-            phone: selectedPhone,
-            email: selectedEmail,
-            title,
-            date,
-            time,
-        };
+function storeAppointmentInfo(appointmentInfo) {
+    const appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+    appointments.push(appointmentInfo);
+    localStorage.setItem("appointments", JSON.stringify(appointments));
+}
 
-        storeAppointmentInfo(appointmentInfo);
+function displayAppointmentInfo(appointmentInfo) {
+    const appointmentInfoElement = document.createElement("div");
+    appointmentInfoElement.classList.add("appointment-info");
 
-        displayAppointmentInfo(appointmentInfo);
-
-        appointmentsForm.reset();
-        closeModal("appointmentsModal");
-    }
-
-    function storeAppointmentInfo(appointmentInfo) {
-        const appointments = JSON.parse(localStorage.getItem("appointments")) || [];
-        appointments.push(appointmentInfo);
-        localStorage.setItem("appointments", JSON.stringify(appointments));
-    }
-
-    function displayAppointmentInfo(appointmentInfo) {
-        const appointmentInfoElement = document.createElement("div");
-        appointmentInfoElement.classList.add("appointment-info");
-
-        appointmentInfoElement.innerHTML = `
+    appointmentInfoElement.innerHTML = `
             <p><strong>Contact:</strong> ${appointmentInfo.fullName}</p>
             <p><strong>Phone:</strong> ${appointmentInfo.phone}</p>
             <p><strong>Email:</strong> ${appointmentInfo.email}</p>
@@ -80,54 +79,54 @@ document.addEventListener("DOMContentLoaded", function () {
             <p><strong>Time:</strong> ${appointmentInfo.time}</p>
         `;
 
-        const deleteButton = document.createElement("button");
-        deleteButton.innerText = "Delete";
-        deleteButton.classList.add("delete-button");
+    const deleteButton = document.createElement("button");
+    deleteButton.innerText = "Delete";
+    deleteButton.classList.add("delete-button");
 
-        deleteButton.addEventListener("click", function () {
-            appointmentInfoElement.remove();
-            removeAppointmentInfo(appointmentInfo);
-        });
+    deleteButton.addEventListener("click", function () {
+        appointmentInfoElement.remove();
+        removeAppointmentInfo(appointmentInfo);
+    });
 
-        appointmentInfoElement.appendChild(deleteButton);
-        appointmentInfoDisplay.appendChild(appointmentInfoElement);
+    appointmentInfoElement.appendChild(deleteButton);
+    appointmentInfoDisplay.appendChild(appointmentInfoElement);
+}
+
+function removeAppointmentInfo(appointmentInfo) {
+    const appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+    const index = appointments.findIndex(appointment => (
+        appointment.fullName === appointmentInfo.fullName &&
+        appointment.phone === appointmentInfo.phone &&
+        appointment.email === appointmentInfo.email &&
+        appointment.title === appointmentInfo.title &&
+        appointment.date === appointmentInfo.date &&
+        appointment.time === appointmentInfo.time
+    ));
+
+    if (index !== -1) {
+        appointments.splice(index, 1);
+        localStorage.setItem("appointments", JSON.stringify(appointments));
     }
+}
 
-    function removeAppointmentInfo(appointmentInfo) {
-        const appointments = JSON.parse(localStorage.getItem("appointments")) || [];
-        const index = appointments.findIndex(appointment => (
-            appointment.fullName === appointmentInfo.fullName &&
-            appointment.phone === appointmentInfo.phone &&
-            appointment.email === appointmentInfo.email &&
-            appointment.title === appointmentInfo.title &&
-            appointment.date === appointmentInfo.date &&
-            appointment.time === appointmentInfo.time
-        ));
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.style.display = "none";
+}
 
-        if (index !== -1) {
-            appointments.splice(index, 1);
-            localStorage.setItem("appointments", JSON.stringify(appointments));
-        }
-    }
+// Event Listeners
+if (newAppointmentButton) {
+    newAppointmentButton.addEventListener("click", handleNewAppointment);
+}
 
-    function closeModal(modalId) {
-        const modal = document.getElementById(modalId);
-        modal.style.display = "none";
-    }
+if (appointmentsForm) {
+    appointmentsForm.addEventListener("submit", handleFormSubmission);
+}
 
-    // Event Listeners
-    if (newAppointmentButton) {
-        newAppointmentButton.addEventListener("click", handleNewAppointment);
-    }
+// Load and display stored appointments
+const storedAppointments = JSON.parse(localStorage.getItem("appointments")) || [];
+storedAppointments.forEach(displayAppointmentInfo);
 
-    if (appointmentsForm) {
-        appointmentsForm.addEventListener("submit", handleFormSubmission);
-    }
+// Populate contact select after DOM is fully loaded
+populateContactSelect();
 
-    // Load and display stored appointments
-    const storedAppointments = JSON.parse(localStorage.getItem("appointments")) || [];
-    storedAppointments.forEach(displayAppointmentInfo);
-
-    // Populate contact select after DOM is fully loaded
-    populateContactSelect();
-});
