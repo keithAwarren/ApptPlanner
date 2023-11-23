@@ -1,13 +1,18 @@
-// Function to handle the "Add Contact" button
+// Variables
+const addContactButton = document.querySelector(".contactPage-button");
+const clearContactButton = document.getElementById("clearContactForm");
+const contactForm = document.getElementById("contactForm");
+const contactSelect = document.querySelector("#contactSelect");
+
+// Functions
 function handleAddContact() {
     const contactModal = document.getElementById("contactsModal");
     contactModal.style.display = "block";
 }
 
-const addContactButton = document.querySelector(".contactPage-button");
-
-if (addContactButton) {
-    addContactButton.addEventListener("click", handleAddContact);
+function closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    modal.style.display = "none";
 }
 
 function closeContactForm() {
@@ -17,59 +22,11 @@ function closeContactForm() {
     document.getElementById("email").value = "";
 }
 
-const clearContactButton = document.getElementById("clearContactForm");
-
-if (clearContactButton) {
-    clearContactButton.addEventListener("click", closeContactForm);
+function storeContactInfo(contactInfo) {
+    const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+    contacts.push(contactInfo);
+    localStorage.setItem("contacts", JSON.stringify(contacts));
 }
-
-const contactForm = document.getElementById("contactForm");
-const contactSelect = document.querySelector("#contactSelect");
-
-// Add submit event listener to contact form
-contactForm.addEventListener("submit", function (e) {
-    e.preventDefault(); // Prevent form from submitting
-
-    // Get values from contact form
-    const firstName = document.querySelector("#firstName").value;
-    const lastName = document.querySelector("#lastName").value;
-    const phone = document.querySelector("#phone").value;
-    const email = document.querySelector("#email").value;
-
-    const contactInfo = {
-        firstName,
-        lastName,
-        phone,
-        email
-    };
-
-    storeContactInfo(contactInfo);
-
-    // Create option element to add to contact select 
-    const option = document.createElement("option");
-
-    const fullName = `${firstName} ${lastName}`;
-
-    option.text = fullName;
-
-    option.setAttribute("data-firstName", firstName);
-    option.setAttribute("data-lastName", lastName);
-    option.setAttribute("data-phone", phone);
-    option.setAttribute("data-email", email);
-
-    // Add created option element to select
-    contactSelect.appendChild(option);
-
-    // Reset contact form and close modal
-    contactForm.reset();
-    closeModal("contactsModal");
-
-    displayContacts();
-});
-
-// Load and display stored contacts
-const storedContacts = JSON.parse(localStorage.getItem("contacts")) || [];
-storedContacts.forEach(displayStoredContact);
 
 function displayStoredContact(contact) {
     const contactList = document.getElementById("contactsList");
@@ -89,27 +46,12 @@ function displayStoredContact(contact) {
     li.appendChild(document.createElement("br"));
     li.appendChild(emailSpan);
 
-    // Add "Delete" button
     const deleteButton = document.createElement("button");
     deleteButton.className = "deleteContact";
     deleteButton.textContent = "Delete";
     li.appendChild(deleteButton);
 
-    // Append the list item to the contact list
     contactList.appendChild(li);
-}
-
-function storeContactInfo(contactInfo) {
-    const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
-
-    contacts.push(contactInfo);
-
-    localStorage.setItem("contacts", JSON.stringify(contacts));
-}
-
-function closeModal(modalId) {
-    const modal = document.getElementById(modalId);
-    modal.style.display = "none";
 }
 
 function displayContacts() {
@@ -125,15 +67,14 @@ function displayContacts() {
         const emailSpan = document.createElement("span");
         const deleteButton = document.createElement("button");
 
-        // Set the content and attributes
         span.textContent = `${contact.firstName} ${contact.lastName}`;
         phoneSpan.textContent = `Phone: ${contact.phone}`;
         emailSpan.textContent = `Email: ${contact.email}`;
+
         deleteButton.className = "deleteContact";
         deleteButton.textContent = "Delete";
         deleteButton.setAttribute("data-index", index);
 
-        // Append elements to the li
         li.appendChild(span);
         li.appendChild(document.createElement("br"));
         li.appendChild(phoneSpan);
@@ -141,10 +82,7 @@ function displayContacts() {
         li.appendChild(emailSpan);
         li.appendChild(deleteButton);
 
-        // Add a class to the li element for styling
         li.classList.add("contactListItem");
-
-        // Append the li to the contactList
         contactList.appendChild(li);
     });
 
@@ -164,7 +102,7 @@ function deleteContact(index) {
     displayContacts();
 }
 
-function deletContactEvent() {
+function deleteContactEvent() {
     const deleteButtons = document.querySelectorAll(".deleteContact");
     deleteButtons.forEach(function (button) {
         button.addEventListener("click", function () {
@@ -174,4 +112,45 @@ function deletContactEvent() {
     });
 }
 
-deletContactEvent();
+// Event Listeners
+if (addContactButton) {
+    addContactButton.addEventListener("click", handleAddContact);
+}
+
+if (clearContactButton) {
+    clearContactButton.addEventListener("click", closeContactForm);
+}
+
+contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const firstName = document.querySelector("#firstName").value;
+    const lastName = document.querySelector("#lastName").value;
+    const phone = document.querySelector("#phone").value;
+    const email = document.querySelector("#email").value;
+
+    const contactInfo = {
+        firstName,
+        lastName,
+        phone,
+        email
+    };
+
+    storeContactInfo(contactInfo);
+
+    const option = document.createElement("option");
+    const fullName = `${firstName} ${lastName}`;
+    option.text = fullName;
+    option.setAttribute("data-firstName", firstName);
+    option.setAttribute("data-lastName", lastName);
+    option.setAttribute("data-phone", phone);
+    option.setAttribute("data-email", email);
+
+    contactSelect.appendChild(option);
+
+    contactForm.reset();
+    closeModal("contactsModal");
+    displayContacts();
+});
+
+deleteContactEvent();
+displayContacts();
