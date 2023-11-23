@@ -3,6 +3,8 @@ const addContactButton = document.querySelector(".contactPage-button");
 const clearContactButton = document.getElementById("clearContactForm");
 const contactForm = document.getElementById("contactForm");
 const contactSelect = document.querySelector("#contactSelect");
+const searchInput = document.getElementById("contact-search");
+const searchButton = document.getElementById("search-button");
 
 // Functions
 function handleAddContact() {
@@ -36,7 +38,7 @@ function displayStoredContact(contact) {
     const phoneSpan = document.createElement("span");
     const emailSpan = document.createElement("span");
 
-    nameSpan.innerHTML = `<strong>${contact.firstName} ${contact.lastName}</strong>`;
+    nameSpan.innerHTML = `${contact.firstName} ${contact.lastName}`;
     phoneSpan.textContent = `Phone: ${contact.phone}`;
     emailSpan.textContent = `Email: ${contact.email}`;
 
@@ -67,7 +69,7 @@ function displayContacts() {
         const emailSpan = document.createElement("span");
         const deleteButton = document.createElement("button");
 
-        span.textContent = `${contact.firstName} ${contact.lastName}`;
+        span.innerHTML = `<strong>${contact.firstName} ${contact.lastName}</strong>`;
         phoneSpan.textContent = `Phone: ${contact.phone}`;
         emailSpan.textContent = `Email: ${contact.email}`;
 
@@ -109,6 +111,47 @@ function deleteContactEvent() {
             const index = this.getAttribute("data-index");
             deleteContact(index);
         });
+    });
+}
+
+function filterContacts(searchTerm) {
+    const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+    const filteredContacts = contacts.filter(function (contact) {
+        const fullName = `${contact.firstName} ${contact.lastName}`.toLowerCase();
+        return fullName.includes(searchTerm);
+    });
+
+    displayFilteredContacts(filteredContacts);
+}
+
+function displayFilteredContacts(filteredContacts) {
+    const contactList = document.getElementById("contactsList");
+    contactList.innerHTML = "";
+
+    filteredContacts.forEach(function (contact, index) {
+        const li = document.createElement("li");
+        const span = document.createElement("span");
+        const phoneSpan = document.createElement("span");
+        const emailSpan = document.createElement("span");
+        const deleteButton = document.createElement("button");
+
+        span.innerHTML = `<strong>${contact.firstName} ${contact.lastName}</strong>`;
+        phoneSpan.textContent = `Phone: ${contact.phone}`;
+        emailSpan.textContent = `Email: ${contact.email}`;
+
+        deleteButton.className = "deleteContact";
+        deleteButton.textContent = "Delete";
+        deleteButton.setAttribute("data-index", index);
+
+        li.appendChild(span);
+        li.appendChild(document.createElement("br"));
+        li.appendChild(phoneSpan);
+        li.appendChild(document.createElement("br"));
+        li.appendChild(emailSpan);
+        li.appendChild(deleteButton);
+
+        li.classList.add("contactListItem");
+        contactList.appendChild(li);
     });
 }
 
@@ -154,3 +197,8 @@ contactForm.addEventListener("submit", function (e) {
 
 deleteContactEvent();
 displayContacts();
+
+searchButton.addEventListener("click", function () {
+    const searchTerm = searchInput.value.toLowerCase();
+    filterContacts(searchTerm);
+});
