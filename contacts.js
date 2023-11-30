@@ -115,10 +115,14 @@ function deleteContactEvent() {
 }
 
 function filterContacts(searchTerm) {
+    console.log("Filtering contacts with term:", searchTerm);
     const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
     const filteredContacts = contacts.filter(function (contact) {
         const fullName = `${contact.firstName} ${contact.lastName}`.toLowerCase();
-        return fullName.includes(searchTerm);
+        const phone = contact.phone.toLowerCase();
+        const email = contact.email.toLowerCase();
+
+        return fullName.includes(searchTerm) || phone.includes(searchTerm) || email.includes(searchTerm);
     });
 
     displayFilteredContacts(filteredContacts);
@@ -198,7 +202,7 @@ contactForm.addEventListener("submit", function (e) {
 deleteContactEvent();
 displayContacts();
 
-searchButton.addEventListener("click", function () {
+searchInput.addEventListener("input", function () {
     const searchTerm = searchInput.value.toLowerCase();
     filterContacts(searchTerm);
 });
