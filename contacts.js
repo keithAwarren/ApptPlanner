@@ -4,7 +4,7 @@ const clearContactButton = document.getElementById("clearContactForm");
 const contactForm = document.getElementById("contactForm");
 const contactSelect = document.querySelector("#contactSelect");
 const searchInput = document.getElementById("contact-search");
-const searchButton = document.getElementById("search-button");
+const sortSelect = document.getElementById("sortSelect");
 
 // Functions
 function handleAddContact() {
@@ -26,6 +26,7 @@ function closeContactForm() {
 
 function storeContactInfo(contactInfo) {
     const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+    contactInfo.timestamp = new Date();
     contacts.push(contactInfo);
     localStorage.setItem("contacts", JSON.stringify(contacts));
 }
@@ -115,7 +116,6 @@ function deleteContactEvent() {
 }
 
 function filterContacts(searchTerm) {
-    console.log("Filtering contacts with term:", searchTerm);
     const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
     const filteredContacts = contacts.filter(function (contact) {
         const fullName = `${contact.firstName} ${contact.lastName}`.toLowerCase();
@@ -159,6 +159,25 @@ function displayFilteredContacts(filteredContacts) {
     });
 }
 
+function sortContacts(sortType) {
+    const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+
+    if (sortType === "alphabetical") {
+        contacts.sort(function (a, b) {
+            const nameA = `${a.firstName} ${a.lastName}`.toLowerCase();
+            const nameB = `${b.firstName} ${b.lastName}`.toLowerCase();
+            return nameA.localeCompare(nameB);
+        });
+    } else if (sortType === "recent") {
+        contacts.sort(function (a, b) {
+            return new Date(b.timestamp) - new Date(a.timestamp);
+        });
+    }
+
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+    displayContacts();
+}
+
 // Event Listeners
 if (addContactButton) {
     addContactButton.addEventListener("click", handleAddContact);
@@ -179,7 +198,8 @@ contactForm.addEventListener("submit", function (e) {
         firstName,
         lastName,
         phone,
-        email
+        email,
+        timestamp: new Date()
     };
 
     storeContactInfo(contactInfo);
@@ -206,3 +226,9 @@ searchInput.addEventListener("input", function () {
     const searchTerm = searchInput.value.toLowerCase();
     filterContacts(searchTerm);
 });
+
+sortSelect.addEventListener("change", function () {
+    const sortType = sortSelect.value;
+    sortContacts(sortType);
+});
+

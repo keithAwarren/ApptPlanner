@@ -10,7 +10,7 @@
 
 
 <body>
-    
+
     <nav>
         <div class="navi">
             <a href="index.html">
@@ -54,7 +54,16 @@
             <input type="text" id="contact-search" placeholder="Search Contacts">
             <button id="search-button"><i class="fas fa-search"></i></button>
         </div>
-        <button class="contactPage-button btn showFormButton" data-target="contactsModal">Add Contact</button>
+        <div class="button-container">
+            <button class="contactPage-button btn showFormButton" data-target="contactsModal">Add Contact</button>
+            <div id="sortingOptions">
+                <label for="sortSelect">Sort by: </label>
+                <select id="sortSelect">
+                    <option value="alphabetical">A-Z</option>
+                    <option value="recent">Recent</option>
+                </select>
+            </div>
+        </div>
     </div>
 
     <div class="contacts-list">
