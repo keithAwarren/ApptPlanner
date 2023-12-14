@@ -39,8 +39,8 @@ nav a h1 {
 nav .links {
     text-decoration: none;
     color: #D9B4FF;
-    margin: 0 1vw;
-    padding: 0.4vw 0.2vw;
+    margin: 0 12vw;
+    padding: 0.4vw 100px;
     border-bottom: 0.2vw solid transparent;
     text-align: center;
     transition: 500ms;
@@ -457,7 +457,7 @@ span:not(strong) {
     }
 
     .form-input {
-        font-size: 50px;
+        font-size: 36px;
     }
 
     .btn,
