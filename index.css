@@ -23,33 +23,34 @@ nav {
     top: 0;
 }
 
-.navi a {
-    text-decoration: none;
-}
-
 nav a h1 {
     font-size: 25px;
     text-decoration: none;
     color: #fff;
     display: flex;
     align-items: center;
-    margin: 0 2vw;
+    margin: 0 20px;
 }
 
-nav .links {
+nav a {
     text-decoration: none;
     color: #D9B4FF;
-    margin: 0 12vw;
-    padding: 0.4vw 100px;
+    margin: 20px;
     border-bottom: 0.2vw solid transparent;
     text-align: center;
     transition: 500ms;
+    letter-spacing: 0;
+    transition: letter-spacing 0.3s ease;
+}
+
+nav a:hover {
+    letter-spacing: 3px;
 }
 
 .hero-section {
     margin-top: 90px;
     text-align: center;
-    padding: 5.5vw;
+    padding: 25px;
     padding-bottom: 1vw;
     background-color: #f5f5f5;
     color: #333;
@@ -68,7 +69,7 @@ nav .links {
 
 footer {
     text-align: center;
-    padding: 1vw;
+    height: 50px;
     background-color: #1d1d1d;
     color: #fff;
     position: fixed;
@@ -95,8 +96,12 @@ footer {
     margin-right: 5vw;
 }
 
+.social-icons i:hover {
+    color:#D9B4FF
+}
+
 footer p {
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .button-container {
@@ -157,6 +162,11 @@ button {
     cursor: pointer;
 }
 
+.btn:hover,
+.button-container button:hover {
+    background-color: #dec7f6;
+}
+
 .mobile-menu-button {
     display: none;
 }
@@ -169,13 +179,13 @@ button {
 /* Forms */
 
 .form-section {
-    width: 50vw;
+    width: 59vw;
     height: 50vh;
     background: #fff;
     border-radius: 1vw;
     position: absolute;
     text-align: left;
-    padding: 1.5vw;
+    padding: 13px;
     color: #333;
     display: none;
     justify-content: center;
@@ -191,7 +201,7 @@ button {
     background: #fff;
     border-radius: 1vw;
     text-align: left;
-    padding: 1.5vw;
+    padding: 13px;
     color: #333;
     display: block;
     justify-content: center;
@@ -201,7 +211,8 @@ button {
 
 .form-section h2 {
     font-size: 17px;
-    margin: 0 0 5vh;
+    top: 0;
+    margin: 0 0 19px;
 }
 
 .form-section label {
@@ -240,7 +251,7 @@ button {
     position: absolute;
     top: 1vw;
     right: 1vw;
-    font-size: 3vw;
+    font-size: 25px;
     font-weight: bold;
     cursor: pointer;
 }
@@ -253,7 +264,12 @@ button {
 }
 
 .clear-btn {
-    margin-top: 8vh;
+    margin-top: 75px;
+    margin-right: 100px;
+}
+
+.clear-btn:hover {
+    background-color: #333;
 }
 
 /* contacts page */
@@ -382,7 +398,7 @@ span:not(strong) {
     /* mobile menu */
 
     .showFormButton {
-        font-size: 30px;
+        font-size: 17px;
     }
 
     .mobile-menu-button {
@@ -397,19 +413,19 @@ span:not(strong) {
 
     .mobile-menu {
         position: fixed;
-        top: 15%;
-        right: 10%;
+        top: 10%;
+        right: 0.25%;
         background-color: #1d1d1d;
         color: #eddbff;
         border-radius: 10%;
-        width: 50vw;
+        width: 45vw;
         display: none;
-        padding: 5vw;
+        padding: 3vw;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     }
 
     .mobile-menu h2 {
-        margin: 1vw 0;
+        margin: 2vw 0;
         padding: 0.5vw;
         letter-spacing: 0.1vw;
     }
@@ -442,41 +458,47 @@ span:not(strong) {
     }
 
     .mobile-menu-button i.fas.fa-bars {
-        font-size: 75px;
+        font-size: 35px;
     }
 
     /* Forms */ 
 
     .form-section label {
-        font-size: 35px;
+        font-size: 12px;
         font-weight: 900;
     }
 
     .form-section h2 {
-        font-size: 50px;
+        font-size: 25px;
     }
 
     .form-input {
-        font-size: 36px;
+        font-size: 19px;
     }
 
     .btn,
     .clear-btn {
-        font-size: 45px;
+        font-size: 17px;
+        font-weight: bold;
+        border-radius: 6px;
     }
 
     .close-button  {
-        font-size: 100px;
+        font-size: 30px;
     }
 
     /* Adjustements */
 
+    h3 {
+        margin: 19px;
+    }
+
     nav a h1 {
-        font-size: 75px;
+        font-size: 30px;
     }
 
     nav {
-        height: 12vh;
+        height: 9vh;
     }
 
     footer {
@@ -484,41 +506,52 @@ span:not(strong) {
     }
 
     footer p {
-        font-size: 25px;
+        font-size: 12px;
     }
 
     .appts-container,
     .contacts-container,
     .hero-section {
-        margin-top: 15vh;
+        margin-top: 12vh;
     }
 
     .social-icons i {
-        font-size: 75px;
+        font-size: 21px;
     }
 
     .search-bar button,
     .search-bar input {
-        font-size: 40px;
+        font-size: 17px;
     }
 
     #sortSelect,
     .button-container label {
-        font-size: 35px;
+        font-size: 15px;
     }
 
     .appts-container h2,
     .contacts-container h2 {
-        font-size: 45px;
-        margin-bottom: 33px;
+        font-size: 20px;
+        margin-bottom: 15px;
     }
 
     span strong {
-        font-size: 29px;
+        font-size: 18px;
     }
     
     .deleteContact,
     span:not(strong) {
-        font-size: 20px;
+        font-size: 14px;
+    }
+
+    .showFormButton {
+        font-size: 15px;
+        padding: 9px 19px;
+        border-radius: 5px;
+    }
+
+    .deleteContact {
+        font-size: 13px;
+        border-radius: 5px;
     }
 }
