@@ -54,7 +54,6 @@ const handleDayClick = (dayElement) => {
 };
 
 const displayAppointmentPopup = (appointmentInfo) => {
-    // Replace the alert with your custom popup/modal display logic
     console.log("Displaying pop-up for:", appointmentInfo);
     alert(`Appointment Info:\n\nTitle: ${appointmentInfo.title}\nDate: ${appointmentInfo.date}\nTime: ${appointmentInfo.time}`);
 };
