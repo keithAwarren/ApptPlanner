@@ -56,6 +56,26 @@ function handleFormSubmission(e) {
 
     displayAppointmentInfo(appointmentInfo);
 
+    const selectedDay = document.querySelector(`.days li[data-day="${date}"]`);
+    if (selectedDay) {
+        // Store appointment info 
+        selectedDay.setAttribute('data-appointment-info', JSON.stringify(appointmentInfo));
+        // Change the color of the selected day 
+        selectedDay.style.backgroundColor = '#D9B4FF'; 
+    }
+
+    const dateParts = date.split("-");
+    const year = parseInt(dateParts[0]);
+    const month = parseInt(dateParts[1]) - 1;
+    const day = parseInt(dateParts[2]);
+
+    // Create a Date object for the selected date
+    const selectedDate = new Date(year, month, day);
+
+    // Add the appointment to the calendar
+    addAppointmentToCalendar(selectedDate, appointmentInfo);
+
+    // Clear the form and close the modal
     appointmentsForm.reset();
     closeModal("appointmentsModal");
 }
@@ -64,32 +84,21 @@ function storeAppointmentInfo(appointmentInfo) {
     const appointments = JSON.parse(localStorage.getItem("appointments")) || [];
     appointments.push(appointmentInfo);
     localStorage.setItem("appointments", JSON.stringify(appointments));
+
+    renderCalendar();
+}
+
+function addAppointmentToCalendar(selectedDate, appointmentInfo) {
+   
+    const dayElement = document.querySelector(`.days li[data-day="${selectedDate.toISOString()}"]`);
+    if (dayElement) {
+        dayElement.classList.add("has-appointment");
+        dayElement.setAttribute("data-appointment-info", JSON.stringify(appointmentInfo));
+    }
 }
 
 function displayAppointmentInfo(appointmentInfo) {
-    const appointmentInfoElement = document.createElement("div");
-    appointmentInfoElement.classList.add("appointment-info");
-
-    appointmentInfoElement.innerHTML = `
-            <p><strong>Contact:</strong> ${appointmentInfo.fullName}</p>
-            <p><strong>Phone:</strong> ${appointmentInfo.phone}</p>
-            <p><strong>Email:</strong> ${appointmentInfo.email}</p>
-            <p><strong>Title:</strong> ${appointmentInfo.title}</p>
-            <p><strong>Date:</strong> ${appointmentInfo.date}</p>
-            <p><strong>Time:</strong> ${appointmentInfo.time}</p>
-        `;
-
-    const deleteButton = document.createElement("button");
-    deleteButton.innerText = "Delete";
-    deleteButton.classList.add("delete-button");
-
-    deleteButton.addEventListener("click", function () {
-        appointmentInfoElement.remove();
-        removeAppointmentInfo(appointmentInfo);
-    });
-
-    appointmentInfoElement.appendChild(deleteButton);
-    appointmentInfoDisplay.appendChild(appointmentInfoElement);
+    
 }
 
 function removeAppointmentInfo(appointmentInfo) {
@@ -123,9 +132,11 @@ if (appointmentsForm) {
     appointmentsForm.addEventListener("submit", handleFormSubmission);
 }
 
-// Load and display stored appointments
-const storedAppointments = JSON.parse(localStorage.getItem("appointments")) || [];
-storedAppointments.forEach(displayAppointmentInfo);
+// Load and display stored appointments after DOM is fully loaded
+document.addEventListener("DOMContentLoaded", () => {
+    const storedAppointments = JSON.parse(localStorage.getItem("appointments")) || [];
+    storedAppointments.forEach(displayAppointmentInfo);
+});
 
 // Populate contact select after DOM is fully loaded
 populateContactSelect();
