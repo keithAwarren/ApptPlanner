@@ -101,23 +101,6 @@ function displayAppointmentInfo(appointmentInfo) {
     
 }
 
-function removeAppointmentInfo(appointmentInfo) {
-    const appointments = JSON.parse(localStorage.getItem("appointments")) || [];
-    const index = appointments.findIndex(appointment => (
-        appointment.fullName === appointmentInfo.fullName &&
-        appointment.phone === appointmentInfo.phone &&
-        appointment.email === appointmentInfo.email &&
-        appointment.title === appointmentInfo.title &&
-        appointment.date === appointmentInfo.date &&
-        appointment.time === appointmentInfo.time
-    ));
-
-    if (index !== -1) {
-        appointments.splice(index, 1);
-        localStorage.setItem("appointments", JSON.stringify(appointments));
-    }
-}
-
 function closeModal(modalId) {
     const modal = document.getElementById(modalId);
     modal.style.display = "none";
