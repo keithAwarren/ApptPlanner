@@ -37,8 +37,9 @@ const renderCalendar = () => {
     dayElements.forEach(dayElement => {
         dayElement.addEventListener('click', () => handleDayClick(dayElement));
     });
-    
+
     loadAppointments(); // Load appointments after rendering the calendar
+    renderAppointments(); // Render appointments and update colors
 };
 
 const handleDayClick = (dayElement) => {
@@ -69,6 +70,7 @@ const renderAppointments = () => {
         const dayElement = document.querySelector(`.days li[data-day="${appointment.date}"]`);
         if (dayElement) {
             dayElement.classList.add("has-appointment");
+            dayElement.setAttribute("data-appointment-info", JSON.stringify(appointment));
         }
     });
 };
@@ -106,20 +108,3 @@ prevNextIcon.forEach(icon => {
     });
 });
 
-// Add a form to handle appointment creation
-const appointmentForm = document.querySelector("#appointment-form");
-appointmentForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    const title = document.querySelector("#title").value;
-    const time = document.querySelector("#time").value;
-    const date = document.querySelector("#date").value;
-    saveAppointment(title, time, date);
-    renderCalendar();
-    renderAppointments();
-    // You can add additional logic like clearing the form, closing a modal, etc.
-});
-
-// Display appointment information
-function displayAppointmentInfo(appointmentInfo) {
-    alert(`Appointment Info:\n\nTitle: ${appointmentInfo.title}\nTime: ${appointmentInfo.time}`);
-}
