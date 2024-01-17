@@ -74,14 +74,23 @@ const handleDayClick = (dayElement) => {
     }
 };
 
-// Display appointment popup
 const displayAppointmentPopup = (appointmentInfo) => {
-    const contactName = appointmentInfo.fullName;
-    const appointmentDetails = `Title: ${appointmentInfo.title}\nDate: ${appointmentInfo.date}\nTime: ${appointmentInfo.time}`;
-    
-    alert(`Contact: ${contactName}\n\n${appointmentDetails}`);
-};
 
+    const day = appointmentInfo.date;
+    const appointmentsForDay = appointments.filter(appointment => appointment.date === day);
+
+    if (appointmentsForDay.length > 0) {
+        let popupMessage = `Appointments for ${day}:\n`;
+
+        appointmentsForDay.forEach(appointment => {
+            popupMessage += `\nTitle: ${appointment.title}\nTime: ${appointment.time}\nContact: ${appointment.fullName}\n`;
+        });
+
+        alert(popupMessage);
+    } else {
+        alert(`No appointments for ${day}.`);
+    }
+};
 
 // Format date as 'YYYY-MM-DD'
 const formatDate = (year, month, day) => {
