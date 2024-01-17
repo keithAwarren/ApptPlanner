@@ -13,9 +13,9 @@ body {
 /* Calendar */
 
 .wrapper {
-    width: 60%;
-    margin: auto;
-    background: #fff;
+    width: 97%;
+    margin: 50px auto;
+    background-image: url(60252.jpg);
     border-radius: 10px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
 }
@@ -118,6 +118,11 @@ header .current-date {
 .days li:not(.active):hover::before {
     background: #f2f2f2;
 }
+
+.days li.has-appointment::before {
+    background-color: #D9B4FF;
+}
+
 
 /* Pages */
 
