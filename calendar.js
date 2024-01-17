@@ -96,13 +96,22 @@ renderAppointments();
 
 prevNextIcon.forEach(icon => {
     icon.addEventListener("click", () => {
-        currMonth = icon.id === "prev" ? currMonth - 1 : currMonth + 1;
-        if (currMonth < 0 || currMonth > 11) {
-            date = new Date(currYear, currMonth, new Date().getDate());
-            currYear = date.getFullYear();
-            currMonth = date.getMonth();
+        if (icon.id === "prev") {
+            const today = new Date();
+            const currentMonthIndex = today.getMonth();
+
+            if (currYear > today.getFullYear() || (currYear === today.getFullYear() && currMonth > currentMonthIndex)) {
+                currMonth--;
+                if (currMonth < 0) {
+                    currMonth = 11;
+                    currYear--;
+                }
+            }
         } else {
-            date = new Date();
+            currMonth = (currMonth + 1) % 12;
+            if (currMonth === 0) {
+                currYear++;
+            }
         }
         renderCalendar();
     });
