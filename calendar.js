@@ -1,10 +1,11 @@
-const daysTag = document.querySelector(".days"),
-    currentDate = document.querySelector(".current-date"),
-    prevNextIcon = document.querySelectorAll(".icons span");
+// Variables
+const daysTag = document.querySelector(".days");
+const currentDate = document.querySelector(".current-date");
+const prevNextIcon = document.querySelectorAll(".icons span");
 
-let date = new Date(),
-    currYear = date.getFullYear(),
-    currMonth = date.getMonth();
+let date = new Date();
+let currYear = date.getFullYear();
+let currMonth = date.getMonth();
 
 const months = [
     "January", "February", "March", "April", "May", "June", "July",
@@ -13,23 +14,41 @@ const months = [
 
 const appointments = JSON.parse(localStorage.getItem("appointments")) || [];
 
+// Functions
+
+// Reset appointment colors and attributes
+const resetAppointmentColors = () => {
+    const dayElements = document.querySelectorAll('.days li');
+    dayElements.forEach(dayElement => {
+        dayElement.classList.remove("has-appointment");
+        dayElement.style.backgroundColor = '';
+        dayElement.removeAttribute("data-appointment-info");
+    });
+};
+
+// Render the calendar with days and appointments
 const renderCalendar = () => {
+    resetAppointmentColors(); // Reset colors and attributes before applying new appointments
+
     let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(),
         lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(),
         lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(),
         lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate();
     let liTag = "";
+
     for (let i = firstDayofMonth; i > 0; i--) {
         liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
     }
+
     for (let i = 1; i <= lastDateofMonth; i++) {
-        let isToday = i === date.getDate() && currMonth === new Date().getMonth()
-            && currYear === new Date().getFullYear() ? "active" : "";
+        let isToday = i === date.getDate() && currMonth === new Date().getMonth() && currYear === new Date().getFullYear() ? "active" : "";
         liTag += `<li class="${isToday}" data-day="${formatDate(currYear, currMonth, i)}">${i}</li>`;
     }
+
     for (let i = lastDayofMonth; i < 6; i++) {
         liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`;
     }
+
     currentDate.innerText = `${months[currMonth]} ${currYear}`;
     daysTag.innerHTML = liTag;
 
@@ -42,6 +61,7 @@ const renderCalendar = () => {
     renderAppointments(); // Render appointments and update colors
 };
 
+// Handle click on a day
 const handleDayClick = (dayElement) => {
     const appointmentInfoString = dayElement.getAttribute('data-appointment-info');
 
@@ -54,27 +74,35 @@ const handleDayClick = (dayElement) => {
     }
 };
 
+// Display appointment popup
 const displayAppointmentPopup = (appointmentInfo) => {
-    console.log("Displaying pop-up for:", appointmentInfo);
-    alert(`Appointment Info:\n\nTitle: ${appointmentInfo.title}\nDate: ${appointmentInfo.date}\nTime: ${appointmentInfo.time}`);
+    const contactName = appointmentInfo.fullName;
+    const appointmentDetails = `Title: ${appointmentInfo.title}\nDate: ${appointmentInfo.date}\nTime: ${appointmentInfo.time}`;
+    
+    alert(`Contact: ${contactName}\n\n${appointmentDetails}`);
 };
 
+
+// Format date as 'YYYY-MM-DD'
 const formatDate = (year, month, day) => {
     const monthStr = (month + 1).toString().padStart(2, '0');
     const dayStr = day.toString().padStart(2, '0');
     return `${year}-${monthStr}-${dayStr}`;
 };
 
+// Render appointments and update colors
 const renderAppointments = () => {
     appointments.forEach(appointment => {
         const dayElement = document.querySelector(`.days li[data-day="${appointment.date}"]`);
         if (dayElement) {
             dayElement.classList.add("has-appointment");
             dayElement.setAttribute("data-appointment-info", JSON.stringify(appointment));
+            dayElement.style.backgroundColor = '#D9B4FF'; // Change the color of the selected day
         }
     });
 };
 
+// Load appointments from local storage
 const loadAppointments = () => {
     const storedAppointments = JSON.parse(localStorage.getItem("appointments")) || [];
     storedAppointments.forEach(appointment => {
@@ -86,14 +114,17 @@ const loadAppointments = () => {
     });
 };
 
+// Save appointment to local storage
 const saveAppointment = (title, time, date) => {
     appointments.push({ title, time, date });
     localStorage.setItem("appointments", JSON.stringify(appointments));
 };
 
+// Initial rendering of the calendar and appointments
 renderCalendar();
 renderAppointments();
 
+// Event Listeners
 prevNextIcon.forEach(icon => {
     icon.addEventListener("click", () => {
         if (icon.id === "prev") {
@@ -117,3 +148,8 @@ prevNextIcon.forEach(icon => {
     });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    loadAppointments();
+    const storedAppointments = JSON.parse(localStorage.getItem("appointments")) || [];
+    storedAppointments.forEach(displayAppointmentInfo);
+});
