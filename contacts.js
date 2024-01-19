@@ -85,7 +85,6 @@ function displayContacts() {
         li.appendChild(emailSpan);
         li.appendChild(deleteButton);
 
-        li.classList.add("contactListItem");
         contactList.appendChild(li);
     });
 
@@ -154,7 +153,6 @@ function displayFilteredContacts(filteredContacts) {
         li.appendChild(emailSpan);
         li.appendChild(deleteButton);
 
-        li.classList.add("contactListItem");
         contactList.appendChild(li);
     });
 }

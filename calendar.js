@@ -74,6 +74,7 @@ const handleDayClick = (dayElement) => {
     }
 };
 
+// Appointment display popup
 const displayAppointmentPopup = (appointmentInfo) => {
 
     const day = appointmentInfo.date;
@@ -82,7 +83,7 @@ const displayAppointmentPopup = (appointmentInfo) => {
     if (appointmentsForDay.length > 0) {
         let popupMessage = `Appointments for ${day}:\n`;
 
-        appointmentsForDay.forEach(appointment => {
+        appointmentsForDay.forEach(appointment => { // contact bottom
             popupMessage += `\nTitle: ${appointment.title}\nTime: ${appointment.time}\nContact: ${appointment.fullName}\n`;
         });
 
@@ -106,7 +107,7 @@ const renderAppointments = () => {
         if (dayElement) {
             dayElement.classList.add("has-appointment");
             dayElement.setAttribute("data-appointment-info", JSON.stringify(appointment));
-            dayElement.style.backgroundColor = '#D9B4FF'; // Change the color of the selected day
+            dayElement.style.backgroundColor = '#D9B4FF'; 
         }
     });
 };
@@ -139,7 +140,9 @@ prevNextIcon.forEach(icon => {
         if (icon.id === "prev") {
             const today = new Date();
             const currentMonthIndex = today.getMonth();
-
+            // conditional to check for appts in LS
+            // if (furthest day back)
+            // else (current date)
             if (currYear > today.getFullYear() || (currYear === today.getFullYear() && currMonth > currentMonthIndex)) {
                 currMonth--;
                 if (currMonth < 0) {
