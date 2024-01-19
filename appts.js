@@ -61,7 +61,7 @@ function handleFormSubmission(e) {
         // Store appointment info 
         selectedDay.setAttribute('data-appointment-info', JSON.stringify(appointmentInfo));
         // Change the color of the selected day 
-        selectedDay.style.backgroundColor = '#D9B4FF'; 
+        selectedDay.classList.add('has-appointment') ; 
     }
 
     const dateParts = date.split("-");

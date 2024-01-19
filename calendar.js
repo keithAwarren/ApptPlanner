@@ -107,7 +107,6 @@ const renderAppointments = () => {
         if (dayElement) {
             dayElement.classList.add("has-appointment");
             dayElement.setAttribute("data-appointment-info", JSON.stringify(appointment));
-            dayElement.style.backgroundColor = '#D9B4FF'; 
         }
     });
 };

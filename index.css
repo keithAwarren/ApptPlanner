@@ -119,6 +119,10 @@ header .current-date {
     background: #f2f2f2;
 }
 
+.days li.has-appointment::before {
+    background: #D9B4FF;
+}
+
 /* Pages */
 
 nav {
