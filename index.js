@@ -6,7 +6,7 @@ const closeButtons = document.querySelectorAll(".close-button");
 
 // Functions
 function toggleMobileMenu() {
-    const mobileMenu = document.querySelector(".mobile-menu");
+    const mobileMenu = document.querySelector(".mobileMenu");
     mobileMenu.classList.toggle("show-mobile-menu");
 }
 

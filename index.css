@@ -162,7 +162,7 @@ nav a:hover {
     letter-spacing: 3px;
 }
 
-.hero-section {
+.heroSection {
     margin-top: 90px;
     text-align: center;
     padding: 25px;
@@ -171,11 +171,11 @@ nav a:hover {
     color: #333;
 }
 
-.hero-section p {
+.heroSection p {
     margin: 1.9vh;
 }
 
-.content-section {
+.contentSection {
     text-align: center;
     padding: 1vw;
     background-color: #fff;
@@ -194,24 +194,24 @@ footer {
     justify-content: space-between;
 }
 
-.social-icons {
+.socialIcons {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
 }
 
-.social-icons a {
+.socialIcons a {
     text-decoration: none;
     color: #fff5f5;
 }
 
-.social-icons i {
+.socialIcons i {
     font-size: 24px;
     margin-right: 5vw;
 }
 
-.social-icons i:hover {
+.socialIcons i:hover {
     color: #D9B4FF
 }
 
@@ -219,7 +219,7 @@ footer p {
     margin-top: 20px;
 }
 
-.button-container {
+.navButtons{
     display: flex;
     justify-content: space-between;
 }
@@ -286,14 +286,14 @@ button {
     display: none;
 }
 
-.mobile-menu {
+.mobileMenu {
     position: absolute;
     display: none;
 }
 
 /* Forms */
 
-.form-section {
+.formSection {
     width: 59vw;
     height: 50vh;
     background: #fff;
@@ -308,11 +308,11 @@ button {
     border-radius: 1vw;
 }
 
-.form-section.visible {
+.formSection.visible {
     display: block;
 }
 
-.modal .form-section {
+.modal .formSection {
     background: #fff;
     border-radius: 1vw;
     text-align: left;
@@ -324,18 +324,18 @@ button {
     z-index: 101;
 }
 
-.form-section h2 {
+.formSection h2 {
     font-size: 17px;
     top: 0;
     margin: 0 0 19px;
 }
 
-.form-section label {
+.formSection label {
     font-size: 13px;
     margin: 0 0.2vw;
 }
 
-.form-input {
+.formInput {
     width: 100%;
     margin: 0.5vw auto 1vw;
     font-size: 12px;
@@ -415,12 +415,10 @@ button {
 }
 
 .contacts-list {
-    background-color: #fff;
     border-radius: 10px;
     padding: 1vw;
     margin: 1vw;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-    width: 65%;
     text-align: left;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -431,20 +429,7 @@ button {
 @media screen and (max-width: 800px) { 
     .contacts-list {
         grid-template-columns: 1fr;
-    }
-    
-}
-
-.contact-list {
-    background-color: #f5f5f5;
-    border: 0.1vw solid #ccc;
-    padding: 0.5vw;
-    margin: 0.5vw auto;
-    width: 15vw;
-    display: block;
-    box-shadow: 0 0.2vw 0.4vw rgba(0, 0, 0, 0.1);
-    max-height: 100%;
-    overflow-y: auto;
+    }   
 }
 
 #contactsList {
@@ -533,11 +518,11 @@ span:not(strong) {
         right: 0;
     }
 
-    .mobile-menu.show-mobile-menu {
+    .mobileMenu.show-mobile-menu {
         display: block;
     }
 
-    .mobile-menu {
+    .mobileMenu {
         position: fixed;
         top: 10%;
         right: 0.25%;
@@ -550,13 +535,13 @@ span:not(strong) {
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     }
 
-    .mobile-menu h2 {
+    .mobileMenu h2 {
         margin: 2vw 0;
         padding: 0.5vw;
         letter-spacing: 0.1vw;
     }
 
-    .mobile-menu button {
+    .mobileMenu button {
         width: 30vw;
         height: 12vw;
         padding: 1vw 1.5vw;
@@ -565,7 +550,7 @@ span:not(strong) {
         background-color: #333;
     }
 
-    .mobile-menu button:hover {
+    .mobileMenu button:hover {
         letter-spacing: 0.15vw;
     }
 
@@ -589,16 +574,16 @@ span:not(strong) {
 
     /* Forms */
 
-    .form-section label {
+    .formSection label {
         font-size: 12px;
         font-weight: 900;
     }
 
-    .form-section h2 {
+    .formSection h2 {
         font-size: 25px;
     }
 
-    .form-input {
+    .formInput {
         font-size: 19px;
     }
 
@@ -637,11 +622,11 @@ span:not(strong) {
 
     .appts-container,
     .contacts-container,
-    .hero-section {
+    .heroSection {
         margin-top: 12vh;
     }
 
-    .social-icons i {
+    .socialIcons i {
         font-size: 21px;
     }
 

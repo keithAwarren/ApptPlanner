@@ -22,7 +22,7 @@
         <button id="mobileMenuButton" class="mobile-menu-button">
             <i class="fas fa-bars"></i>
         </button>
-        <div class="mobile-menu">
+        <div class="mobileMenu">
             <a href="contacts.html">
                 <button class="showFormButton">contacts</button>
             </a>
@@ -36,7 +36,7 @@
                 <button class="showFormButton">settings</button>
             </a>
         </div>
-        <div class="links button-container">
+        <div class="links navButtons">
             <a href="contacts.html">CONTACTS</a>
             <a href="appts.html">APPOINTMENTS</a>
         </div>
@@ -51,7 +51,7 @@
     <div id="contactsModal" class="modal">
         <div class="modal-content">
             <div id="contactsCard" class="container">
-                <div class="form-section">
+                <div class="formSection">
 
                     <h2>Contact Form</h2>
                     <form id="contactForm">
@@ -59,22 +59,22 @@
                         </span>
                         <div>
                             <label for="firstName">First Name:</label>
-                            <input class="form-input" required type="text" id="firstName" pattern="^[A-Za-z]+$"
+                            <input class="formInput" required type="text" id="firstName" pattern="^[A-Za-z]+$"
                                 title="Please enter letters only (no numbers or special characters)." />
                         </div>
                         <div>
                             <label for="lastName">Last Name:</label>
-                            <input class="form-input" required type="text" id="lastName" pattern="^[A-Za-z]+$"
+                            <input class="formInput" required type="text" id="lastName" pattern="^[A-Za-z]+$"
                                 title="Please enter letters only (no numbers or special characters)." />
                         </div>
                         <div>
                             <label for="phone">Phone:</label>
-                            <input class="form-input" required type="tel" id="phone" pattern="^\d{10}$"
+                            <input class="formInput" required type="tel" id="phone" pattern="^\d{10}$"
                                 title="Please enter a 10-digit phone number." />
                         </div>
                         <div>
                             <label for="email">E-mail:</label>
-                            <input class="form-input" required type="email" id="email" />
+                            <input class="formInput" required type="email" id="email" />
                         </div>
                         <button class="clear-btn" type="button" id="clearContactForm">clear</button>
                         <input class="btn" type="submit" value="submit" />
@@ -86,9 +86,9 @@
 
 
     <div id="appointmentsModal" class="modal">
-        <div class="modal-content">
+        <div>
             <div id="appointmentsCard" class="container">
-                <div class="form-section">
+                <div class="formSection">
 
                     <h2>Appointment Form</h2>
                     <form id="appointmentsForm">
@@ -96,20 +96,20 @@
                         </span>
                         <div>
                             <label>Contact:</label>
-                            <select id="contactSelect" class="form-input">
+                            <select id="contactSelect" class="formInput">
                             </select>
                         </div>
                         <div>
                             <label>Title:</label>
-                            <input class="form-input" required type="text" id="title" />
+                            <input class="formInput" required type="text" id="title" />
                         </div>
                         <div>
                             <label>Date:</label>
-                            <input class="form-input" required type="date" id="date" />
+                            <input class="formInput" required type="date" id="date" />
                         </div>
                         <div>
                             <label>Time:</label>
-                            <input class="form-input" required type="time" id="time" data-input />
+                            <input class="formInput" required type="time" id="time" data-input />
                         </div>
                         <button class="clear-btn" type="button" id="clearContactForm">clear</button>
                         <input class="btn" type="submit" value="submit" />
@@ -143,7 +143,7 @@
 
     <footer>
         <p>&copy; 2023 PLANR. All rights reserved.</p>
-        <div class="social-icons">
+        <div class="socialIcons">
             <a href=""><i class="fab fa-linkedin"></i></a>
             <a href=""><i class="fab fa-github"></i></a>
             <a href=""><i class="fab fa-instagram"></i></a>
