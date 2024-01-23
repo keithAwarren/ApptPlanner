@@ -2,7 +2,7 @@
 const mobileMenuButton = document.querySelector(".mobile-menu-button");
 const timeInput = document.getElementById("time");
 const showFormButtons = document.querySelectorAll(".showFormButton");
-const closeButtons = document.querySelectorAll(".close-button");
+const closeButtons = document.querySelectorAll(".closeButton");
 
 // Functions
 function toggleMobileMenu() {

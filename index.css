@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #fff;
+    background-color: #ffffff;
 }
 
 /* Calendar */
@@ -230,7 +230,7 @@ span {
 }
 
 span:hover {
-    letter-spacing: 0.075vw;
+    letter-spacing: 1px;
 }
 
 .showFormButton i {
@@ -247,20 +247,12 @@ nav .links a:active {
     border-bottom: 0.2vw solid #eddbff;
 }
 
-.container {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 button {
     background-color: #1d1d1d;
     color: #D9B4FF;
     border: none;
     width: fit-content;
-    padding: 0.5vw 2.5vw;
+    padding: 3px 20px;
     border-radius: 0.5vw;
     font-size: 14px;
     cursor: pointer;
@@ -271,14 +263,13 @@ button {
     color: #fff;
     border: none;
     width: fit-content;
-    padding: 0.5vw 2.5vw;
-    border-radius: 0.5vw;
+    padding: 3px 20px;
+    border-radius: 5px;
     font-size: 15px;
     cursor: pointer;
 }
 
-.btn:hover,
-.button-container button:hover {
+.btn:hover {
     background-color: #dec7f6;
 }
 
@@ -292,6 +283,14 @@ button {
 }
 
 /* Forms */
+
+.formContainer {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 .formSection {
     width: 59vw;
@@ -361,7 +360,7 @@ button {
     font-weight: bold;
 }
 
-.close-button {
+.closeButton {
     color: #aaa;
     position: absolute;
     top: 1vw;
@@ -389,7 +388,7 @@ button {
 
 /* contacts page */
 
-.contacts-container {
+.contactPageHeader {
     margin-top: 90px;
     width: 100%;
     padding: 1.2vw;
@@ -397,24 +396,24 @@ button {
     text-align: left;
 }
 
-.contacts-container h2 {
+.contactPageHeader h2 {
     font-size: 20px;
     margin-bottom: 1.5vw;
 }
 
-.contacts-container input {
+.contactPageHeader input {
     font-size: 1vw;
 }
 
-.contactPage-button {
-    margin-top: 40px;
+.contactPageButton {
+    margin: 20px 0;
 }
 
-.button-container label {
+.buttonContainer label {
     font-size: 17px;
 }
 
-.contacts-list {
+.storedContacts {
     border-radius: 10px;
     padding: 1vw;
     margin: 1vw;
@@ -424,21 +423,13 @@ button {
     grid-template-columns: 1fr 1fr;
     column-gap: 20px;
     row-gap: 20px;
+    list-style: none;
 }
 
 @media screen and (max-width: 800px) { 
-    .contacts-list {
+    .storedContacts {
         grid-template-columns: 1fr;
     }   
-}
-
-#contactsList {
-    list-style: none;
-    padding: 0;
-}
-
-#contactsList li {
-    margin-bottom: 0.5vw;
 }
 
 .deleteContact {
@@ -458,13 +449,13 @@ span:not(strong) {
     font-size: 13px;
 }
 
-.search-bar input {
+.searchBar input {
     font-size: 14px;
 }
 
 /* appts. page */
 
-.appts-container {
+.apptsPageHeader {
     top: 1vw;
     margin-top: 90px;
     width: 100%;
@@ -473,12 +464,12 @@ span:not(strong) {
     text-align: left;
 }
 
-.appts-container h2 {
+.apptsPageHeader h2 {
     font-size: 20px;
     margin-bottom: 1.5vw;
 }
 
-.appointment-info {
+.appointmentInfo {
     background-color: #f5f5f5;
     border: 0.1vw solid #ccc;
     padding: 0.5vw;
@@ -493,7 +484,7 @@ span:not(strong) {
     overflow-y: auto;
 }
 
-.appointment-info p {
+.appointmentInfo p {
     font-size: 15px;
     margin: 0.25vw 0;
     line-height: 1.2;
@@ -554,7 +545,7 @@ span:not(strong) {
         letter-spacing: 0.15vw;
     }
 
-    .modal .form-section {
+    .modal .formSection {
         width: 75vw;
         border-radius: 15px;
         margin-bottom: 50vw;
@@ -594,7 +585,7 @@ span:not(strong) {
         border-radius: 6px;
     }
 
-    .close-button {
+    .closeButton {
         font-size: 30px;
     }
 
@@ -620,8 +611,8 @@ span:not(strong) {
         font-size: 12px;
     }
 
-    .appts-container,
-    .contacts-container,
+    .apptsPageHeader,
+    .contactPageHeader,
     .heroSection {
         margin-top: 12vh;
     }
@@ -630,18 +621,18 @@ span:not(strong) {
         font-size: 21px;
     }
 
-    .search-bar button,
-    .search-bar input {
+    .searchBar button,
+    .searchBar input {
         font-size: 17px;
     }
 
     #sortSelect,
-    .button-container label {
+    .buttonContainer label {
         font-size: 15px;
     }
 
-    .appts-container h2,
-    .contacts-container h2 {
+    .apptsPageHeader h2,
+    .contactPageHeader h2 {
         font-size: 20px;
         margin-bottom: 15px;
     }

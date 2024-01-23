@@ -41,14 +41,13 @@
         </div>
     </nav>
 
-    <div class="contacts-container">
+    <div class="contactPageHeader">
         <h2>Contacts</h2>
-        <div class="search-bar">
-            <input type="text" id="contact-search" placeholder="Search Contacts">
-            <button id="search-button"><i class="fas fa-search"></i></button>
+        <div class="searchBar">
+            <input type="text" id="contactSearch" placeholder="Search Contacts">
         </div>
-        <div class="button-container">
-            <button class="contactPage-button btn showFormButton" data-target="contactsModal">Add Contact</button>
+        <div class="buttonContainer">
+            <button class="contactPageButton btn showFormButton" data-target="contactsModal">Add Contact</button>
             <div id="sortingOptions">
                 <label for="sortSelect">Sort by: </label>
                 <select id="sortSelect">
@@ -59,18 +58,18 @@
         </div>
     </div>
 
-    <div id="contactsList" class="contacts-list">
+    <div id="contactsList" class="storedContacts">
             <!--Contacts will show up here-->
     </div>
 
     <div id="contactsModal" class="modal">
         <div class="modal-content">
-            <div id="contactsCard" class="container">
+            <div id="contactsCard" class="formContainer">
                 <div class="formSection">
 
                     <h2>Contact Form</h2>
                     <form id="contactForm">
-                        <span class="close close-button" data-modal="contactsModal">&times;
+                        <span class="close closeButton" data-modal="contactsModal">&times;
                         </span>
                         <div>
                             <label for="firstName">First Name:</label>
@@ -101,12 +100,12 @@
 
     <div id="appointmentsModal" class="modal">
         <div>
-            <div id="appointmentsCard" class="container">
+            <div id="appointmentsCard" class="formContainer">
                 <div class="formSection">
 
                     <h2>Appointment Form</h2>
                     <form id="appointmentsForm">
-                        <span class="close close-button" data-modal="appointmentsModal">&times;
+                        <span class="close closeButton" data-modal="appointmentsModal">&times;
                         </span>
                         <div>
                             <label>Contact:</label>

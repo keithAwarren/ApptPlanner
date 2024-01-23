@@ -42,7 +42,7 @@
         </div>
     </nav>
 
-    <div class="appts-container">
+    <div class="apptsPageHeader">
         <h2>Appointments</h2>
         <button class="btn showFormButton" data-target="appointmentsModal">New Appointment</button>
         <div id="appointmentInfoDisplay"></div>
@@ -50,12 +50,11 @@
 
     <div id="contactsModal" class="modal">
         <div class="modal-content">
-            <div id="contactsCard" class="container">
+            <div id="contactsCard" class="formContainer">
                 <div class="formSection">
-
                     <h2>Contact Form</h2>
                     <form id="contactForm">
-                        <span class="close close-button" data-modal="contactsModal">&times;
+                        <span class="close closeButton" data-modal="contactsModal">&times;
                         </span>
                         <div>
                             <label for="firstName">First Name:</label>
@@ -87,12 +86,12 @@
 
     <div id="appointmentsModal" class="modal">
         <div>
-            <div id="appointmentsCard" class="container">
+            <div id="appointmentsCard" class="formContainer">
                 <div class="formSection">
 
                     <h2>Appointment Form</h2>
                     <form id="appointmentsForm">
-                        <span class="close close-button" data-modal="appointmentsModal">&times;
+                        <span class="close closeButton" data-modal="appointmentsModal">&times;
                         </span>
                         <div>
                             <label>Contact:</label>

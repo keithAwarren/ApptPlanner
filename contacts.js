@@ -1,9 +1,9 @@
 // Variables
-const addContactButton = document.querySelector(".contactPage-button");
+const addContactButton = document.querySelector(".contactPageButton");
 const clearContactButton = document.getElementById("clearContactForm");
 const contactForm = document.getElementById("contactForm");
 const contactSelect = document.querySelector("#contactSelect");
-const searchInput = document.getElementById("contact-search");
+const searchInput = document.getElementById("contactSearch");
 const sortSelect = document.getElementById("sortSelect");
 
 // Functions
