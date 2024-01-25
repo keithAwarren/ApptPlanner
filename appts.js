@@ -1,5 +1,5 @@
 // Variables
-const newAppointmentButton = document.querySelector(".showFormButton");
+const newAppointmentButton = document.querySelector(".addApptButton");
 const appointmentsForm = document.getElementById("appointmentsForm");
 const contactSelect = document.querySelector("#contactSelect");
 const appointmentInfoDisplay = document.querySelector("#appointmentInfoDisplay");

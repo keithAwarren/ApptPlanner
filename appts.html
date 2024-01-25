@@ -14,26 +14,26 @@
 <body>
 
     <nav>
-        <div class="navi">
+        <div>
             <a href="index.html">
                 <h1>PLANR</h1>
             </a>
         </div>
-        <button id="mobileMenuButton" class="mobile-menu-button">
+        <button id="mobileMenuButton" class="burgerButton">
             <i class="fas fa-bars"></i>
         </button>
         <div class="mobileMenu">
             <a href="contacts.html">
-                <button class="showFormButton">contacts</button>
+                <button class="pageLinksMoblie">contacts</button>
             </a>
             <a href="appts.html">
-                <button class="showFormButton">appointments</button>
+                <button class="pageLinksMoblie">appointments</button>
             </a>
             <a>
-                <button class="showFormButton">log-in/sign up</button>
+                <button class="pageLinksMoblie">login/ signup</button>
             </a>
             <a>
-                <button class="showFormButton">settings</button>
+                <button class="pageLinksMoblie">settings</button>
             </a>
         </div>
         <div class="links navButtons">
@@ -44,7 +44,7 @@
 
     <div class="apptsPageHeader">
         <h2>Appointments</h2>
-        <button class="btn showFormButton" data-target="appointmentsModal">New Appointment</button>
+        <button class="btn addApptButton" data-target="appointmentsModal">New Appointment</button>
         <div id="appointmentInfoDisplay"></div>
     </div>
 
@@ -75,8 +75,10 @@
                             <label for="email">E-mail:</label>
                             <input class="formInput" required type="email" id="email" />
                         </div>
-                        <button class="clear-btn" type="button" id="clearContactForm">clear</button>
-                        <input class="btn" type="submit" value="submit" />
+                        <div class="formButtons">
+                            <input class="btn" type="submit" value="submit" />
+                            <button class="clear-btn" type="button" id="clearContactForm">clear</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -88,7 +90,6 @@
         <div>
             <div id="appointmentsCard" class="formContainer">
                 <div class="formSection">
-
                     <h2>Appointment Form</h2>
                     <form id="appointmentsForm">
                         <span class="close closeButton" data-modal="appointmentsModal">&times;
@@ -110,8 +111,10 @@
                             <label>Time:</label>
                             <input class="formInput" required type="time" id="time" data-input />
                         </div>
-                        <button class="clear-btn" type="button" id="clearContactForm">clear</button>
-                        <input class="btn" type="submit" value="submit" />
+                        <div class="formButtons">
+                            <input class="btn" type="submit" value="submit" />
+                            <button class="clear-btn" type="button" id="clearApptForm">clear</button>
+                        </div>
                     </form>
                 </div>
             </div>

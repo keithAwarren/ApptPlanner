@@ -1,7 +1,7 @@
 // Variables
-const mobileMenuButton = document.querySelector(".mobile-menu-button");
+const mobileMenuButton = document.querySelector(".burgerButton");
 const timeInput = document.getElementById("time");
-const showFormButtons = document.querySelectorAll(".showFormButton");
+const showFormButtons = document.querySelectorAll(".pageLinksMoblie");
 const closeButtons = document.querySelectorAll(".closeButton");
 
 // Functions

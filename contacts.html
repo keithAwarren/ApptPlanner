@@ -13,26 +13,26 @@
 <body>
 
     <nav>
-        <div class="navi">
+        <div>
             <a href="index.html">
                 <h1>PLANR</h1>
             </a>
         </div>
-        <button id="mobileMenuButton" class="mobile-menu-button">
+        <button id="mobileMenuButton" class="burgerButton">
             <i class="fas fa-bars"></i>
         </button>
         <div class="mobileMenu">
             <a href="contacts.html">
-                <button class="showFormButton">contacts</button>
+                <button class="pageLinksMoblie">contacts</button>
             </a>
             <a href="appts.html">
-                <button class="showFormButton">appointments</button>
+                <button class="pageLinksMoblie">appointments</button>
             </a>
             <a>
-                <button class="showFormButton">log-in/sign up</button>
+                <button class="pageLinksMoblie">login/ sign up</button>
             </a>
             <a>
-                <button class="showFormButton">settings</button>
+                <button class="pageLinksMoblie">settings</button>
             </a>
         </div>
         <div class="links navButtons">
@@ -46,8 +46,8 @@
         <div class="searchBar">
             <input type="text" id="contactSearch" placeholder="Search Contacts">
         </div>
-        <div class="buttonContainer">
-            <button class="contactPageButton btn showFormButton" data-target="contactsModal">Add Contact</button>
+        <div>
+            <button class="contactPageButton btn" data-target="contactsModal">Add Contact</button>
             <div id="sortingOptions">
                 <label for="sortSelect">Sort by: </label>
                 <select id="sortSelect">
@@ -59,7 +59,7 @@
     </div>
 
     <div id="contactsList" class="storedContacts">
-            <!--Contacts will show up here-->
+        <!--Contacts will show up here-->
     </div>
 
     <div id="contactsModal" class="modal">
@@ -90,8 +90,10 @@
                             <label for="email">E-mail:</label>
                             <input class="formInput" required type="email" id="email" />
                         </div>
-                        <button class="clear-btn" type="button" id="clearContactForm">clear</button>
-                        <input class="btn" type="submit" value="submit" />
+                        <div class="formButtons">
+                            <input class="btn" type="submit" value="submit" />
+                            <button class="clear-btn" type="button" id="clearContactForm">clear</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -124,8 +126,10 @@
                             <label>Time:</label>
                             <input class="formInput" required type="time" id="time" data-input />
                         </div>
-                        <button class="clear-btn" type="button" id="clearContactForm">clear</button>
-                        <input class="btn" type="submit" value="submit" />
+                        <div class="formButtons">
+                            <input class="btn" type="submit" value="submit" />
+                            <button class="clear-btn" type="button" id="clearApptForm">clear</button>
+                        </div>
                     </form>
                 </div>
             </div>
