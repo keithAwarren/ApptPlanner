@@ -42,12 +42,10 @@
     </nav>
 
     <div class="contactPageHeader">
-        <h2>Contacts</h2>
-        <div class="searchBar">
-            <input type="text" id="contactSearch" placeholder="Search Contacts">
-        </div>
-        <div>
-            <button class="contactPageButton btn" data-target="contactsModal">Add Contact</button>
+        <div class="leftSection">
+            <div class="searchBar">
+                <input type="text" id="contactSearch" placeholder="Search Contacts">
+            </div>
             <div id="sortingOptions">
                 <label for="sortSelect">Sort by: </label>
                 <select id="sortSelect">
@@ -56,7 +54,13 @@
                 </select>
             </div>
         </div>
+        <div class="rightSection">
+            <button class="contactPageButton" data-target="contactsModal">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
     </div>
+
 
     <div id="contactsList" class="storedContacts">
         <!--Contacts will show up here-->
@@ -66,7 +70,6 @@
         <div>
             <div id="contactsCard" class="formContainer">
                 <div class="formSection">
-
                     <h2>Contact Form</h2>
                     <form id="contactForm">
                         <span class="close closeButton" data-modal="contactsModal">&times;
@@ -74,21 +77,25 @@
                         <div>
                             <label for="firstName">First Name:</label>
                             <input class="formInput" required type="text" id="firstName" pattern="^[A-Za-z]+$"
-                                title="Please enter letters only (no numbers or special characters)." />
+                                title="Please enter letters only (no numbers or special characters)."
+                                placeholder="John" />
                         </div>
                         <div>
                             <label for="lastName">Last Name:</label>
                             <input class="formInput" required type="text" id="lastName" pattern="^[A-Za-z]+$"
-                                title="Please enter letters only (no numbers or special characters)." />
+                                title="Please enter letters only (no numbers or special characters)."
+                                placeholder="Doe" />
                         </div>
                         <div>
                             <label for="phone">Phone:</label>
                             <input class="formInput" required type="tel" id="phone" pattern="^\d{10}$"
-                                title="Please enter a 10-digit phone number." />
+                                title="Please enter a 10-digit phone number." 
+                                placeholder="(_ _ _) -xxxx"/>
                         </div>
                         <div>
                             <label for="email">E-mail:</label>
-                            <input class="formInput" required type="email" id="email" />
+                            <input class="formInput" required type="email" id="email"
+                                placeholder="example@example.com" />
                         </div>
                         <div class="formButtons">
                             <input class="btn" type="submit" value="submit" />
