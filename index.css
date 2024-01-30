@@ -146,6 +146,10 @@ nav {
     text-decoration: none;
 }
 
+.links.navButtons {
+    margin-left: auto;
+}
+
 nav h1 {
     font-size: 25px;
     text-decoration: none;
