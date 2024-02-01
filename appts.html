@@ -92,8 +92,7 @@
                         </div>
                         <div>
                             <label>Title:</label>
-                            <input class="formInput" required type="text" id="title" 
-                            placeholder="Appointment Title"/>
+                            <input class="formInput" required type="text" id="title" placeholder="Appointment Title" />
                         </div>
                         <div>
                             <label>Date:</label>
@@ -101,8 +100,7 @@
                         </div>
                         <div>
                             <label>Time:</label>
-                            <input class="formInput" required type="time" id="time" data-input
-                            placeholder="xx:xx" />
+                            <input class="formInput" required type="time" id="time" data-input placeholder="xx:xx" />
                         </div>
                         <div class="formButtons">
                             <input class="btn" type="submit" value="submit" />
@@ -138,6 +136,13 @@
             <button class="addApptButton" data-target="appointmentsModal">
                 <i class="fa fa-plus"></i>
             </button>
+        </div>
+    </div>
+
+    <div id="appointmentDisplayModal" class="modal">
+        <div class="modalContent">
+            <span class="close">&times;</span>
+            <div id="appointmentDetails"></div>
         </div>
     </div>
 

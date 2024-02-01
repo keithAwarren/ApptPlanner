@@ -67,27 +67,34 @@ const handleDayClick = (dayElement) => {
 
     if (appointmentInfoString) {
         const appointmentInfo = JSON.parse(appointmentInfoString);
-        displayAppointmentPopup(appointmentInfo);
+        displayAppointmentModal(appointmentInfo);
     } else {
         // Handle the case where there's no appointment
         alert('No appointment for this date.');
     }
 };
 
-// Appointment display popup
-const displayAppointmentPopup = (appointmentInfo) => {
-
+const displayAppointmentModal = (appointmentInfo) => {
     const day = appointmentInfo.date;
     const appointmentsForDay = appointments.filter(appointment => appointment.date === day);
 
     if (appointmentsForDay.length > 0) {
-        let popupMessage = `Appointments for ${day}:\n`;
+        let modalContent = `<div id="appointmentDetails">Appointments for ${day}:</div>`;
 
-        appointmentsForDay.forEach(appointment => { // contact bottom
-            popupMessage += `\nTitle: ${appointment.title}\nTime: ${appointment.time}\nContact: ${appointment.fullName}\n`;
+        appointmentsForDay.forEach(appointment => {
+            modalContent += `<div class="appointment-item">
+                                <p>Title: ${appointment.title}</p>
+                                <p>Time: ${appointment.time}</p>
+                                <p>Contact: ${appointment.fullName}</p>
+                             </div>`;
         });
 
-        alert(popupMessage);
+        // Append the modal content to the modal element
+        const appointmentModal = document.getElementById("appointmentDisplayModal");
+        appointmentModal.innerHTML = modalContent;
+
+        // Display the modal
+        appointmentModal.style.display = "block";
     } else {
         alert(`No appointments for ${day}.`);
     }
@@ -139,9 +146,6 @@ prevNextIcon.forEach(icon => {
         if (icon.id === "prev") {
             const today = new Date();
             const currentMonthIndex = today.getMonth();
-            // conditional to check for appts in LS
-            // if (furthest day back)
-            // else (current date)
             if (currYear > today.getFullYear() || (currYear === today.getFullYear() && currMonth > currentMonthIndex)) {
                 currMonth--;
                 if (currMonth < 0) {
@@ -163,4 +167,12 @@ document.addEventListener("DOMContentLoaded", () => {
     loadAppointments();
     const storedAppointments = JSON.parse(localStorage.getItem("appointments")) || [];
     storedAppointments.forEach(displayAppointmentInfo);
+});
+
+// Modal close functionality
+const appointmentModal = document.getElementById("appointmentDisplayModal");
+const closeBtn = document.querySelector(".close");
+
+closeBtn.addEventListener("click", () => {
+    appointmentModal.style.display = "none";
 });
