@@ -12,8 +12,6 @@ const months = [
     "August", "September", "October", "November", "December"
 ];
 
-const appointments = JSON.parse(localStorage.getItem("appointments")) || [];
-
 // Functions
 
 // Reset appointment colors and attributes
@@ -22,7 +20,6 @@ const resetAppointmentColors = () => {
     dayElements.forEach(dayElement => {
         dayElement.classList.remove("has-appointment");
         dayElement.style.backgroundColor = '';
-        dayElement.removeAttribute("data-appointment-info");
     });
 };
 
@@ -57,47 +54,40 @@ const renderCalendar = () => {
         dayElement.addEventListener('click', () => handleDayClick(dayElement));
     });
 
-    loadAppointments(); // Load appointments after rendering the calendar
     renderAppointments(); // Render appointments and update colors
 };
 
 // Handle click on a day
 const handleDayClick = (dayElement) => {
-    const appointmentInfoString = dayElement.getAttribute('data-appointment-info');
+    const day = dayElement.getAttribute('data-day');
+    const appointmentsForDay = getAppointmentsForDay(day);
 
-    if (appointmentInfoString) {
-        const appointmentInfo = JSON.parse(appointmentInfoString);
-        displayAppointmentModal(appointmentInfo);
+    if (appointmentsForDay.length > 0) {
+        displayAppointmentModal(day, appointmentsForDay);
     } else {
         // Handle the case where there's no appointment
         alert('No appointment for this date.');
     }
 };
 
-const displayAppointmentModal = (appointmentInfo) => {
-    const day = appointmentInfo.date;
-    const appointmentsForDay = appointments.filter(appointment => appointment.date === day);
+// Display appointment details in a modal
+const displayAppointmentModal = (day, appointmentsForDay) => {
+    let modalContent = `<div id="appointmentDetails">Appointments for ${day}:</div>`;
 
-    if (appointmentsForDay.length > 0) {
-        let modalContent = `<div id="appointmentDetails">Appointments for ${day}:</div>`;
+    appointmentsForDay.forEach(appointment => {
+        modalContent += `<div class="appointment-item">
+                            <p>Contact: ${appointment.fullName}</p>
+                            <p>Title: ${appointment.title}</p>
+                            <p>Time: ${appointment.time}</p>
+                         </div>`;
+    });
 
-        appointmentsForDay.forEach(appointment => {
-            modalContent += `<div class="appointment-item">
-                                <p>Title: ${appointment.title}</p>
-                                <p>Time: ${appointment.time}</p>
-                                <p>Contact: ${appointment.fullName}</p>
-                             </div>`;
-        });
+    // Append the modal content to the modal element
+    const appointmentModal = document.getElementById("appointmentDisplayModal");
+    appointmentModal.innerHTML = modalContent;
 
-        // Append the modal content to the modal element
-        const appointmentModal = document.getElementById("appointmentDisplayModal");
-        appointmentModal.innerHTML = modalContent;
-
-        // Display the modal
-        appointmentModal.style.display = "block";
-    } else {
-        alert(`No appointments for ${day}.`);
-    }
+    // Display the modal
+    appointmentModal.style.display = "block";
 };
 
 // Format date as 'YYYY-MM-DD'
@@ -109,36 +99,34 @@ const formatDate = (year, month, day) => {
 
 // Render appointments and update colors
 const renderAppointments = () => {
-    appointments.forEach(appointment => {
-        const dayElement = document.querySelector(`.days li[data-day="${appointment.date}"]`);
-        if (dayElement) {
+    const dayElements = document.querySelectorAll('.days li');
+    dayElements.forEach(dayElement => {
+        const day = dayElement.getAttribute('data-day');
+        const appointmentsForDay = getAppointmentsForDay(day);
+
+        if (appointmentsForDay.length > 0) {
             dayElement.classList.add("has-appointment");
-            dayElement.setAttribute("data-appointment-info", JSON.stringify(appointment));
+        } else {
+            dayElement.classList.remove("has-appointment");
         }
     });
 };
 
-// Load appointments from local storage
-const loadAppointments = () => {
+// Get appointments for a specific day
+const getAppointmentsForDay = (day) => {
     const storedAppointments = JSON.parse(localStorage.getItem("appointments")) || [];
-    storedAppointments.forEach(appointment => {
-        const dayElement = document.querySelector(`.days li[data-day="${appointment.date}"]`);
-        if (dayElement) {
-            dayElement.classList.add("has-appointment");
-            dayElement.setAttribute("data-appointment-info", JSON.stringify(appointment));
-        }
-    });
+    return storedAppointments.filter(appointment => appointment.date === day);
 };
 
 // Save appointment to local storage
 const saveAppointment = (title, time, date) => {
-    appointments.push({ title, time, date });
-    localStorage.setItem("appointments", JSON.stringify(appointments));
+    const storedAppointments = JSON.parse(localStorage.getItem("appointments")) || [];
+    storedAppointments.push({ title, time, date });
+    localStorage.setItem("appointments", JSON.stringify(storedAppointments));
 };
 
 // Initial rendering of the calendar and appointments
 renderCalendar();
-renderAppointments();
 
 // Event Listeners
 prevNextIcon.forEach(icon => {
@@ -164,9 +152,7 @@ prevNextIcon.forEach(icon => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    loadAppointments();
-    const storedAppointments = JSON.parse(localStorage.getItem("appointments")) || [];
-    storedAppointments.forEach(displayAppointmentInfo);
+    renderAppointments(); // Render appointments after DOM content is loaded
 });
 
 // Modal close functionality

@@ -54,27 +54,6 @@ function handleFormSubmission(e) {
 
     storeAppointmentInfo(appointmentInfo);
 
-    displayAppointmentInfo(appointmentInfo);
-
-    const selectedDay = document.querySelector(`.days li[data-day="${date}"]`);
-    if (selectedDay) {
-        // Store appointment info 
-        selectedDay.setAttribute('data-appointment-info', JSON.stringify(appointmentInfo));
-        // Change the color of the selected day 
-        selectedDay.classList.add('has-appointment') ; 
-    }
-
-    const dateParts = date.split("-");
-    const year = parseInt(dateParts[0]);
-    const month = parseInt(dateParts[1]) - 1;
-    const day = parseInt(dateParts[2]);
-
-    // Create a Date object for the selected date
-    const selectedDate = new Date(year, month, day);
-
-    // Add the appointment to the calendar
-    addAppointmentToCalendar(selectedDate, appointmentInfo);
-
     // Clear the form and close the modal
     appointmentsForm.reset();
     closeModal("appointmentsModal");
@@ -86,19 +65,6 @@ function storeAppointmentInfo(appointmentInfo) {
     localStorage.setItem("appointments", JSON.stringify(appointments));
 
     renderCalendar();
-}
-
-function addAppointmentToCalendar(selectedDate, appointmentInfo) {
-   
-    const dayElement = document.querySelector(`.days li[data-day="${selectedDate.toISOString()}"]`);
-    if (dayElement) {
-        dayElement.classList.add("has-appointment");
-        dayElement.setAttribute("data-appointment-info", JSON.stringify(appointmentInfo));
-    }
-}
-
-function displayAppointmentInfo(appointmentInfo) {
-    
 }
 
 function closeModal(modalId) {
@@ -116,10 +82,6 @@ if (appointmentsForm) {
 }
 
 // Load and display stored appointments after DOM is fully loaded
-document.addEventListener("DOMContentLoaded", () => {
-    const storedAppointments = JSON.parse(localStorage.getItem("appointments")) || [];
-    storedAppointments.forEach(displayAppointmentInfo);
-});
 
 // Populate contact select after DOM is fully loaded
 populateContactSelect();

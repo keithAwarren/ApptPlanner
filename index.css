@@ -450,8 +450,8 @@ button {
 
 .storedContacts {
     border-radius: 10px;
-    padding: 1vw;
-    margin: 1vw;
+    padding: 10px;
+    margin: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     text-align: left;
     display: grid;
@@ -470,8 +470,8 @@ button {
 
 .deleteContact {
     font-size: 13px;
-    padding: 0.45vw 0.95vw;
-    margin-right: 0.35vw;
+    padding: 3px 7px;
+    margin-right: 5px;
     float: right;
 }
 
