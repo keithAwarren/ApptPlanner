@@ -72,22 +72,34 @@ const handleDayClick = (dayElement) => {
 
 // Display appointment details in a modal
 const displayAppointmentModal = (day, appointmentsForDay) => {
-    let modalContent = `<div id="appointmentDetails">Appointments for ${day}:</div>`;
+    let modalContent = `<div>
+                            <span class="close closeButton">&times;</span>
+                            <div id="appointmentDetails">Appointments for ${day}:</div>
+                        `;
 
     appointmentsForDay.forEach(appointment => {
         modalContent += `<div class="appointment-item">
+                         <br>
                             <p>Contact: ${appointment.fullName}</p>
                             <p>Title: ${appointment.title}</p>
                             <p>Time: ${appointment.time}</p>
+                            <br>
                          </div>`;
     });
 
     // Append the modal content to the modal element
     const appointmentModal = document.getElementById("appointmentDisplayModal");
-    appointmentModal.innerHTML = modalContent;
+    appointmentModal.innerHTML =  `<div class="modal-content">${modalContent}</div>`;
 
     // Display the modal
     appointmentModal.style.display = "block";
+
+    const closeButton = appointmentModal.querySelector('.closeButton');
+
+    // Attach click event listener to the close button
+    closeButton.addEventListener("click", () => {
+        appointmentModal.style.display = "none";
+    });
 };
 
 // Format date as 'YYYY-MM-DD'
@@ -153,12 +165,4 @@ prevNextIcon.forEach(icon => {
 
 document.addEventListener("DOMContentLoaded", () => {
     renderAppointments(); // Render appointments after DOM content is loaded
-});
-
-// Modal close functionality
-const appointmentModal = document.getElementById("appointmentDisplayModal");
-const closeBtn = document.querySelector(".close");
-
-closeBtn.addEventListener("click", () => {
-    appointmentModal.style.display = "none";
 });
