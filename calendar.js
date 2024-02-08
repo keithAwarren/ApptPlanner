@@ -70,7 +70,7 @@ const handleDayClick = (dayElement) => {
     }
 };
 
-// Display/delete/edit appointment details in a modal
+// Display/delete appointment details in a modal
 const displayAppointmentModal = (day, appointmentsForDay) => {
     // Construct the modal content
     let modalContent = `<div>
@@ -84,11 +84,11 @@ const displayAppointmentModal = (day, appointmentsForDay) => {
                             <p>Contact: ${appointment.fullName}</p>
                             <p>Title: ${appointment.title}</p>
                             <p>Time: ${appointment.time}</p>
-                            <div class="edit-delete-buttons">
-                                <button class="edit-appointment" data-index="${index}">Edit</button>
-                                <button class="delete-appointment" data-title="${appointment.title}" data-time="${appointment.time}" data-date="${appointment.date}">Delete</button>
+                            <div class="deletApptsButtons">
+                                <button class="deleteAppointment" data-title="${appointment.title}" data-time="${appointment.time}" data-date="${appointment.date}">Delete</button>
                             </div>
-                         </div>`;
+                         </div>
+                         <br>`;
     });
 
     // Get the modal element and set its content
@@ -105,7 +105,7 @@ const displayAppointmentModal = (day, appointmentsForDay) => {
     });
 
     // Add event listener for delete buttons
-    const deleteButtons = appointmentModal.querySelectorAll('.delete-appointment');
+    const deleteButtons = appointmentModal.querySelectorAll('.deleteAppointment');
     deleteButtons.forEach(button => {
         button.addEventListener('click', () => {
             // Get data attributes of the appointment to delete
@@ -133,14 +133,9 @@ const displayAppointmentModal = (day, appointmentsForDay) => {
             appointmentItem.remove();
 
             // Update the UI
-            updateUI();
+            renderCalendar();
         });
     });
-};
-
-// Function to update UI after deleting an appointment
-const updateUI = () => {
-    renderCalendar();
 };
 
 // Format date as 'YYYY-MM-DD'
