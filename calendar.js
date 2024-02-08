@@ -85,8 +85,10 @@ const displayAppointmentModal = (day, appointmentsForDay) => {
                             <p>Contact: ${appointment.fullName}</p>
                             <p>Title: ${appointment.title}</p>
                             <p>Time: ${appointment.time}</p>
-                            <div class="deletApptsButtons">
-                                <button class="deleteAppointment" data-title="${appointment.title}" data-time="${appointment.time}" data-date="${appointment.date}">Delete</button>
+                            <div class="deleteAppointmentButton">
+                                <button class="deleteAppointment" data-title="${appointment.title}" data-time="${appointment.time}" data-date="${appointment.date}">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
                             </div>
                          </div>
                          <br>`;
@@ -109,35 +111,26 @@ const displayAppointmentModal = (day, appointmentsForDay) => {
     const deleteButtons = appointmentModal.querySelectorAll('.deleteAppointment');
     deleteButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Get data attributes of the appointment to delete
+            // Logic for deleting appointment
             const appointmentToDelete = {
                 title: button.getAttribute('data-title'),
                 time: button.getAttribute('data-time'),
                 date: button.getAttribute('data-date')
             };
-
-            // Retrieve appointments from local storage
             let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
-            
-            // Filter out the appointment to delete from the list
             appointments = appointments.filter(appointment => 
                 !(appointment.title === appointmentToDelete.title &&
                 appointment.time === appointmentToDelete.time &&
                 appointment.date === appointmentToDelete.date)
             );
-
-            // Update the local storage with the filtered list of appointments
             localStorage.setItem("appointments", JSON.stringify(appointments));
-
-            // Remove the appointment item from the modal
             const appointmentItem = button.parentElement.parentElement;
             appointmentItem.remove();
-
-            // Update the UI
             renderCalendar();
         });
     });
 };
+
 
 // Format date as 'YYYY-MM-DD'
 const formatDate = (year, month, day) => {

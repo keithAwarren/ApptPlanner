@@ -246,17 +246,6 @@ nav .links a:active {
     color: #eddbff;
 }
 
-button {
-    background-color: #1d1d1d;
-    color: #D9B4FF;
-    border: none;
-    width: fit-content;
-    padding: 3px 20px;
-    border-radius: 5px;
-    font-size: 15px;
-    cursor: pointer;
-}
-
 .btn {
     background-color: #D9B4FF;
     color: #fff;
