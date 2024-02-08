@@ -3,6 +3,7 @@ const newAppointmentButton = document.querySelector(".addApptButton");
 const appointmentsForm = document.getElementById("appointmentsForm");
 const contactSelect = document.querySelector("#contactSelect");
 const appointmentInfoDisplay = document.querySelector("#appointmentInfoDisplay");
+const clearApptFromButton = document.getElementById("clearApptForm");
 
 // Functions
 function populateContactSelect() {
@@ -72,6 +73,10 @@ function closeModal(modalId) {
     modal.style.display = "none";
 }
 
+function clearFormFields() {
+    appointmentsForm.reset();
+}
+
 // Event Listeners
 if (newAppointmentButton) {
     newAppointmentButton.addEventListener("click", handleNewAppointment);
@@ -79,6 +84,10 @@ if (newAppointmentButton) {
 
 if (appointmentsForm) {
     appointmentsForm.addEventListener("submit", handleFormSubmission);
+}
+
+if (clearApptFromButton) {
+    clearApptFromButton.addEventListener("click", clearFormFields)
 }
 
 // Populate contact select after DOM is fully loaded
