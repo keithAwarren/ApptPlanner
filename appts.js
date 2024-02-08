@@ -81,7 +81,5 @@ if (appointmentsForm) {
     appointmentsForm.addEventListener("submit", handleFormSubmission);
 }
 
-// Load and display stored appointments after DOM is fully loaded
-
 // Populate contact select after DOM is fully loaded
 populateContactSelect();

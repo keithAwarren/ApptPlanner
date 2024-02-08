@@ -70,36 +70,77 @@ const handleDayClick = (dayElement) => {
     }
 };
 
-// Display appointment details in a modal
+// Display/delete/edit appointment details in a modal
 const displayAppointmentModal = (day, appointmentsForDay) => {
+    // Construct the modal content
     let modalContent = `<div>
                             <span class="close closeButton">&times;</span>
                             <div id="appointmentDetails">Appointments for ${day}:</div>
                         `;
 
-    appointmentsForDay.forEach(appointment => {
-        modalContent += `<div class="appointment-item">
-                         <br>
+    // Iterate over appointments for the day and create HTML elements for each appointment
+    appointmentsForDay.forEach((appointment, index) => {
+        modalContent += `<div class="appointmentItem">
                             <p>Contact: ${appointment.fullName}</p>
                             <p>Title: ${appointment.title}</p>
                             <p>Time: ${appointment.time}</p>
-                            <br>
+                            <div class="edit-delete-buttons">
+                                <button class="edit-appointment" data-index="${index}">Edit</button>
+                                <button class="delete-appointment" data-title="${appointment.title}" data-time="${appointment.time}" data-date="${appointment.date}">Delete</button>
+                            </div>
                          </div>`;
     });
 
-    // Append the modal content to the modal element
+    // Get the modal element and set its content
     const appointmentModal = document.getElementById("appointmentDisplayModal");
-    appointmentModal.innerHTML =  `<div class="modal-content">${modalContent}</div>`;
+    appointmentModal.innerHTML = `<div class="modal-content">${modalContent}</div>`;
 
     // Display the modal
     appointmentModal.style.display = "block";
 
+    // Add event listener for close button
     const closeButton = appointmentModal.querySelector('.closeButton');
-
-    // Attach click event listener to the close button
     closeButton.addEventListener("click", () => {
         appointmentModal.style.display = "none";
     });
+
+    // Add event listener for delete buttons
+    const deleteButtons = appointmentModal.querySelectorAll('.delete-appointment');
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Get data attributes of the appointment to delete
+            const appointmentToDelete = {
+                title: button.getAttribute('data-title'),
+                time: button.getAttribute('data-time'),
+                date: button.getAttribute('data-date')
+            };
+
+            // Retrieve appointments from local storage
+            let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+            
+            // Filter out the appointment to delete from the list
+            appointments = appointments.filter(appointment => 
+                !(appointment.title === appointmentToDelete.title &&
+                appointment.time === appointmentToDelete.time &&
+                appointment.date === appointmentToDelete.date)
+            );
+
+            // Update the local storage with the filtered list of appointments
+            localStorage.setItem("appointments", JSON.stringify(appointments));
+
+            // Remove the appointment item from the modal
+            const appointmentItem = button.parentElement.parentElement;
+            appointmentItem.remove();
+
+            // Update the UI
+            updateUI();
+        });
+    });
+};
+
+// Function to update UI after deleting an appointment
+const updateUI = () => {
+    renderCalendar();
 };
 
 // Format date as 'YYYY-MM-DD'

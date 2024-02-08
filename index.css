@@ -554,17 +554,26 @@ span:not(strong) {
 
 .modal-content {
     border: 5px solid;
-    top: 250px;
-    max-width: 400px;
+    min-width: 400px;
     border-radius: 10px;
     text-align: left;
     padding: 13px;
     color: #333;
     display: block;
-    justify-content: center;
-    position: relative;
-    z-index: 101;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-image: linear-gradient(to right bottom, #ffffff, #fcfafc, #f9f6f8, #f8f1f3, #f6ecec);
+}
+
+#appointmentDetails {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.appointmentItem p {
+    margin-bottom: 5px;
 }
 
 /* Media Queries */
