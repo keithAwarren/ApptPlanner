@@ -75,16 +75,18 @@ const displayAppointmentModal = (day, appointmentsForDay) => {
     // Construct the modal content
     let modalContent = `<div>
                             <span class="close closeButton">&times;</span>
-                            <div id="appointmentDetails">Appointments for ${day}:</div>
+                            <div id="appointmentDetails">Appointments for<br>${day}:</div>
                         </div>
                         <br>`;
 
     // Iterate over appointments for the day and create HTML elements for each appointment
     appointmentsForDay.forEach((appointment, index) => {
         modalContent += `<div class="appointmentItem">
-                            <p>Contact: ${appointment.fullName}</p>
-                            <p>Title: ${appointment.title}</p>
-                            <p>Time: ${appointment.time}</p>
+                            <div class="appointmentInfo">
+                                <p><strong>Contact: ${appointment.fullName}</strong></p>
+                                <p>Title: ${appointment.title}</p>
+                                <p>Time: ${appointment.time}</p>
+                            </div>
                             <div class="deleteAppointmentButton">
                                 <button class="deleteAppointment" data-title="${appointment.title}" data-time="${appointment.time}" data-date="${appointment.date}">
                                     <i class="fas fa-trash-alt"></i>
@@ -130,6 +132,7 @@ const displayAppointmentModal = (day, appointmentsForDay) => {
         });
     });
 };
+
 
 
 // Format date as 'YYYY-MM-DD'

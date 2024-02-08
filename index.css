@@ -230,6 +230,7 @@ footer {
 
 footer p {
     margin-top: 20px;
+    margin-left: 10px;
 }
 
 span {
@@ -263,6 +264,18 @@ nav .links a:active {
 
 .burgerButton {
     display: none;
+}
+
+button {
+    background-color: #1d1d1d;
+    color: #D9B4FF;
+    border: none;
+    width: fit-content;
+    padding: 3px 7px;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-right: 5px;
 }
 
 .mobileMenu {
@@ -313,13 +326,13 @@ nav .links a:active {
 }
 
 .formSection h2 {
-    font-size: 17px;
+    font-size: 20px;
     top: 0;
     margin: 0 0 19px;
 }
 
 .formSection label {
-    font-size: 14px;
+    font-size: 16px;
     display: inline-block;
     width: 20%;
     margin-left: 20px;
@@ -591,6 +604,20 @@ span:not(strong) {
     border-radius: 5px;
     font-size: 15px;
     cursor: pointer;
+}
+
+.appointmentItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.appointmentInfo {
+    flex: 1; 
+}
+
+.deleteAppointmentButton {
+    margin-right: 25px;
 }
 
 /* Media Queries */
