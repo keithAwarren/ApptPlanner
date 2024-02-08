@@ -620,6 +620,17 @@ span:not(strong) {
     margin-right: 25px;
 }
 
+.clock-container {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+}
+
+.clock {
+    font-size: 18px;
+    color: #333;
+}
+
 /* Media Queries */
 
 @media screen and (max-device-width: 768px) {
