@@ -76,7 +76,8 @@ const displayAppointmentModal = (day, appointmentsForDay) => {
     let modalContent = `<div>
                             <span class="close closeButton">&times;</span>
                             <div id="appointmentDetails">Appointments for ${day}:</div>
-                        `;
+                        </div>
+                        <br>`;
 
     // Iterate over appointments for the day and create HTML elements for each appointment
     appointmentsForDay.forEach((appointment, index) => {
