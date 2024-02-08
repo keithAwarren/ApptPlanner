@@ -98,7 +98,7 @@ const displayAppointmentModal = (day, appointmentsForDay) => {
 
     // Get the modal element and set its content
     const appointmentModal = document.getElementById("appointmentDisplayModal");
-    appointmentModal.innerHTML = `<div class="modal-content">${modalContent}</div>`;
+    appointmentModal.innerHTML = `<div class="modalContent">${modalContent}</div>`;
 
     // Display the modal
     appointmentModal.style.display = "block";

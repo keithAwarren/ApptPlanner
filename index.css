@@ -571,7 +571,7 @@ span:not(strong) {
     cursor: pointer;
 }
 
-.modal-content {
+.modalContent {
     border: 5px solid;
     min-width: 400px;
     border-radius: 10px;
@@ -617,16 +617,19 @@ span:not(strong) {
 }
 
 .deleteAppointmentButton {
-    margin-right: 25px;
+    margin-right: 10px;
 }
 
-.clock-container {
+.clockContainer {
     position: absolute;
-    bottom: 30px;
+    bottom: 40px;
     left: 30px;
 }
 
 .clock {
+    background-color: rgba(255, 255, 255, 0.451);
+    border-radius: 10px;
+    padding: 10px;
     font-size: 18px;
     color: #333;
 }
@@ -725,6 +728,10 @@ span:not(strong) {
     }
 
     /* Adjustements */
+
+    .modalContent {
+        min-width: 270px;
+    }
 
     .contactPageButton {
         right: 7px;
