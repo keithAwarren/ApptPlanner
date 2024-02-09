@@ -8,6 +8,7 @@ const closeButtons = document.querySelectorAll(".closeButton");
 function toggleMobileMenu() {
     const mobileMenu = document.querySelector(".mobileMenu");
     mobileMenu.classList.toggle("show-mobile-menu");
+    console.log("working")
 }
 
 function showFormButtonClickHandler() {
@@ -29,6 +30,13 @@ if (timeInput) {
         dateFormat: "H:i",
         time_24hr: true,
     });
+}
+
+// Event listeners
+
+// Add click event listener to "mobileMenu" elements
+if (mobileMenuButton) {
+    mobileMenuButton.addEventListener("click", toggleMobileMenu)
 }
 
 // Add click event listener to "showFormButton" elements

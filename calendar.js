@@ -71,6 +71,12 @@ const handleDayClick = (dayElement) => {
 };
 
 // Display/delete appointment details in a modal
+
+// Move some html to html files
+// Instead of 3 data-attributes, combine into 1 unique ID (date/time created)
+// Use ID to fetch + delete
+// createElement see appts.js
+
 const displayAppointmentModal = (day, appointmentsForDay) => {
     // Construct the modal content
     let modalContent = `<div>
