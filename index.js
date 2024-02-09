@@ -8,7 +8,6 @@ const closeButtons = document.querySelectorAll(".closeButton");
 function toggleMobileMenu() {
     const mobileMenu = document.querySelector(".mobileMenu");
     mobileMenu.classList.toggle("show-mobile-menu");
-    console.log("working")
 }
 
 function showFormButtonClickHandler() {
