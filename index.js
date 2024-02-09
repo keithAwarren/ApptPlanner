@@ -58,6 +58,7 @@ function updateClock() {
     clockElement.textContent = `${hours}:${minutes}:${seconds}`;
 }
 
+if (window.location.href.includes('appts.html')) {
 // Update the clock every second
 setInterval(updateClock, 1000);
-
+}
