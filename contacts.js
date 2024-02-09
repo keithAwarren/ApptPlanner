@@ -74,8 +74,7 @@ function displayContacts() {
         phoneSpan.textContent = `Phone: ${contact.phone}`;
         emailSpan.textContent = `Email: ${contact.email}`;
 
-        deleteButton.className = "deleteContact";
-        deleteButton.textContent = "Delete";
+        deleteButton.className = "deleteContact fas fa-trash-alt";
         deleteButton.setAttribute("data-index", index);
 
         li.appendChild(span);
@@ -142,8 +141,7 @@ function displayFilteredContacts(filteredContacts) {
         phoneSpan.textContent = `Phone: ${contact.phone}`;
         emailSpan.textContent = `Email: ${contact.email}`;
 
-        deleteButton.className = "deleteContact";
-        deleteButton.textContent = "Delete";
+        deleteButton.className = "deleteContact fas fa-trash-alt";
         deleteButton.setAttribute("data-index", index);
 
         li.appendChild(span);

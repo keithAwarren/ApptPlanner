@@ -12,8 +12,6 @@ const months = [
     "August", "September", "October", "November", "December"
 ];
 
-const appointments = JSON.parse(localStorage.getItem("appointments")) || [];
-
 // Functions
 
 // Reset appointment colors and attributes
@@ -22,7 +20,6 @@ const resetAppointmentColors = () => {
     dayElements.forEach(dayElement => {
         dayElement.classList.remove("has-appointment");
         dayElement.style.backgroundColor = '';
-        dayElement.removeAttribute("data-appointment-info");
     });
 };
 
@@ -57,41 +54,86 @@ const renderCalendar = () => {
         dayElement.addEventListener('click', () => handleDayClick(dayElement));
     });
 
-    loadAppointments(); // Load appointments after rendering the calendar
     renderAppointments(); // Render appointments and update colors
 };
 
 // Handle click on a day
 const handleDayClick = (dayElement) => {
-    const appointmentInfoString = dayElement.getAttribute('data-appointment-info');
+    const day = dayElement.getAttribute('data-day');
+    const appointmentsForDay = getAppointmentsForDay(day);
 
-    if (appointmentInfoString) {
-        const appointmentInfo = JSON.parse(appointmentInfoString);
-        displayAppointmentPopup(appointmentInfo);
+    if (appointmentsForDay.length > 0) {
+        displayAppointmentModal(day, appointmentsForDay);
     } else {
         // Handle the case where there's no appointment
         alert('No appointment for this date.');
     }
 };
 
-// Appointment display popup
-const displayAppointmentPopup = (appointmentInfo) => {
+// Display/delete appointment details in a modal
+const displayAppointmentModal = (day, appointmentsForDay) => {
+    // Construct the modal content
+    let modalContent = `<div>
+                            <span class="close closeButton">&times;</span>
+                            <div id="appointmentDetails">Appointments for<br>${day}:</div>
+                        </div>
+                        <br>`;
 
-    const day = appointmentInfo.date;
-    const appointmentsForDay = appointments.filter(appointment => appointment.date === day);
+    // Iterate over appointments for the day and create HTML elements for each appointment
+    appointmentsForDay.forEach((appointment, index) => {
+        modalContent += `<div class="appointmentItem">
+                            <div class="appointmentInfo">
+                                <p><strong>Contact: ${appointment.fullName}</strong></p>
+                                <p>Title: ${appointment.title}</p>
+                                <p>Time: ${appointment.time}</p>
+                            </div>
+                            <div class="deleteAppointmentButton">
+                                <button class="deleteAppointment" data-title="${appointment.title}" data-time="${appointment.time}" data-date="${appointment.date}">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </div>
+                         </div>
+                         <br>`;
+    });
 
-    if (appointmentsForDay.length > 0) {
-        let popupMessage = `Appointments for ${day}:\n`;
+    // Get the modal element and set its content
+    const appointmentModal = document.getElementById("appointmentDisplayModal");
+    appointmentModal.innerHTML = `<div class="modalContent">${modalContent}</div>`;
 
-        appointmentsForDay.forEach(appointment => { // contact bottom
-            popupMessage += `\nTitle: ${appointment.title}\nTime: ${appointment.time}\nContact: ${appointment.fullName}\n`;
+    // Display the modal
+    appointmentModal.style.display = "block";
+
+    // Add event listener for close button
+    const closeButton = appointmentModal.querySelector('.closeButton');
+    closeButton.addEventListener("click", () => {
+        appointmentModal.style.display = "none";
+    });
+
+    // Add event listener for delete buttons
+    const deleteButtons = appointmentModal.querySelectorAll('.deleteAppointment');
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // Logic for deleting appointment
+            const appointmentToDelete = {
+                title: button.getAttribute('data-title'),
+                time: button.getAttribute('data-time'),
+                date: button.getAttribute('data-date')
+            };
+            let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+            appointments = appointments.filter(appointment => 
+                !(appointment.title === appointmentToDelete.title &&
+                appointment.time === appointmentToDelete.time &&
+                appointment.date === appointmentToDelete.date)
+            );
+            localStorage.setItem("appointments", JSON.stringify(appointments));
+            const appointmentItem = button.parentElement.parentElement;
+            appointmentItem.remove();
+            renderCalendar();
         });
-
-        alert(popupMessage);
-    } else {
-        alert(`No appointments for ${day}.`);
-    }
+    });
 };
+
+
 
 // Format date as 'YYYY-MM-DD'
 const formatDate = (year, month, day) => {
@@ -102,36 +144,34 @@ const formatDate = (year, month, day) => {
 
 // Render appointments and update colors
 const renderAppointments = () => {
-    appointments.forEach(appointment => {
-        const dayElement = document.querySelector(`.days li[data-day="${appointment.date}"]`);
-        if (dayElement) {
+    const dayElements = document.querySelectorAll('.days li');
+    dayElements.forEach(dayElement => {
+        const day = dayElement.getAttribute('data-day');
+        const appointmentsForDay = getAppointmentsForDay(day);
+
+        if (appointmentsForDay.length > 0) {
             dayElement.classList.add("has-appointment");
-            dayElement.setAttribute("data-appointment-info", JSON.stringify(appointment));
+        } else {
+            dayElement.classList.remove("has-appointment");
         }
     });
 };
 
-// Load appointments from local storage
-const loadAppointments = () => {
+// Get appointments for a specific day
+const getAppointmentsForDay = (day) => {
     const storedAppointments = JSON.parse(localStorage.getItem("appointments")) || [];
-    storedAppointments.forEach(appointment => {
-        const dayElement = document.querySelector(`.days li[data-day="${appointment.date}"]`);
-        if (dayElement) {
-            dayElement.classList.add("has-appointment");
-            dayElement.setAttribute("data-appointment-info", JSON.stringify(appointment));
-        }
-    });
+    return storedAppointments.filter(appointment => appointment.date === day);
 };
 
 // Save appointment to local storage
 const saveAppointment = (title, time, date) => {
-    appointments.push({ title, time, date });
-    localStorage.setItem("appointments", JSON.stringify(appointments));
+    const storedAppointments = JSON.parse(localStorage.getItem("appointments")) || [];
+    storedAppointments.push({ title, time, date });
+    localStorage.setItem("appointments", JSON.stringify(storedAppointments));
 };
 
 // Initial rendering of the calendar and appointments
 renderCalendar();
-renderAppointments();
 
 // Event Listeners
 prevNextIcon.forEach(icon => {
@@ -139,9 +179,6 @@ prevNextIcon.forEach(icon => {
         if (icon.id === "prev") {
             const today = new Date();
             const currentMonthIndex = today.getMonth();
-            // conditional to check for appts in LS
-            // if (furthest day back)
-            // else (current date)
             if (currYear > today.getFullYear() || (currYear === today.getFullYear() && currMonth > currentMonthIndex)) {
                 currMonth--;
                 if (currMonth < 0) {
@@ -160,7 +197,5 @@ prevNextIcon.forEach(icon => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    loadAppointments();
-    const storedAppointments = JSON.parse(localStorage.getItem("appointments")) || [];
-    storedAppointments.forEach(displayAppointmentInfo);
+    renderAppointments(); // Render appointments after DOM content is loaded
 });

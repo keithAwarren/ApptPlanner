@@ -230,6 +230,7 @@ footer {
 
 footer p {
     margin-top: 20px;
+    margin-left: 10px;
 }
 
 span {
@@ -244,17 +245,6 @@ span:hover {
 nav .links a:hover,
 nav .links a:active {
     color: #eddbff;
-}
-
-button {
-    background-color: #1d1d1d;
-    color: #D9B4FF;
-    border: none;
-    width: fit-content;
-    padding: 3px 20px;
-    border-radius: 5px;
-    font-size: 15px;
-    cursor: pointer;
 }
 
 .btn {
@@ -276,6 +266,18 @@ button {
     display: none;
 }
 
+button {
+    background-color: #1d1d1d;
+    color: #D9B4FF;
+    border: none;
+    width: fit-content;
+    padding: 3px 7px;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
 .mobileMenu {
     position: absolute;
     display: none;
@@ -285,7 +287,7 @@ button {
 
 .formContainer {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -293,7 +295,7 @@ button {
 
 .formSection {
     width: 500px;
-    height: 50vh;
+    min-height: 400px;
     background: #fff;
     border-radius: 15px;
     position: absolute;
@@ -324,13 +326,13 @@ button {
 }
 
 .formSection h2 {
-    font-size: 17px;
+    font-size: 20px;
     top: 0;
     margin: 0 0 19px;
 }
 
 .formSection label {
-    font-size: 14px;
+    font-size: 16px;
     display: inline-block;
     width: 20%;
     margin-left: 20px;
@@ -358,17 +360,17 @@ button {
 .close {
     color: #aaa;
     position: absolute;
-    top: 1vw;
-    right: 1vw;
-    font-size: 1.4vw;
+    top: 10px;
+    right: 10px;
+    font-size: 25px;
     font-weight: bold;
 }
 
 .closeButton {
     color: #aaa;
     position: absolute;
-    top: 1vw;
-    right: 1vw;
+    top: 10px;
+    right: 10px;
     font-size: 25px;
     font-weight: bold;
     cursor: pointer;
@@ -387,10 +389,27 @@ button {
 
 .formButtons {
     position: absolute;
-    bottom: 50px; 
+    bottom: 15px; 
     width: 95%;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formButtons .btn {
+    margin-bottom: 30px;
+    
+}
+
+.clear-btn {
+    background-color: #000000;
+    color: #D9B4FF;
+    border: none;
+    width: fit-content;
+    padding: 3px 20px;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
 }
 
 /* contacts page */
@@ -450,8 +469,8 @@ button {
 
 .storedContacts {
     border-radius: 10px;
-    padding: 1vw;
-    margin: 1vw;
+    padding: 10px;
+    margin: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     text-align: left;
     display: grid;
@@ -469,9 +488,15 @@ button {
 }
 
 .deleteContact {
-    font-size: 13px;
-    padding: 0.45vw 0.95vw;
-    margin-right: 0.35vw;
+    background-color: #000000;
+    color: #D9B4FF;
+    border: none;
+    width: fit-content;
+    padding: 3px 7px;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-right: 5px;
     float: right;
 }
 
@@ -546,6 +571,69 @@ span:not(strong) {
     cursor: pointer;
 }
 
+.modalContent {
+    border: 5px solid;
+    min-width: 400px;
+    border-radius: 10px;
+    text-align: left;
+    padding: 13px;
+    color: #333;
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: linear-gradient(to right bottom, #ffffff, #fcfafc, #f9f6f8, #f8f1f3, #f6ecec);
+}
+
+#appointmentDetails {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.appointmentItem p {
+    margin-bottom: 5px;
+}
+
+.deleteAppointment {
+    background-color: #000000;
+    color: #D9B4FF;
+    border: none;
+    width: fit-content;
+    padding: 3px 7px;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.appointmentItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.appointmentInfo {
+    flex: 1; 
+}
+
+.deleteAppointmentButton {
+    margin-right: 10px;
+}
+
+.clockContainer {
+    position: absolute;
+    bottom: 40px;
+    left: 30px;
+}
+
+.clock {
+    background-color: rgba(255, 255, 255, 0.451);
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
 /* Media Queries */
 
 @media screen and (max-device-width: 768px) {
@@ -617,7 +705,7 @@ span:not(strong) {
     }
 
     .formSection h2 {
-        font-size: 25px;
+        font-size: 20px;
     }
 
     .formInput {
@@ -640,6 +728,10 @@ span:not(strong) {
     }
 
     /* Adjustements */
+
+    .modalContent {
+        min-width: 270px;
+    }
 
     .contactPageButton {
         right: 7px;

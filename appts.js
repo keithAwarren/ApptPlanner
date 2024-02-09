@@ -1,10 +1,13 @@
 // Variables
-const newAppointmentButton = document.querySelector(".addApptButton");
-const appointmentsForm = document.getElementById("appointmentsForm");
-const contactSelect = document.querySelector("#contactSelect");
-const appointmentInfoDisplay = document.querySelector("#appointmentInfoDisplay");
+const newAppointmentButton = document.querySelector(".addApptButton"); 
+const appointmentsForm = document.getElementById("appointmentsForm"); 
+const contactSelect = document.querySelector("#contactSelect"); 
+const appointmentInfoDisplay = document.querySelector("#appointmentInfoDisplay"); 
+const clearApptFromButton = document.getElementById("clearApptForm"); 
 
 // Functions
+
+// Populate the contact select dropdown menu with contacts stored in local storage
 function populateContactSelect() {
     const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
 
@@ -19,14 +22,17 @@ function populateContactSelect() {
     }
 }
 
+// Handle the creation of a new appointment
 function handleNewAppointment() {
     const appointmentModal = document.getElementById("appointmentsModal");
     appointmentModal.style.display = "block";
 }
 
+// Handle the submission of the appointment form
 function handleFormSubmission(e) {
     e.preventDefault();
 
+    // Retrieve selected contact information
     const selectedOption = contactSelect.options[contactSelect.selectedIndex];
 
     if (!selectedOption) {
@@ -39,10 +45,12 @@ function handleFormSubmission(e) {
     const selectedPhone = selectedOption.getAttribute("data-phone");
     const selectedEmail = selectedOption.getAttribute("data-email");
 
+    // Retrieve appointment details from the form
     const title = document.querySelector("#title").value;
     const date = document.querySelector("#date").value;
     const time = document.querySelector("#time").value;
 
+    // Create appointment information object
     const appointmentInfo = {
         fullName: `${selectedFirstName} ${selectedLastName}`,
         phone: selectedPhone,
@@ -52,74 +60,51 @@ function handleFormSubmission(e) {
         time,
     };
 
+    // Store appointment information in local storage
     storeAppointmentInfo(appointmentInfo);
-
-    displayAppointmentInfo(appointmentInfo);
-
-    const selectedDay = document.querySelector(`.days li[data-day="${date}"]`);
-    if (selectedDay) {
-        // Store appointment info 
-        selectedDay.setAttribute('data-appointment-info', JSON.stringify(appointmentInfo));
-        // Change the color of the selected day 
-        selectedDay.classList.add('has-appointment') ; 
-    }
-
-    const dateParts = date.split("-");
-    const year = parseInt(dateParts[0]);
-    const month = parseInt(dateParts[1]) - 1;
-    const day = parseInt(dateParts[2]);
-
-    // Create a Date object for the selected date
-    const selectedDate = new Date(year, month, day);
-
-    // Add the appointment to the calendar
-    addAppointmentToCalendar(selectedDate, appointmentInfo);
 
     // Clear the form and close the modal
     appointmentsForm.reset();
     closeModal("appointmentsModal");
 }
 
+// Store appointment information in local storage
 function storeAppointmentInfo(appointmentInfo) {
     const appointments = JSON.parse(localStorage.getItem("appointments")) || [];
     appointments.push(appointmentInfo);
     localStorage.setItem("appointments", JSON.stringify(appointments));
 
+    // Render the calendar after storing the appointment
     renderCalendar();
 }
 
-function addAppointmentToCalendar(selectedDate, appointmentInfo) {
-   
-    const dayElement = document.querySelector(`.days li[data-day="${selectedDate.toISOString()}"]`);
-    if (dayElement) {
-        dayElement.classList.add("has-appointment");
-        dayElement.setAttribute("data-appointment-info", JSON.stringify(appointmentInfo));
-    }
-}
-
-function displayAppointmentInfo(appointmentInfo) {
-    
-}
-
+// Function to close a modal by its ID
 function closeModal(modalId) {
     const modal = document.getElementById(modalId);
     modal.style.display = "none";
 }
 
+// Function to clear the appointment form fields
+function clearFormFields() {
+    appointmentsForm.reset();
+}
+
 // Event Listeners
+
+// Add event listener for the button to add a new appointment
 if (newAppointmentButton) {
     newAppointmentButton.addEventListener("click", handleNewAppointment);
 }
 
+// Add event listener for the form submission
 if (appointmentsForm) {
     appointmentsForm.addEventListener("submit", handleFormSubmission);
 }
 
-// Load and display stored appointments after DOM is fully loaded
-document.addEventListener("DOMContentLoaded", () => {
-    const storedAppointments = JSON.parse(localStorage.getItem("appointments")) || [];
-    storedAppointments.forEach(displayAppointmentInfo);
-});
+// Add event listener for the button to clear the appointment form fields
+if (clearApptFromButton) {
+    clearApptFromButton.addEventListener("click", clearFormFields)
+}
 
 // Populate contact select after DOM is fully loaded
 populateContactSelect();
