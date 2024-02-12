@@ -672,7 +672,7 @@ span:not(strong) {
         right: 0.75%;
         background-color: #1d1d1d;
         border-radius: 10%;
-        width: 190px;
+        width: 150px;
         display: none;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
     }
