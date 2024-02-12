@@ -200,18 +200,16 @@ contactForm.addEventListener("submit", function (e) {
 
     storeContactInfo(contactInfo);
 
+    // Add the contact to the select option
     const option = document.createElement("option");
-    const fullName = `${firstName} ${lastName}`;
-    option.text = fullName;
-    option.setAttribute("data-firstName", firstName);
-    option.setAttribute("data-lastName", lastName);
-    option.setAttribute("data-phone", phone);
-    option.setAttribute("data-email", email);
-
+    option.textContent = `${firstName} ${lastName}`;
     contactSelect.appendChild(option);
 
+    // Reset the form and close the modal
     contactForm.reset();
     closeModal("contactsModal");
+    
+    // Refresh the displayed contacts
     displayContacts();
 });
 

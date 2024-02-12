@@ -126,10 +126,10 @@ const displayAppointmentModal = (day, appointmentsForDay) => {
                 date: button.getAttribute('data-date')
             };
             let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
-            appointments = appointments.filter(appointment => 
+            appointments = appointments.filter(appointment =>
                 !(appointment.title === appointmentToDelete.title &&
-                appointment.time === appointmentToDelete.time &&
-                appointment.date === appointmentToDelete.date)
+                    appointment.time === appointmentToDelete.time &&
+                    appointment.date === appointmentToDelete.date)
             );
             localStorage.setItem("appointments", JSON.stringify(appointments));
             const appointmentItem = button.parentElement.parentElement;
