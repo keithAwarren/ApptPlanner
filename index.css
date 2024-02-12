@@ -346,6 +346,14 @@ button {
     font-size: 14px;
 }
 
+.formInput[type="text"],
+.formInput[type="date"],
+.formInput[type="time"],
+.formInput[type="tel"],
+.formInput[type="email"] {
+    padding: 10px;
+}
+
 .modal {
     display: none;
     position: fixed;
