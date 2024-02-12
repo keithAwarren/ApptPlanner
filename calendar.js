@@ -70,80 +70,71 @@ const handleDayClick = (dayElement) => {
     }
 };
 
-// Display/delete appointment details in a modal
+// Function to create appointment items
+const createAppointmentItem = (appointment) => {
+    const appointmentItem = document.createElement('div');
+    appointmentItem.classList.add('appointmentItem');
+    appointmentItem.dataset.timestamp = appointment.timestamp;
 
-// Move some html to html files
-// Instead of 3 data-attributes, combine into 1 unique ID (date/time created)
-// Use ID to fetch + delete
-// createElement see appts.js
+    const appointmentInfo = document.createElement('div');
+    appointmentInfo.classList.add('appointmentInfo'); // Add a class for appointment info
 
-const displayAppointmentModal = (day, appointmentsForDay) => {
-    // Construct the modal content
-    let modalContent = `<div>
-                            <span class="close closeButton">&times;</span>
-                            <div id="appointmentDetails">Appointments for<br>${day}:</div>
-                        </div>
-                        <br>`;
+    appointmentInfo.innerHTML = `
+        <p><strong class="contact">Contact: ${appointment.fullName}</strong></p>
+        <p class="title">Title: ${appointment.title}</p>
+        <p class="time">Time: ${appointment.time}</p>
+    `;
 
-    // Iterate over appointments for the day and create HTML elements for each appointment
-    appointmentsForDay.forEach((appointment, index) => {
-        modalContent += `<div class="appointmentItem" data-timestamp="${appointment.timestamp}">
-                            <div class="appointmentInfo">
-                                <p><strong>Contact: ${appointment.fullName}</strong></p>
-                                <p>Title: ${appointment.title}</p>
-                                <p>Time: ${appointment.time}</p>
-                            </div>
-                            <div class="deleteAppointmentButton">
-                                <button class="deleteAppointment" data-title="${appointment.title}" data-time="${appointment.time}" data-date="${appointment.date}">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </div>
-                         </div>
-                         <br>`;
+    const deleteButtonContainer = document.createElement('div');
+    deleteButtonContainer.classList.add('deleteAppointmentButton');
+
+    const deleteButton = document.createElement('button');
+    deleteButton.classList.add('deleteAppointment');
+    deleteButton.innerHTML = '<i class="fas fa-trash-alt"></i>';
+
+    // Event listener for delete button
+    deleteButton.addEventListener('click', () => {
+        const timestamp = appointment.timestamp;
+        let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+        appointments = appointments.filter(app => app.timestamp !== timestamp);
+        localStorage.setItem("appointments", JSON.stringify(appointments));
+        appointmentItem.remove();
+        renderCalendar();
     });
 
-    // Get the modal element and set its content
-    const appointmentModal = document.getElementById("appointmentDisplayModal");
-    appointmentModal.innerHTML = `<div class="modalContent">${modalContent}</div>`;
-
-    // Display the modal
-    appointmentModal.style.display = "block";
-
-    // Add event listener for close button
-    const closeButton = appointmentModal.querySelector('.closeButton');
-    closeButton.addEventListener("click", () => {
-        appointmentModal.style.display = "none";
-    });
-
-    // Add event listener for delete buttons
-    const deleteButtons = appointmentModal.querySelectorAll('.deleteAppointment');
-
-    deleteButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Get the timestamp of the appointment to delete
-            const timestamp = parseInt(button.parentElement.parentElement.getAttribute('data-timestamp'));
-
-            // Retrieve appointments from local storage
-            let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
-
-            // Filter out the appointment with the matching timestamp
-            appointments = appointments.filter(appointment => appointment.timestamp !== timestamp);
-
-            // Update local storage with the filtered appointments
-            localStorage.setItem("appointments", JSON.stringify(appointments));
-
-            // Remove the appointment item from the DOM
-            const appointmentItem = button.parentElement.parentElement;
-            appointmentItem.remove();
-
-            // Render the calendar
-            renderCalendar();
-        });
-    });
+    deleteButtonContainer.appendChild(deleteButton);
+    appointmentItem.appendChild(appointmentInfo);
+    appointmentItem.appendChild(deleteButtonContainer);
+    
+    return appointmentItem;
 };
 
 
+// Function to display appointment modal
+const displayAppointmentModal = (day, appointmentsForDay) => {
+    // Get the appointmentDetails div
+    const appointmentDetails = document.getElementById('appointmentDetails');
+    appointmentDetails.innerHTML = `<div id="appointmentDetails">Appointments for<br>${day}:<span class="close closeButton">&times;</span></div>`;
 
+    // Event listener for close button
+    const closeButton = appointmentDetails.querySelector('.closeButton');
+    closeButton.addEventListener('click', () => {
+        const appointmentModal = document.getElementById("appointmentDisplayModal");
+        appointmentModal.style.display = "none";
+    });
+
+    // Iterate over appointments for the day and create HTML elements for each appointment
+    appointmentsForDay.forEach((appointment) => {
+        const appointmentItem = createAppointmentItem(appointment);
+        appointmentDetails.appendChild(appointmentItem);
+    });
+
+    // Get the modal element
+    const appointmentModal = document.getElementById("appointmentDisplayModal");
+
+    // Display the modal
+    appointmentModal.style.display = "block";
+};
 
 // Format date as 'YYYY-MM-DD'
 const formatDate = (year, month, day) => {

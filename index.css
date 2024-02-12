@@ -589,10 +589,23 @@ span:not(strong) {
 #appointmentDetails {
     font-weight: bold;
     font-size: 20px;
+    margin-bottom: 7px;
 }
 
-.appointmentItem p {
-    margin-bottom: 5px;
+.appointmentInfo .contact {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.appointmentInfo .title {
+    color: #333;
+    font-size: 15px
+}
+
+.appointmentInfo .time {
+    color: #666;
+    font-size: 15px;
+    margin-bottom: 20px;
 }
 
 .deleteAppointment {
