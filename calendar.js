@@ -87,7 +87,7 @@ const displayAppointmentModal = (day, appointmentsForDay) => {
 
     // Iterate over appointments for the day and create HTML elements for each appointment
     appointmentsForDay.forEach((appointment, index) => {
-        modalContent += `<div class="appointmentItem">
+        modalContent += `<div class="appointmentItem" data-timestamp="${appointment.timestamp}">
                             <div class="appointmentInfo">
                                 <p><strong>Contact: ${appointment.fullName}</strong></p>
                                 <p>Title: ${appointment.title}</p>
@@ -117,27 +117,31 @@ const displayAppointmentModal = (day, appointmentsForDay) => {
 
     // Add event listener for delete buttons
     const deleteButtons = appointmentModal.querySelectorAll('.deleteAppointment');
+
     deleteButtons.forEach(button => {
         button.addEventListener('click', () => {
-            // Logic for deleting appointment
-            const appointmentToDelete = {
-                title: button.getAttribute('data-title'),
-                time: button.getAttribute('data-time'),
-                date: button.getAttribute('data-date')
-            };
+            // Get the timestamp of the appointment to delete
+            const timestamp = parseInt(button.parentElement.parentElement.getAttribute('data-timestamp'));
+
+            // Retrieve appointments from local storage
             let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
-            appointments = appointments.filter(appointment =>
-                !(appointment.title === appointmentToDelete.title &&
-                    appointment.time === appointmentToDelete.time &&
-                    appointment.date === appointmentToDelete.date)
-            );
+
+            // Filter out the appointment with the matching timestamp
+            appointments = appointments.filter(appointment => appointment.timestamp !== timestamp);
+
+            // Update local storage with the filtered appointments
             localStorage.setItem("appointments", JSON.stringify(appointments));
+
+            // Remove the appointment item from the DOM
             const appointmentItem = button.parentElement.parentElement;
             appointmentItem.remove();
+
+            // Render the calendar
             renderCalendar();
         });
     });
 };
+
 
 
 
