@@ -398,15 +398,14 @@ button {
 .formButtons {
     position: absolute;
     bottom: 15px; 
-    width: 95%;
+    left: 30px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .formButtons .btn {
     margin-bottom: 30px;
-    
 }
 
 .clear-btn {
@@ -535,17 +534,6 @@ span:not(strong) {
     position: relative;
     padding-right: 100px;
     background-image: linear-gradient(to right bottom, #ffffff, #fcfafc, #f9f6f8, #f8f1f3, #f6ecec);
-}
-
-.dateTimeDisplay {
-    position: absolute;
-    top: 20%;
-    right: 19px;
-    color: #333;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 17px;
-    border-radius: 10px;
 }
 
 .apptsPageHeader h2 {
