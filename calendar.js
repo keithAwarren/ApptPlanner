@@ -94,13 +94,17 @@ const createAppointmentItem = (appointment) => {
 
     // Event listener for delete button
     deleteButton.addEventListener('click', () => {
-        const timestamp = appointment.timestamp;
-        let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
-        appointments = appointments.filter(app => app.timestamp !== timestamp);
-        localStorage.setItem("appointments", JSON.stringify(appointments));
-        appointmentItem.remove();
-        renderCalendar();
+        const confirmation = confirm("Are you sure you want to delete this appointment?");
+        if (confirmation) {
+            const timestamp = appointment.timestamp;
+            let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+            appointments = appointments.filter(app => app.timestamp !== timestamp);
+            localStorage.setItem("appointments", JSON.stringify(appointments));
+            appointmentItem.remove();
+            renderCalendar();
+        }
     });
+
 
     deleteButtonContainer.appendChild(deleteButton);
     appointmentItem.appendChild(appointmentInfo);
