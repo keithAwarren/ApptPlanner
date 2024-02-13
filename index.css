@@ -350,8 +350,9 @@ button {
 .formInput[type="date"],
 .formInput[type="time"],
 .formInput[type="tel"],
-.formInput[type="email"] {
-    padding: 10px;
+.formInput[type="email"],
+#contactSearch[type="text"] {
+    padding-left: 10px;
 }
 
 .modal {
@@ -436,18 +437,18 @@ button {
 
 .leftSection {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin-left: 50px;
+    margin-top: 10px;
 }
 
 .contactPageHeader input {
     font-size: 10px;
-    margin-bottom: 17px;
 }
 
 .contactPageButton {
-    width: 55px; 
-    height: 55px; 
+    width: 40px; 
+    height: 40px; 
     border-radius: 50%; 
     background-color: #c482de;
     border: none;
@@ -461,7 +462,7 @@ button {
 }
 
 .contactPageButton i {
-    font-size: 30px; 
+    font-size: 20px; 
     color: #fff; 
 }
 
@@ -519,6 +520,11 @@ span:not(strong) {
 
 .searchBar input {
     font-size: 14px;
+    margin-right: 20px;
+}
+
+#sortSelect {
+    font-size: 20px;
 }
 
 /* appts. page */
