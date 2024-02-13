@@ -61,6 +61,12 @@ function displayContacts() {
     const contactList = document.getElementById("contactsList");
     const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
 
+    if (contacts.length === 0) {
+        contactList.style.display = "none"
+    } else {
+        contactList.style.display = "grid"
+    }
+
     contactList.innerHTML = "";
 
     contacts.forEach(function (contact, index) {
@@ -208,7 +214,7 @@ contactForm.addEventListener("submit", function (e) {
     // Reset the form and close the modal
     contactForm.reset();
     closeModal("contactsModal");
-    
+
     // Refresh the displayed contacts
     displayContacts();
 });
