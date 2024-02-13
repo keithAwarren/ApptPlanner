@@ -712,6 +712,16 @@ span:not(strong) {
         font-size: 35px;
     }
 
+    /* Contact page */
+
+    .leftSection {
+        flex-direction: column;
+    }
+
+    #sortSelect {
+        margin-top: 10px;
+    }
+
     /* Forms */
 
     .formSection label {
