@@ -62,9 +62,9 @@ function displayContacts() {
     const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
 
     if (contacts.length === 0) {
-        contactList.style.display = "none"
+        contactList.style.display = "none";
     } else {
-        contactList.style.display = "grid"
+        contactList.style.display = "grid"; 
     }
 
     contactList.innerHTML = "";
