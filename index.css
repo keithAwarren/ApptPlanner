@@ -479,14 +479,23 @@ button {
     display: flex;
     align-items: center; 
     justify-content: center;  
+    flex-direction: column;
 }
 
 .contactPlaceholder {
-    margin-top: 100px;
+    margin-top: 50px;
     color: #999; 
     font-style: italic;
     text-align: center;
 }
+
+.contactIcon {
+    margin-top: 50px;
+    font-size: 100px;
+    color: rgba(0, 0, 0, 0.1); 
+    margin-bottom: 20px; 
+}
+
 
 .storedContacts {
     padding: 10px;
@@ -530,6 +539,7 @@ span strong {
 }
 
 span:not(strong) {
+    padding: 10px auto;
     font-weight: normal;
     font-size: 13px;
 }
