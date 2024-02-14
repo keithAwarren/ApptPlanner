@@ -5,6 +5,7 @@ const contactForm = document.getElementById("contactForm");
 const contactSelect = document.querySelector("#contactSelect");
 const searchInput = document.getElementById("contactSearch");
 const sortSelect = document.getElementById("sortSelect");
+const phoneInput = document.getElementById("phone");
 
 // Functions
 function handleAddContact() {
@@ -29,6 +30,15 @@ function storeContactInfo(contactInfo) {
     contactInfo.timestamp = new Date();
     contacts.push(contactInfo);
     localStorage.setItem("contacts", JSON.stringify(contacts));
+}
+
+function formatPhoneNumber(phone) {
+    const digitsOnly = phone.replace(/\D/g, "");
+    if (digitsOnly.length !== 10) {
+        return phone;
+    }
+    const formatted = digitsOnly.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
+    return formatted;
 }
 
 function displayStoredContact(contact) {
@@ -194,12 +204,22 @@ if (clearContactButton) {
     clearContactButton.addEventListener("click", closeContactForm);
 }
 
+phoneInput.addEventListener("input", function(event) {
+    const currentValue = event.target.value;
+    event.target.value = formatPhoneNumber(currentValue);
+});
+
 contactForm.addEventListener("submit", function (e) {
     e.preventDefault();
     const firstName = document.querySelector("#firstName").value;
     const lastName = document.querySelector("#lastName").value;
     const phone = document.querySelector("#phone").value;
     const email = document.querySelector("#email").value;
+
+    if (phone.replace(/\D/g, "").length !== 10) {
+        alert("Please enter a valid 10-digit phone number.");
+        return;
+    }
 
     const contactInfo = {
         firstName,
