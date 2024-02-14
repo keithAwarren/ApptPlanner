@@ -59,12 +59,15 @@ function displayStoredContact(contact) {
 
 function displayContacts() {
     const contactList = document.getElementById("contactsList");
+    const placeholder = document.querySelector(".placeholderContainer")
     const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
 
     if (contacts.length === 0) {
         contactList.style.display = "none";
+        placeholder.style.display = "flex"
     } else {
         contactList.style.display = "grid"; 
+        placeholder.style.display = "none";
     }
 
     contactList.innerHTML = "";
