@@ -79,6 +79,8 @@ function displayContacts() {
         const emailSpan = document.createElement("span");
         const deleteButton = document.createElement("button");
 
+        li.classList.add("contactCard")
+
         span.innerHTML = `<strong>${contact.firstName} ${contact.lastName}</strong>`;
         phoneSpan.textContent = `Phone: ${contact.phone}`;
         emailSpan.textContent = `Email: ${contact.email}`;
