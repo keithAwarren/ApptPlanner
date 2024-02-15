@@ -116,9 +116,8 @@ const createAppointmentItem = (appointment) => {
 
 // Function to display appointment modal
 const displayAppointmentModal = (day, appointmentsForDay) => {
-    // Get the appointmentDetails div
     const appointmentDetails = document.getElementById('appointmentDetails');
-    appointmentDetails.innerHTML = `<div id="appointmentDetails">Appointments for<br>${day}:<span class="close closeButton">&times;</span></div>`;
+    appointmentDetails.innerHTML = `<div id="appointmentDetails"><h3>Appointments for<br>${day}:</h3><span class="close closeButton">&times;</span></div>`;
 
     // Event listener for close button
     const closeButton = appointmentDetails.querySelector('.closeButton');
