@@ -181,14 +181,10 @@ renderCalendar();
 prevNextIcon.forEach(icon => {
     icon.addEventListener("click", () => {
         if (icon.id === "prev") {
-            const today = new Date();
-            const currentMonthIndex = today.getMonth();
-            if (currYear > today.getFullYear() || (currYear === today.getFullYear() && currMonth > currentMonthIndex)) {
-                currMonth--;
-                if (currMonth < 0) {
-                    currMonth = 11;
-                    currYear--;
-                }
+            currMonth--;
+            if (currMonth < 0) {
+                currMonth = 11;
+                currYear--;
             }
         } else {
             currMonth = (currMonth + 1) % 12;
@@ -199,6 +195,7 @@ prevNextIcon.forEach(icon => {
         renderCalendar();
     });
 });
+
 
 document.addEventListener("DOMContentLoaded", () => {
     renderAppointments(); // Render appointments after DOM content is loaded
