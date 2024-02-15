@@ -40,7 +40,7 @@ header .icons span {
     width: 38px;
     margin: 0 1px;
     cursor: pointer;
-    color: #878787;
+    color: rgb(135, 135, 135);
     text-align: center;
     line-height: 38px;
     font-size: 1.9rem;
@@ -164,7 +164,7 @@ nav h1 {
 .links a {
     text-decoration: none;
     color: rgb(217, 180, 255);
-    margin: 20px;
+    margin: 12px;
     text-align: center;
     transition: 500ms;
     letter-spacing: 0;
@@ -172,8 +172,36 @@ nav h1 {
 }
 
 nav a:hover {
-    letter-spacing: 3px;
+    letter-spacing: 1px;
     color: rgb(237, 219, 255);
+}
+
+.centered {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.centered a {
+    color: rgb(255, 255, 255); 
+    text-decoration: none;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.centered a:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.centered i {
+    color: rgb(255, 255, 255); 
+    font-size: 20px; 
 }
 
 footer {
