@@ -254,15 +254,15 @@ button {
 /* Home Page */
 
 .heroSection {
-    margin-top: 90px;
+    margin-top: 85px;
     text-align: center;
-    padding: 25px;
+    padding: 20px;
     background-color: rgb(245, 245, 245);
     color: rgb(51, 51, 51);
 }
 
 .heroSection p {
-    margin: 20px;
+    margin: 15px;
 }
 
 .contentSection {
@@ -273,7 +273,7 @@ button {
 }
 
 .contentSection p {
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .currentWeek h3 {
@@ -454,10 +454,10 @@ button {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 90px;
+    margin-top: 100px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     width: 100%;
     padding: 12px;
-    box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
     text-align: left;
     border-radius: 15px;
     background-image: linear-gradient(to right bottom, #ffffff, #fcfafc, #f9f6f8, #f8f1f7, #f3def5);

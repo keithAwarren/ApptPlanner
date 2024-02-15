@@ -35,15 +35,23 @@ if (timeInput) {
 // Function to update the clock
 function updateClock() {
     const clockElement = document.getElementById("clock");
-    const now = new Date();
-    const hours = now.getHours().toString().padStart(2, "0");
-    const minutes = now.getMinutes().toString().padStart(2, "0");
-    const seconds = now.getSeconds().toString().padStart(2, "0");
-    clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+    if (clockElement) {
+        const now = new Date();
+        const hours = now.getHours().toString().padStart(2, "0");
+        const minutes = now.getMinutes().toString().padStart(2, "0");
+        const seconds = now.getSeconds().toString().padStart(2, "0");
+        clockElement.textContent = `${hours}:${minutes}:${seconds}`;
+    }
 }
 
 // Function to render appointments for the current week
 function renderCurrentWeekAppointments() {
+    const currentWeekAppointments = document.getElementById("currentWeekAppointments");
+    if (!currentWeekAppointments) {
+        // If the element doesn't exist, return early or handle it in another way
+        return;
+    }
+
     const appointments = JSON.parse(localStorage.getItem("appointments")) || [];
     const currentDate = new Date();
     const currentDay = currentDate.getDay();
@@ -94,5 +102,8 @@ closeButtons.forEach((button) => {
 // Update the clock every second
 setInterval(updateClock, 1000);
 
-// Render current week appointments
-renderCurrentWeekAppointments();
+// Add event listener to render current week appointments after the DOM is fully loaded
+document.addEventListener("DOMContentLoaded", function() {
+    // Render current week appointments
+    renderCurrentWeekAppointments();
+});
