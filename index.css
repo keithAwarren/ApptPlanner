@@ -671,17 +671,20 @@ span:not(strong) {
 .appointmentInfo .contact {
     font-weight: bold;
     font-size: 15px;
+    letter-spacing: 0.5px;
 }
 
 .appointmentInfo .title {
     color: rgb(51, 51, 51);
-    font-size: 15px
+    font-size: 15px;
+    letter-spacing: 0.25px;
 }
 
 .appointmentInfo .time {
     color: rgb(102, 102, 102);
     font-size: 15px;
     margin-bottom: 20px;
+    letter-spacing: 0.25x;
 }
 
 .deleteAppointment {
