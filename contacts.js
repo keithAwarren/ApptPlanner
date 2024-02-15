@@ -156,6 +156,8 @@ function displayFilteredContacts(filteredContacts) {
 
     filteredContacts.forEach(function (contact, index) {
         const li = document.createElement("li");
+        li.classList.add("contactCard")
+
         const span = document.createElement("span");
         const phoneSpan = document.createElement("span");
         const emailSpan = document.createElement("span");

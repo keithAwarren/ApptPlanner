@@ -459,7 +459,6 @@ button {
     width: 100%;
     padding: 12px;
     text-align: left;
-    border-radius: 15px;
     background-image: linear-gradient(to right bottom, #ffffff, #fcfafc, #f9f6f8, #f8f1f7, #f3def5);
 }
 
