@@ -138,7 +138,7 @@ nav {
     margin: auto;
     display: flex;
     align-items: center;
-    background-color: #1d1d1d;
+    background-color: rgb(29, 29, 29);
     color: #fff;
     text-align: center;
     position: fixed;
@@ -163,7 +163,7 @@ nav h1 {
 
 .links a {
     text-decoration: none;
-    color: #D9B4FF;
+    color: rgb(217, 180, 255);
     margin: 20px;
     text-align: center;
     transition: 500ms;
@@ -173,14 +173,14 @@ nav h1 {
 
 nav a:hover {
     letter-spacing: 3px;
-    color: #eddbff;
+    color: rgb(237, 219, 255);
 }
 
 footer {
     text-align: center;
     height: 50px;
-    background-color: #1d1d1d;
-    color: #fff;
+    background-color: rgb(29, 29, 29);
+    color: rgb(255, 255, 255);
     position: fixed;
     z-index: 100;
     bottom: 0;
@@ -198,7 +198,7 @@ footer {
 
 .socialIcons a {
     text-decoration: none;
-    color: #fff5f5;
+    color: rgb(255, 245, 245);
 }
 
 .socialIcons i {
@@ -207,7 +207,7 @@ footer {
 }
 
 .socialIcons i:hover {
-    color: #D9B4FF
+    color: rgb(217, 180, 255)
 }
 
 footer p {
@@ -216,8 +216,8 @@ footer p {
 }
 
 .btn {
-    background-color: #D9B4FF;
-    color: #fff;
+    background-color: rgb(217, 180, 255);
+    color: rgb(255, 255, 255);
     border: none;
     width: fit-content;
     padding: 3px 20px;
@@ -227,7 +227,7 @@ footer p {
 }
 
 .btn:hover {
-    background-color: #dec7f6;
+    background-color: rgb(222, 199, 246);
 }
 
 .burgerButton {
@@ -235,8 +235,8 @@ footer p {
 }
 
 button {
-    background-color: #1d1d1d;
-    color: #D9B4FF;
+    background-color: rgb(29, 29, 29);
+    color: rgb(217, 180, 255);
     border: none;
     width: fit-content;
     padding: 3px 7px;
@@ -257,8 +257,8 @@ button {
     margin-top: 90px;
     text-align: center;
     padding: 25px;
-    background-color: #f5f5f5;
-    color: #333;
+    background-color: rgb(245, 245, 245);
+    color: rgb(51, 51, 51);
 }
 
 .heroSection p {
@@ -268,8 +268,8 @@ button {
 .contentSection {
     text-align: center;
     padding: 20px;
-    background-color: #fff;
-    color: #333;
+    background-color: rgb(255, 255, 255);
+    color: rgb(51, 51, 51);
 }
 
 .contentSection p {
@@ -297,8 +297,8 @@ button {
     border: 2px solid rgba(0, 0, 0, 0.4);
     border-radius: 20px;
     height: 260px;
-    padding: 10px;
-    background-color: #fee8ff;
+    padding: auto;
+    background-color: rgba(254, 232, 255, 0.7);
     box-shadow: 0 5px 9px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
 }
@@ -316,9 +316,9 @@ button {
 }
 
 .weekAtAGlance .date {
-    background-color: #fee8ff;
+    background-color: rgb(254, 232, 255);
     text-align: center;
-    padding: 7px;
+    padding: 10px;
     border-bottom: 4px solid rgba(0, 0, 0, 0.5);
     font-weight: bold;
     font-size: 15px;
@@ -350,7 +350,7 @@ button {
     justify-content: center;
     position: relative;
     z-index: 101;
-    background-image: linear-gradient(to right bottom, #ffffff, #fcfafc, #f9f6f8, #f8f1f3, #f6ecec);
+    background-image: linear-gradient(to right bottom, #ffffff, #fcfafc, #f9f6f8, #f8f1f7, #f3def5);
 }
 
 .formSection h2 {
@@ -395,7 +395,7 @@ button {
 }
 
 .close {
-    color: #aaa;
+    color: rgb(170, 170, 170);
     position: absolute;
     top: 10px;
     right: 10px;
@@ -404,7 +404,7 @@ button {
 }
 
 .closeButton {
-    color: #aaa;
+    color: rgb(170, 170, 170);
     position: absolute;
     top: 10px;
     right: 20px;
@@ -421,7 +421,7 @@ button {
 }
 
 .clear-btn:hover {
-    background-color: #333;
+    background-color: rgb(51, 51, 51);
 }
 
 .formButtons {
@@ -438,8 +438,8 @@ button {
 }
 
 .clear-btn {
-    background-color: #000000;
-    color: #D9B4FF;
+    background-color: rgb(0, 0, 0, 0.9);
+    color: rgb(217, 180, 255);
     border: none;
     width: fit-content;
     padding: 3px 20px;
@@ -460,7 +460,7 @@ button {
     box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
     text-align: left;
     border-radius: 15px;
-    background-image: linear-gradient(to right bottom, #ffffff, #fcfafc, #f9f6f8, #f8f1f3, #f6ecec);
+    background-image: linear-gradient(to right bottom, #ffffff, #fcfafc, #f9f6f8, #f8f1f7, #f3def5);
 }
 
 .leftSection {
@@ -478,7 +478,7 @@ button {
     width: 40px; 
     height: 40px; 
     border-radius: 50%; 
-    background-color: #c482de;
+    background-color: rgb(196, 130, 222);
     border: none;
     display: flex;
     justify-content: center;
@@ -491,11 +491,11 @@ button {
 
 .contactPageButton i {
     font-size: 20px; 
-    color: #fff; 
+    color: rgb(255, 255, 255); 
 }
 
 .contactPageButton:hover {
-    background-color: #ddaef0; 
+    background-color: rgb(221, 174, 240); 
     cursor: pointer;
 }
 
@@ -538,7 +538,7 @@ button {
 
 .deleteContact {
     background-color: rgb(0, 0, 0, 0.9);
-    color: #D9B4FF;
+    color: rgb(217, 180, 255);
     border: none;
     width: fit-content;
     padding: 3px 7px;
@@ -556,7 +556,7 @@ button {
 .contactCard {
     border-radius: 10px;
     padding: 10px;
-    background-image: linear-gradient(to right bottom, #ffffff, #fcfafc, #f9f6f8, #f8f1f3, #f6ecec);
+    background-image: linear-gradient(to right bottom, #ffffff, #fcfafc, #f9f6f8, #f8f1f7, #f3def5);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -607,7 +607,7 @@ span:not(strong) {
 }
 
 .addApptButton:hover {
-    background-color: #ddaef0; 
+    background-color: rgb(221, 174, 240); 
     cursor: pointer;
 }
 
@@ -618,13 +618,13 @@ span:not(strong) {
     border-radius: 10px;
     text-align: left;
     padding: 13px;
-    color: #333;
+    color: rgb(51, 51, 51);
     display: block;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-image: linear-gradient(to right bottom, #ffffff, #fcfafc, #f9f6f8, #f8f1f3, #f6ecec);
+    background-image: linear-gradient(to right bottom, #ffffff, #fcfafc, #f9f6f8, #f8f1f7, #f3def5);
     overflow-y: auto;
 }
 
@@ -647,19 +647,19 @@ span:not(strong) {
 }
 
 .appointmentInfo .title {
-    color: #333;
+    color: rgb(51, 51, 51);
     font-size: 15px
 }
 
 .appointmentInfo .time {
-    color: #666;
+    color: rgb(102, 102, 102);
     font-size: 15px;
     margin-bottom: 20px;
 }
 
 .deleteAppointment {
     background-color: #000000;
-    color: #D9B4FF;
+    color: rgb(217, 180, 255);
     border: none;
     width: fit-content;
     padding: 3px 7px;
@@ -695,7 +695,7 @@ span:not(strong) {
     border-radius: 10px;
     padding: 10px;
     font-size: 18px;
-    color: #333;
+    color: rgb(51, 51, 51);
 }
 
 /* Media Queries */
