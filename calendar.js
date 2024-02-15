@@ -1,19 +1,16 @@
 // Variables
-const daysTag = document.querySelector(".days");
-const currentDate = document.querySelector(".current-date");
-const prevNextIcon = document.querySelectorAll(".icons span");
-
-let date = new Date();
-let currYear = date.getFullYear();
-let currMonth = date.getMonth();
-
+const daysTag = document.querySelector(".days"); // Selects the element containing the days in the calendar
+const currentDate = document.querySelector(".current-date"); // Selects the element displaying the current date
+const prevNextIcon = document.querySelectorAll(".icons span"); // Selects the previous and next icons in the calendar
+let date = new Date(); // Creates a new Date object representing the current date
+let currYear = date.getFullYear(); // Gets the current year
+let currMonth = date.getMonth(); // Gets the current month
 const months = [
     "January", "February", "March", "April", "May", "June", "July",
     "August", "September", "October", "November", "December"
-];
+]; // Array containing the names of the months
 
 // Functions
-
 // Reset appointment colors and attributes
 const resetAppointmentColors = () => {
     const dayElements = document.querySelectorAll('.days li');
@@ -113,7 +110,6 @@ const createAppointmentItem = (appointment) => {
     return appointmentItem;
 };
 
-
 // Function to display appointment modal
 const displayAppointmentModal = (day, appointmentsForDay) => {
     const appointmentDetails = document.getElementById('appointmentDetails');
@@ -178,6 +174,7 @@ const saveAppointment = (title, time, date) => {
 renderCalendar();
 
 // Event Listeners
+// Add event listeners to previous and next icons for navigating months
 prevNextIcon.forEach(icon => {
     icon.addEventListener("click", () => {
         if (icon.id === "prev") {
@@ -196,7 +193,7 @@ prevNextIcon.forEach(icon => {
     });
 });
 
-
+// Render appointments after DOM content is loaded
 document.addEventListener("DOMContentLoaded", () => {
-    renderAppointments(); // Render appointments after DOM content is loaded
+    renderAppointments();
 });

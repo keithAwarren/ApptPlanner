@@ -1,13 +1,12 @@
 // Variables
-const newAppointmentButton = document.querySelector(".addApptButton"); 
-const appointmentsForm = document.getElementById("appointmentsForm"); 
-const contactSelect = document.querySelector("#contactSelect"); 
-const appointmentInfoDisplay = document.querySelector("#appointmentInfoDisplay"); 
-const clearApptFromButton = document.getElementById("clearApptForm"); 
+const newAppointmentButton = document.querySelector(".addApptButton"); // Button to add a new appointment
+const appointmentsForm = document.getElementById("appointmentsForm"); // Form for adding new appointments
+const contactSelect = document.querySelector("#contactSelect"); // Select element for choosing contacts
+const appointmentInfoDisplay = document.querySelector("#appointmentInfoDisplay"); // Display area for appointment information
+const clearApptFromButton = document.getElementById("clearApptForm"); // Button to clear appointment form
 
 // Functions
-
-// Populate the contact select dropdown menu with contacts stored in local storage
+// Function to populate the contact select dropdown menu with contacts stored in local storage
 function populateContactSelect() {
     const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
 
@@ -19,13 +18,13 @@ function populateContactSelect() {
     });
 }
 
-// Handle the creation of a new appointment
+// Function to handle the creation of a new appointment
 function handleNewAppointment() {
     const appointmentModal = document.getElementById("appointmentsModal");
     appointmentModal.style.display = "block";
 }
 
-// Handle the submission of the appointment form
+// Function to handle the submission of the appointment form
 function handleFormSubmission(e) {
     e.preventDefault();
 
@@ -55,7 +54,7 @@ function handleFormSubmission(e) {
     closeModal("appointmentsModal");
 }
 
-// Store appointment information in local storage
+// Function to store appointment information in local storage
 const storeAppointmentInfo = (appointmentInfo) => {
     const appointments = JSON.parse(localStorage.getItem("appointments")) || [];
     appointmentInfo.timestamp = new Date().getTime(); // Adding timestamp property
@@ -64,7 +63,6 @@ const storeAppointmentInfo = (appointmentInfo) => {
     
     renderCalendar();
 };
-
 
 // Function to close a modal by its ID
 function closeModal(modalId) {
@@ -78,7 +76,6 @@ function clearFormFields() {
 }
 
 // Event Listeners
-
 // Add event listener for the button to add a new appointment
 if (newAppointmentButton) {
     newAppointmentButton.addEventListener("click", handleNewAppointment);

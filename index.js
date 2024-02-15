@@ -1,28 +1,32 @@
 // Variables
-const mobileMenuButton = document.querySelector(".burgerButton");
-const timeInput = document.getElementById("time");
-const showFormButtons = document.querySelectorAll(".pageLinksMoblie");
-const closeButtons = document.querySelectorAll(".closeButton");
-const currentWeekAppointments = document.getElementById("currentWeekAppointments");
+const mobileMenuButton = document.querySelector(".burgerButton"); // Button to toggle mobile menu
+const timeInput = document.getElementById("time"); // Input field for time
+const showFormButtons = document.querySelectorAll(".pageLinksMoblie"); // Buttons to show forms
+const closeButtons = document.querySelectorAll(".closeButton"); // Buttons to close modals
+const currentWeekAppointments = document.getElementById("currentWeekAppointments"); // Container for displaying current week's appointments
 
 // Functions
+// Function to toggle the visibility of the mobile menu
 function toggleMobileMenu() {
     const mobileMenu = document.querySelector(".mobileMenu");
     mobileMenu.classList.toggle("show-mobile-menu");
 }
 
+// Function to handle click events on buttons that show forms
 function showFormButtonClickHandler() {
     const targetId = this.getAttribute("data-target");
     const modal = document.getElementById(targetId);
     modal.style.display = "block";
 }
 
+// Function to handle click events on close buttons in modals
 function closeButtonClickHandler() {
     const targetModalId = this.getAttribute("data-modal");
     const modal = document.getElementById(targetModalId);
     modal.style.display = "none";
 }
 
+// Initialize flatpickr for time input field, if it exists
 if (timeInput) {
     flatpickr(timeInput, {
         enableTime: true,
@@ -32,7 +36,7 @@ if (timeInput) {
     });
 }
 
-// Function to update the clock
+// Function to update the clock displayed on the page
 function updateClock() {
     const clockElement = document.getElementById("clock");
     if (clockElement) {
@@ -58,7 +62,7 @@ function renderCurrentWeekAppointments() {
     const firstDayOfWeek = new Date(currentDate);
     firstDayOfWeek.setDate(currentDate.getDate() - currentDay); // Set to Sunday of the current week
 
-    // Create a list to hold the appointments for the current week
+    // Create HTML for displaying appointments for each day of the current week
     let weekAppointmentsHTML = "";
     for (let i = 0; i < 7; i++) {
         const day = new Date(firstDayOfWeek);
@@ -80,21 +84,22 @@ function renderCurrentWeekAppointments() {
         weekAppointmentsHTML += "</div>";
     }
 
+    // Update the content of the container with the HTML for displaying appointments
     currentWeekAppointments.innerHTML = weekAppointmentsHTML;
 }
 
 // Event listeners
-// Add click event listener to "mobileMenu" elements
+// Add click event listener to "mobileMenuButton" to toggle mobile menu visibility
 if (mobileMenuButton) {
     mobileMenuButton.addEventListener("click", toggleMobileMenu)
 }
 
-// Add click event listener to "showFormButton" elements
+// Add click event listener to "showFormButton" elements to show respective forms
 showFormButtons.forEach((button) => {
     button.addEventListener("click", showFormButtonClickHandler);
 });
 
-// Add click event listener to "close-button" elements
+// Add click event listener to "closeButton" elements to close respective modals
 closeButtons.forEach((button) => {
     button.addEventListener("click", closeButtonClickHandler);
 });
