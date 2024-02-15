@@ -12,145 +12,155 @@
 
 <body>
 
-    <nav>
-        <div>
-            <a href="index.html">
-                <h1>PLANR</h1>
-            </a>
-        </div>
-        <button id="mobileMenuButton" class="burgerButton">
-            <i class="fas fa-bars"></i>
-        </button>
-        <div class="mobileMenu">
-            <a href="contacts.html">
-                <button class="pageLinksMoblie">contacts</button>
-            </a>
-            <a href="appts.html">
-                <button class="pageLinksMoblie">appointments</button>
-            </a>
-            <a>
-                <button class="pageLinksMoblie">settings</button>
-            </a>
-        </div>
-        <div class="links navButtons">
-            <a href="contacts.html">CONTACTS</a>
-            <a href="appts.html">APPOINTMENTS</a>
-        </div>
-    </nav>
+    <div class="contactPageContainer">
 
-    <div class="contactPageHeader">
-        <div class="leftSection">
-            <div class="searchBar">
-                <input type="text" id="contactSearch" placeholder="Search Contacts">
+        <nav>
+            <div class="centered homeButton">
+                <a href="index.html">
+                    <i class="fas fa-home"></i>
+                </a>
             </div>
-            <div id="sortingOptions">
-                <label for="sortSelect">Sort by: </label>
-                <select id="sortSelect">
-                    <option value="alphabetical">A-Z</option>
-                    <option value="recent">Recent</option>
-                </select>
+            <div>
+                <a href="index.html">
+                    <h1>PLANR</h1>
+                </a>
             </div>
-        </div>
-        <div class="rightSection">
-            <button class="contactPageButton" data-target="contactsModal">
-                <i class="fas fa-plus"></i>
+            <button id="mobileMenuButton" class="burgerButton">
+                <i class="fas fa-bars"></i>
             </button>
+            <div class="mobileMenu">
+                <a href="contacts.html">
+                    <button class="pageLinksMoblie">contacts</button>
+                </a>
+                <a href="appts.html">
+                    <button class="pageLinksMoblie">appointments</button>
+                </a>
+                <a href="index.html">
+                    <button class="pageLinksMoblie">home</button>
+                </a>
+            </div>
+            <div class="links navButtons">
+                <a href="contacts.html">CONTACTS</a>
+                <a href="appts.html">APPOINTMENTS</a>
+            </div>
+        </nav>
+
+        <div class="contactPageHeader">
+            <div class="leftSection">
+                <div class="searchBar">
+                    <input type="text" id="contactSearch" placeholder="Search Contacts">
+                </div>
+                <div id="sortingOptions">
+                    <label for="sortSelect">Sort by: </label>
+                    <select id="sortSelect">
+                        <option value="alphabetical">A-Z</option>
+                        <option value="recent">Recent</option>
+                    </select>
+                </div>
+            </div>
+            <div class="rightSection">
+                <button class="contactPageButton" data-target="contactsModal">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
         </div>
-    </div>
 
 
-    <div id="contactsList" class="storedContacts">
-        <!--Contacts will show up here-->
-    </div>
+        <div id="contactsList" class="storedContacts">
+            <!--Contacts will show up here-->
+        </div>
 
-    <div id="contactsModal" class="modal">
-        <div>
-            <div id="contactsCard" class="formContainer">
-                <div class="formSection">
-                    <h2>Contact Form</h2>
-                    <form id="contactForm">
-                        <span class="close closeButton" data-modal="contactsModal">&times;
-                        </span>
-                        <div>
-                            <label for="firstName">First Name:</label>
-                            <input class="formInput" required type="text" id="firstName" pattern="^[A-Za-z]+$"
-                                title="Please enter letters only (no numbers or special characters)."
-                                placeholder="John" />
-                        </div>
-                        <div>
-                            <label for="lastName">Last Name:</label>
-                            <input class="formInput" required type="text" id="lastName" pattern="^[A-Za-z]+$"
-                                title="Please enter letters only (no numbers or special characters)."
-                                placeholder="Doe" />
-                        </div>
-                        <div>
-                            <label for="phone">Phone:</label>
-                            <input class="formInput" required type="tel" id="phone" pattern="^\d{10}$"
-                                title="Please enter a 10-digit phone number." 
-                                placeholder="123-456-7890"/>
-                        </div>
-                        <div>
-                            <label for="email">E-mail:</label>
-                            <input class="formInput" required type="email" id="email"
-                                placeholder="example@example.com" />
-                        </div>
-                        <div class="formButtons">
-                            <input class="btn" type="submit" value="submit" />
-                            <button class="clear-btn" type="button" id="clearContactForm">clear</button>
-                        </div>
-                    </form>
+        <div class="placeholderContainer">
+            <i class="fas fa-address-book contactIcon"></i>
+            <p class="contactPlaceholder">No contacts yet, start by adding a contact!</p>
+        </div>
+
+        <div id="contactsModal" class="modal">
+            <div>
+                <div id="contactsCard" class="formContainer">
+                    <div class="formSection">
+                        <h2>Contact Form</h2>
+                        <form id="contactForm">
+                            <span class="close closeButton" data-modal="contactsModal">&times;
+                            </span>
+                            <div>
+                                <label for="firstName">First Name:</label>
+                                <input class="formInput" required type="text" id="firstName" pattern="^[A-Za-z]+$"
+                                    title="Please enter letters only (no numbers or special characters)."
+                                    placeholder="John" />
+                            </div>
+                            <div>
+                                <label for="lastName">Last Name:</label>
+                                <input class="formInput" required type="text" id="lastName" pattern="^[A-Za-z]+$"
+                                    title="Please enter letters only (no numbers or special characters)."
+                                    placeholder="Doe" />
+                            </div>
+                            <div>
+                                <label for="phone">Phone:</label>
+                                <input class="formInput" required type="tel" id="phone" placeholder="(123)456-7890" />
+                            </div>
+                            <div>
+                                <label for="email">E-mail:</label>
+                                <input class="formInput" required type="email" id="email"
+                                    placeholder="example@example.com" />
+                            </div>
+                            <div class="formButtons">
+                                <input class="btn" type="submit" value="submit" />
+                                <button class="clear-btn" type="button" id="clearContactForm">clear</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div id="appointmentsModal" class="modal">
-        <div>
-            <div id="appointmentsCard" class="formContainer">
-                <div class="formSection">
-                    <h2>Appointment Form</h2>
-                    <form id="appointmentsForm">
-                        <span class="close closeButton" data-modal="appointmentsModal">&times;
-                        </span>
-                        <div>
-                            <label>Contact:</label>
-                            <select id="contactSelect" class="formInput">
-                            </select>
-                        </div>
-                        <div>
-                            <label>Title:</label>
-                            <input class="formInput" required type="text" id="title" />
-                        </div>
-                        <div>
-                            <label>Date:</label>
-                            <input class="formInput" required type="date" id="date" />
-                        </div>
-                        <div>
-                            <label>Time:</label>
-                            <input class="formInput" required type="time" id="time" data-input />
-                        </div>
-                        <div class="formButtons">
-                            <input class="btn" type="submit" value="submit" />
-                            <button class="clear-btn" type="button" id="clearApptForm">clear</button>
-                        </div>
-                    </form>
+        <div id="appointmentsModal" class="modal">
+            <div>
+                <div id="appointmentsCard" class="formContainer">
+                    <div class="formSection">
+                        <h2>Appointment Form</h2>
+                        <form id="appointmentsForm">
+                            <span class="close closeButton" data-modal="appointmentsModal">&times;
+                            </span>
+                            <div>
+                                <label>Contact:</label>
+                                <select id="contactSelect" class="formInput">
+                                </select>
+                            </div>
+                            <div>
+                                <label>Title:</label>
+                                <input class="formInput" required type="text" id="title" />
+                            </div>
+                            <div>
+                                <label>Date:</label>
+                                <input class="formInput" required type="date" id="date" />
+                            </div>
+                            <div>
+                                <label>Time:</label>
+                                <input class="formInput" required type="time" id="time" data-input />
+                            </div>
+                            <div class="formButtons">
+                                <input class="btn" type="submit" value="submit" />
+                                <button class="clear-btn" type="button" id="clearApptForm">clear</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <footer>
+            <p>&copy; 2023 PLANR. All rights reserved.</p>
+            <div class="socialIcons">
+                <a href="https://www.linkedin.com/in/keith-warren-286875269/"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/keithAwarren"><i class="fab fa-github"></i></a>
+                <a href="mailto:keithwarrendev@gmail.com"><i class="fa-regular fa-envelope"></i></a>
+            </div>
+        </footer>
+
+        <script type="text/javascript" src="index.js"></script>
+        <script type="text/javascript" src="contacts.js"></script>
     </div>
-
-    <footer>
-        <p>&copy; 2023 PLANR. All rights reserved.</p>
-        <div class="socialIcons">
-            <a href=""><i class="fab fa-linkedin"></i></a>
-            <a href=""><i class="fab fa-github"></i></a>
-            <a href=""><i class="fab fa-instagram"></i></a>
-        </div>
-    </footer>
-
-    <script type="text/javascript" src="index.js"></script>
-    <script type="text/javascript" src="contacts.js"></script>
-
 </body>
 
 </html>
