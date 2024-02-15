@@ -9,6 +9,7 @@
 
 body {
     background-color: #ffffff;
+    padding-bottom: 50px;
 }
 
 /* Calendar */
@@ -782,7 +783,7 @@ span:not(strong) {
     }
 
     .formInput {
-        font-size: 19px;
+        font-size: 15px;
     }
 
     .btn,
@@ -853,7 +854,7 @@ span:not(strong) {
 
     #sortSelect {
         margin-left: 10px;
-        font-size: 24px;
+        font-size: 20px;
         border-radius: 14px;
     }
 
@@ -870,11 +871,6 @@ span:not(strong) {
     .deleteContact,
     span:not(strong) {
         font-size: 14px;
-    }
-
-    .dateTimeDisplay {
-        position: static;
-        margin-top: 10px;
     }
 
     .pageLinksMobile {

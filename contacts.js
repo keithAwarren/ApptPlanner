@@ -118,10 +118,13 @@ function displayContacts() {
 }
 
 function deleteContact(index) {
-    const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
-    contacts.splice(index, 1);
-    localStorage.setItem("contacts", JSON.stringify(contacts));
-    displayContacts();
+    const confirmation = confirm("Are you sure you want to delete this contact?");
+    if (confirmation) {
+        const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+        contacts.splice(index, 1);
+        localStorage.setItem("contacts", JSON.stringify(contacts));
+        displayContacts();
+    }
 }
 
 function deleteContactEvent() {
