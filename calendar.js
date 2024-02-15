@@ -11,6 +11,7 @@ const months = [
 ]; // Array containing the names of the months
 
 // Functions
+
 // Reset appointment colors and attributes
 const resetAppointmentColors = () => {
     const dayElements = document.querySelectorAll('.days li');
@@ -174,6 +175,7 @@ const saveAppointment = (title, time, date) => {
 renderCalendar();
 
 // Event Listeners
+
 // Add event listeners to previous and next icons for navigating months
 prevNextIcon.forEach(icon => {
     icon.addEventListener("click", () => {

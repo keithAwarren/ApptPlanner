@@ -6,6 +6,7 @@ const appointmentInfoDisplay = document.querySelector("#appointmentInfoDisplay")
 const clearApptFromButton = document.getElementById("clearApptForm"); // Button to clear appointment form
 
 // Functions
+
 // Function to populate the contact select dropdown menu with contacts stored in local storage
 function populateContactSelect() {
     const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
@@ -76,6 +77,7 @@ function clearFormFields() {
 }
 
 // Event Listeners
+
 // Add event listener for the button to add a new appointment
 if (newAppointmentButton) {
     newAppointmentButton.addEventListener("click", handleNewAppointment);

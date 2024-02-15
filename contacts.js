@@ -8,6 +8,7 @@ const sortSelect = document.getElementById("sortSelect"); // Select element for 
 const phoneInput = document.getElementById("phone"); // Input field for phone number
 
 // Functions
+
 // Function to handle click event on the "Add Contact" button
 function handleAddContact() {
     const contactModal = document.getElementById("contactsModal");
@@ -221,6 +222,7 @@ function sortContacts(sortType) {
 }
 
 // Event Listeners
+
 // Add click event listener to "addContactButton" to show the contact modal
 if (addContactButton) {
     addContactButton.addEventListener("click", handleAddContact);

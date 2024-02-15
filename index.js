@@ -6,6 +6,7 @@ const closeButtons = document.querySelectorAll(".closeButton"); // Buttons to cl
 const currentWeekAppointments = document.getElementById("currentWeekAppointments"); // Container for displaying current week's appointments
 
 // Functions
+
 // Function to toggle the visibility of the mobile menu
 function toggleMobileMenu() {
     const mobileMenu = document.querySelector(".mobileMenu");
@@ -52,7 +53,7 @@ function updateClock() {
 function renderCurrentWeekAppointments() {
     const currentWeekAppointments = document.getElementById("currentWeekAppointments");
     if (!currentWeekAppointments) {
-        // If the element doesn't exist, return early or handle it in another way
+        // If the element doesn't exist, return early
         return;
     }
 
@@ -89,6 +90,7 @@ function renderCurrentWeekAppointments() {
 }
 
 // Event listeners
+
 // Add click event listener to "mobileMenuButton" to toggle mobile menu visibility
 if (mobileMenuButton) {
     mobileMenuButton.addEventListener("click", toggleMobileMenu)
