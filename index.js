@@ -75,10 +75,7 @@ function renderCurrentWeekAppointments() {
     currentWeekAppointments.innerHTML = weekAppointmentsHTML;
 }
 
-
-
 // Event listeners
-
 // Add click event listener to "mobileMenu" elements
 if (mobileMenuButton) {
     mobileMenuButton.addEventListener("click", toggleMobileMenu)
