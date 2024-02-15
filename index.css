@@ -762,7 +762,8 @@ span:not(strong) {
         margin: 10px auto;
         padding: 15px 65px;
         border-radius: 10px;
-        background-color: #333;
+        background-color: rgb(51, 51, 51);
+        letter-spacing: 1.25px;
         max-width: 100px;
         text-align: center;
         display: flex;
@@ -864,7 +865,7 @@ span:not(strong) {
     }
 
     footer p {
-        font-size: 12px;
+        font-size: 15px;
     }
 
     .apptsPageHeader,
@@ -912,5 +913,9 @@ span:not(strong) {
     .deleteContact {
         font-size: 13px;
         border-radius: 5px;
+    }
+
+    .calendar li {
+        font-size: 19px;
     }
 }
