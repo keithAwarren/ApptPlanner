@@ -315,13 +315,18 @@ button {
 }
 
 .weekAtAGlance {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
-    margin: 10px;
+    margin: 10px auto;
+    max-width: 95%;
 }
 
 .weekAtAGlance .card {
+    flex: 1 1 175px;
+    min-width: 250px;
+    max-width: 250px;
     border: 2px solid rgba(0, 0, 0, 0.4);
     border-radius: 20px;
     height: 260px;

@@ -109,8 +109,6 @@ closeButtons.forEach((button) => {
 // Update the clock every second
 setInterval(updateClock, 1000);
 
-// Add event listener to render current week appointments after the DOM is fully loaded
-document.addEventListener("DOMContentLoaded", function() {
-    // Render current week appointments
-    renderCurrentWeekAppointments();
-});
+// Render current week appointments
+renderCurrentWeekAppointments();
+
