@@ -162,17 +162,19 @@ nav h1 {
 }
 
 .links a {
+    font-size: 15px;
+    font-weight: bold;
     text-decoration: none;
     color: rgb(217, 180, 255);
     margin: 12px;
     text-align: center;
     transition: 500ms;
-    letter-spacing: 0;
+    letter-spacing: 2px;
     transition: letter-spacing 0.3s ease;
 }
 
 nav a:hover {
-    letter-spacing: 1px;
+    letter-spacing: 3px;
     color: rgb(237, 219, 255);
 }
 
