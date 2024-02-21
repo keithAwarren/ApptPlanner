@@ -47,38 +47,6 @@ function formatPhoneNumber(phone) {
     return formatted;
 }
 
-// Function to display a single contact in the contact list
-function displayStoredContact(contact) {
-    const contactList = document.getElementById("contactsList");
-    const li = document.createElement("li");
-
-    // Create span elements for each contact detail
-    const nameSpan = document.createElement("span");
-    const phoneSpan = document.createElement("span");
-    const emailSpan = document.createElement("span");
-
-    // Set the content of each span
-    nameSpan.innerHTML = `${contact.firstName} ${contact.lastName}`;
-    phoneSpan.textContent = `Phone: ${contact.phone}`;
-    emailSpan.textContent = `Email: ${contact.email}`;
-
-    // Append span elements to the list item
-    li.appendChild(nameSpan);
-    li.appendChild(document.createElement("br"));
-    li.appendChild(phoneSpan);
-    li.appendChild(document.createElement("br"));
-    li.appendChild(emailSpan);
-
-    // Create a delete button for the contact
-    const deleteButton = document.createElement("button");
-    deleteButton.className = "deleteContact";
-    deleteButton.textContent = "Delete";
-    li.appendChild(deleteButton);
-
-    // Append the list item to the contact list
-    contactList.appendChild(li);
-}
-
 // Function to display all contacts stored in local storage
 function displayContacts() {
     // Retrieve contacts from local storage
@@ -106,12 +74,14 @@ function displayContacts() {
         const span = document.createElement("span");
         const phoneSpan = document.createElement("span");
         const emailSpan = document.createElement("span");
+        const dateSpan = document.createElement("span");
         const deleteButton = document.createElement("button");
 
         // Set content for each contact detail
         span.innerHTML = `<strong>${contact.firstName} ${contact.lastName}</strong>`;
         phoneSpan.textContent = `Phone: ${contact.phone}`;
         emailSpan.textContent = `Email: ${contact.email}`;
+        dateSpan.textContent = `Date Added: ${new Date(contact.timestamp).toLocaleDateString()}`
 
         // Set up delete button for the contact
         deleteButton.className = "deleteContact fas fa-trash-alt";
@@ -123,6 +93,8 @@ function displayContacts() {
         li.appendChild(phoneSpan);
         li.appendChild(document.createElement("br"));
         li.appendChild(emailSpan);
+        li.appendChild(document.createElement("br"));
+        li.appendChild(dateSpan);
         li.appendChild(deleteButton);
 
         // Append list item to contact list
@@ -181,11 +153,13 @@ function displayFilteredContacts(filteredContacts) {
         const span = document.createElement("span");
         const phoneSpan = document.createElement("span");
         const emailSpan = document.createElement("span");
+        const dateSpan = document.createElement("span");
         const deleteButton = document.createElement("button");
 
         span.innerHTML = `<strong>${contact.firstName} ${contact.lastName}</strong>`;
         phoneSpan.textContent = `Phone: ${contact.phone}`;
         emailSpan.textContent = `Email: ${contact.email}`;
+        dateSpan.textContent = `Date Added: ${new Date(contact.timestamp).toLocaleDateString()}`;
 
         deleteButton.className = "deleteContact fas fa-trash-alt";
         deleteButton.setAttribute("data-index", index);
@@ -195,6 +169,8 @@ function displayFilteredContacts(filteredContacts) {
         li.appendChild(phoneSpan);
         li.appendChild(document.createElement("br"));
         li.appendChild(emailSpan);
+        li.appendChild(document.createElement("br"));
+        li.appendChild(dateSpan);
         li.appendChild(deleteButton);
 
         contactList.appendChild(li);
@@ -290,4 +266,3 @@ sortSelect.addEventListener("change", function () {
 // Initial display of contacts
 deleteContactEvent();
 displayContacts();
-
