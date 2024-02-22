@@ -44,6 +44,20 @@ function generateDemoContacts() {
     });
 }
 
+// Function to populate contact select dropdown
+function populateContactSelect() {
+    const contacts = JSON.parse(localStorage.getItem("contacts")) || [];
+    const contactSelect = document.getElementById("contactSelect");
+
+    contacts.forEach((contact, index) => {
+        const option = document.createElement("option");
+        option.textContent = `${contact.firstName} ${contact.lastName}`;
+        // Store contact index in local storage
+        option.value = index.toString();
+        contactSelect.appendChild(option);
+    });
+}
+
 // Event Listeners
 
 // Event listener for populating demo contacts on DOMContentLoaded
@@ -55,3 +69,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+populateContactSelect();
