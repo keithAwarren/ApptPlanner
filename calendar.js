@@ -77,10 +77,13 @@ const createAppointmentItem = (appointment) => {
     const appointmentInfo = document.createElement('div');
     appointmentInfo.classList.add('appointmentInfo'); // Add a class for appointment info
 
+    const details = appointment.details ? appointment.details : "None"; // Check if details exist
+
     appointmentInfo.innerHTML = `
         <p><strong class="contact">Contact: ${appointment.fullName}</strong></p>
         <p class="title">Title: ${appointment.title}</p>
         <p class="time">Time: ${appointment.time}</p>
+        <p class="details">Details: ${details}</p> <!-- Display "None" if no details -->
     `;
 
     const deleteButtonContainer = document.createElement('div');

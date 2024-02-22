@@ -36,6 +36,12 @@ function handleFormSubmission(e) {
     const title = document.querySelector("#title").value;
     const date = document.querySelector("#date").value;
     const time = document.querySelector("#time").value;
+    const details = document.querySelector("#details").value;
+
+    if (!time) {
+        alert("Please enter a time for the appointment.")
+        return;
+    }
 
     // Create appointment information object
     const appointmentInfo = {
@@ -45,6 +51,7 @@ function handleFormSubmission(e) {
         title,
         date,
         time,
+        details,
     };
 
     // Store appointment information in local storage
