@@ -617,6 +617,10 @@ span:not(strong) {
     font-size: 20px;
 }
 
+.demoButton {
+    margin: auto 50px;
+}
+
 /* appts. page */
 
 .addApptButton {
