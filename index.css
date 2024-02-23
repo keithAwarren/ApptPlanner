@@ -17,7 +17,7 @@ body {
 .calendarWrapper {
     width: 97%;
     margin: 100px auto;
-    background-image: url(60252.jpg);
+    background-image: url(calendarBackground.jpg);
     border-radius: 10px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
     position: relative;
@@ -513,7 +513,7 @@ button {
     height: 40px; 
     border-radius: 50%; 
     background-color: rgb(196, 130, 222);
-    border: none;
+    border: 0.7px solid rgba(53, 52, 52, 0.696);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -564,7 +564,7 @@ button {
     list-style: none;
 }
 
-@media screen and (max-width: 800px) { 
+@media screen and (max-width: 768px) { 
     .storedContacts {
         grid-template-columns: 1fr;
     }   
@@ -628,7 +628,7 @@ span:not(strong) {
     height: 50px; 
     border-radius: 50%; 
     background-color: rgb(196, 130, 222, 0.75);
-    border: none;
+    border: 0.7px solid rgba(53, 52, 52, 0.696);
     box-shadow: 0 5px 7px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: center;
@@ -741,7 +741,7 @@ span:not(strong) {
 
 /* Media Queries */
 
-@media screen and (max-device-width: 768px) {
+@media screen and (max-width: 768px) {
 
     /* mobile menu */
 

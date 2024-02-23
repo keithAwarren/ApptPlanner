@@ -23,7 +23,7 @@ function generateDemoContacts() {
                     lastName: result.name.last,
                     phone: formattedPhone,
                     email: result.email,
-                    timestamp: new Date() // Set current date for demo contacts
+                    timestamp: new Date()
                 };
             });
 
