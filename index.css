@@ -178,34 +178,6 @@ nav a:hover {
     color: rgb(237, 219, 255);
 }
 
-.centered {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.centered a {
-    color: rgb(255, 255, 255); 
-    text-decoration: none;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px; 
-    height: 40px; 
-    border-radius: 50%; 
-    background-color: rgba(0, 0, 0, 0.5); 
-}
-
-.centered a:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-}
-
-.centered i {
-    color: rgb(255, 255, 255); 
-    font-size: 20px; 
-}
-
 footer {
     text-align: center;
     height: 50px;
@@ -455,7 +427,7 @@ button {
     cursor: pointer;
 }
 
-.clear-btn:hover {
+.clearBtn:hover {
     background-color: rgb(51, 51, 51);
 }
 
@@ -472,7 +444,7 @@ button {
     margin-bottom: 30px;
 }
 
-.clear-btn {
+.clearBtn {
     background-color: rgb(0, 0, 0, 0.9);
     color: rgb(217, 180, 255);
     border: none;
